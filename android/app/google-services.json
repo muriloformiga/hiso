@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "354843081456",
+    "firebase_url": "https://hiso-app.firebaseio.com",
+    "project_id": "hiso-app",
+    "storage_bucket": "hiso-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:354843081456:android:66adb95dddebd4f5d2a035",
+        "android_client_info": {
+          "package_name": "br.com.hisoapp.hiso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "354843081456-9lepb7b4s2m3icb45ptjlea0moei3d4h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.hisoapp.hiso",
+            "certificate_hash": "1c285be015bdf2dd2dea7a66a79d75eb167874dd"
+          }
+        },
+        {
+          "client_id": "354843081456-52j46q7cg55micav67tpg09bna8sarku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz5I-sfi-_SFStsbFecfPeJK9TtrmEaFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "354843081456-52j46q7cg55micav67tpg09bna8sarku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
