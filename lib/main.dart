@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:hiso/hiso_app.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator_page.dart';
 import 'package:hiso/injection_container.dart' as di;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   di.init();
-  runApp(MyApp());
+  runApp(HisoApp());
 }
 
-class MyApp extends StatelessWidget {
+class HisoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return HisoApp();
+    return AuthCoordinatorScreen();
   }
 }

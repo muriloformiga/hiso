@@ -5,17 +5,17 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hiso/core/info/auth_info.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/utils/auth_injection.dart';
-import 'package:hiso/features/home/injection/home_injection.dart';
+import 'package:hiso/features/home/utils/home_injection.dart';
 
 // Service Locator (Dependency)
 final dep = GetIt.instance;
 
 void init() {
+  //! Features
+  //! Auth
+  initAuth();
   //! Home
   initHome();
-
-  //! Features - Auth
-  initAuth();
 
   //! Core
   dep.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(dep()));

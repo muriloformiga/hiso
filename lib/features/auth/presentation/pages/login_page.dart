@@ -5,7 +5,7 @@ import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/strings/strings.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
-import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_form_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_options_widget.dart';

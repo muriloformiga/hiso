@@ -3,28 +3,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
-import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator.dart';
-import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator_impl.dart';
-import 'package:hiso/features/auth/presentation/coordinator/auth_routes.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
+import 'package:hiso/features/auth/coordinator/auth_routes.dart';
 import 'package:hiso/features/auth/presentation/pages/register_page.dart';
-import 'package:hiso/features/home/presentation/bloc/home_bloc.dart';
-import 'package:hiso/features/home/presentation/pages/home_page.dart';
+import 'package:hiso/features/home/coordinator/home_coordinator_page.dart';
 import 'package:hiso/features/auth/presentation/pages/login_page.dart';
 import 'package:hiso/features/auth/presentation/pages/splash_page.dart';
 import 'package:hiso/injection_container.dart';
 
-class HisoApp extends StatefulWidget {
+class AuthCoordinatorScreen extends StatefulWidget {
   @override
-  _HisoAppState createState() => _HisoAppState();
+  _AuthCoordinatorScreenState createState() => _AuthCoordinatorScreenState();
 }
 
-class _HisoAppState extends State<HisoApp> {
-  final _appCoordinator = dep<AuthCoordinatorImpl>();
+class _AuthCoordinatorScreenState extends State<AuthCoordinatorScreen> {
+  final _coordinator = dep<AuthCoordinatorImpl>();
 
   @override
   void initState() {
     super.initState();
-    CoordinatorProvider.instance.add<AuthCoordinator>(_appCoordinator);
+    CoordinatorProvider.instance.add<AuthCoordinator>(_coordinator);
   }
 
   @override
@@ -36,7 +35,7 @@ class _HisoAppState extends State<HisoApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: _appCoordinator.navigationKey,
+      navigatorKey: _coordinator.navigationKey,
       title: 'Hiso',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -51,12 +50,9 @@ class _HisoAppState extends State<HisoApp> {
             };
             break;
           case AuthRoutes.homePage:
-            builder = (_) {
-              return BlocProvider<HomeBloc>(
-                create: (_) => dep<HomeBloc>(),
-                child: HomePage(),
-              );
-            };
+            return MaterialPageRoute<void>(
+              builder: (_) => HomeCoordinatorScreen(),
+            );
             break;
           case AuthRoutes.loginPage:
             builder = (_) {

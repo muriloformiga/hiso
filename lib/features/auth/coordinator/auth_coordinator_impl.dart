@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hiso/core/info/auth_info.dart';
-import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator.dart';
-import 'package:hiso/features/auth/presentation/coordinator/auth_routes.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/coordinator/auth_routes.dart';
 
 class AuthCoordinatorImpl implements AuthCoordinator {
   AuthCoordinatorImpl({@required this.firebaseInfo});
