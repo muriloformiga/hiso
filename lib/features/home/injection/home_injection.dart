@@ -4,6 +4,8 @@ import 'package:hiso/injection_container.dart';
 void initHome() {
   // Bloc
   dep.registerFactory(
-    () => HomeBloc(),
+    () => HomeBloc(
+      logout: dep(),
+    ),
   );
 }

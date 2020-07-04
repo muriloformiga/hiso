@@ -16,7 +16,7 @@ import 'package:hiso/features/auth/domain/usecases/register/register_with_email.
 import 'package:hiso/features/auth/domain/usecases/register/register_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_google.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_twitter.dart';
-import 'package:hiso/features/auth/presentation/bloc/login_bloc.dart';
+import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/injection_container.dart';
 
@@ -28,7 +28,6 @@ void initAuth() {
       loginWithFacebook: dep(),
       loginWithGoogle: dep(),
       loginWithTwitter: dep(),
-      logout: dep(),
     ),
   );
 

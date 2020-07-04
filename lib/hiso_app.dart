@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
-import 'package:hiso/features/auth/presentation/bloc/login_bloc.dart';
+import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
+import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/presentation/coordinator/auth_routes.dart';
+import 'package:hiso/features/auth/presentation/pages/register_page.dart';
 import 'package:hiso/features/home/presentation/bloc/home_bloc.dart';
 import 'package:hiso/features/home/presentation/pages/home_page.dart';
 import 'package:hiso/features/auth/presentation/pages/login_page.dart';
@@ -61,6 +63,14 @@ class _HisoAppState extends State<HisoApp> {
               return BlocProvider<LoginBloc>(
                 create: (_) => dep<LoginBloc>(),
                 child: LoginPage(),
+              );
+            };
+            break;
+          case AuthRoutes.registerPage:
+            builder = (_) {
+              return BlocProvider<RegisterBloc>(
+                create: (_) => dep<RegisterBloc>(),
+                child: RegisterPage(),
               );
             };
             break;
