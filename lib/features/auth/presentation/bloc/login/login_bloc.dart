@@ -8,7 +8,6 @@ import 'package:hiso/core/usecases/usecase.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_twitter.dart';
-import 'package:hiso/features/auth/domain/usecases/logout/logout.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_email.dart';
 

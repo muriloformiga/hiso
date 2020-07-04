@@ -6,8 +6,10 @@ import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/strings/strings.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_form_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_options_widget.dart';
+import 'package:hiso/features/auth/utils/auth_strings.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -53,6 +55,11 @@ class LoginPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   );
                 },
+              ),
+              CustomTextWidget(
+                text: AuthStrings.signInMessage,
+                fontSize: 20,
+                paddingValue: 10,
               ),
               LoginFormWidget(),
               LoginOptionsWidget(),
