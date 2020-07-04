@@ -24,7 +24,11 @@ class LoginOptionsWidget extends StatelessWidget {
           height: 5.0,
         ),
         SocialButtonWidget(
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<LoginBloc>(context).add(
+              LoginFacebookStarted(),
+            );
+          },
           text: Strings.loginFacebook,
           color: Colors.blueAccent,
           icon: Icons.golf_course,

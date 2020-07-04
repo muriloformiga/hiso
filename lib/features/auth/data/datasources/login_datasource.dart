@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:meta/meta.dart';
 
@@ -33,10 +34,12 @@ class LoginDataSourceImpl implements LoginDataSource {
   LoginDataSourceImpl({
     @required this.firebaseAuth,
     @required this.googleSignIn,
+    @required this.facebookLogin,
   });
 
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
+  final FacebookLogin facebookLogin;
 
   @override
   Future<FirebaseUser> loginWithEmail(String email, String password) async {
@@ -52,9 +55,25 @@ class LoginDataSourceImpl implements LoginDataSource {
   }
 
   @override
-  Future<FirebaseUser> loginWithFacebook() {
-    //TODO: implement loginWithFacebook
-    throw UnimplementedError();
+  Future<FirebaseUser> loginWithFacebook() async {
+    try {
+      FirebaseUser user;
+      final bool isSignedIn = await facebookLogin.isLoggedIn;
+      if (isSignedIn) {
+        user = await firebaseAuth.currentUser();
+      } else {
+        final FacebookLoginResult result = await facebookLogin.logIn(['email']);
+        final FacebookAccessToken accessToken = result.accessToken;
+
+        final AuthCredential credential = GoogleAuthProvider.getCredential(
+            accessToken: accessToken.token, idToken: accessToken.userId);
+        final authResult = await firebaseAuth.signInWithCredential(credential);
+        user = authResult.user;
+      }
+      return user;
+    } catch (error) {
+      throw FirebaseLoginException(code: error.code);
+    }
   }
 
   @override
