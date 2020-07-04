@@ -23,11 +23,6 @@ abstract class LoginDataSource {
   ///
   /// Throws a [ServerException] for all error codes.
   Future<FirebaseUser> loginWithGoogle();
-
-  /// Calls the http://numbersapi.com/random endpoint.
-  ///
-  /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> loginWithTwitter();
 }
 
 class LoginDataSourceImpl implements LoginDataSource {
@@ -62,11 +57,13 @@ class LoginDataSourceImpl implements LoginDataSource {
       if (isSignedIn) {
         user = await firebaseAuth.currentUser();
       } else {
-        final FacebookLoginResult result = await facebookLogin.logIn(['email']);
+        final FacebookLoginResult result =
+            await facebookLogin.logIn(['email', 'public_profile']);
         final FacebookAccessToken accessToken = result.accessToken;
 
-        final AuthCredential credential = GoogleAuthProvider.getCredential(
-            accessToken: accessToken.token, idToken: accessToken.userId);
+        final AuthCredential credential = FacebookAuthProvider.getCredential(
+          accessToken: accessToken.token,
+        );
         final authResult = await firebaseAuth.signInWithCredential(credential);
         user = authResult.user;
       }
@@ -89,7 +86,9 @@ class LoginDataSourceImpl implements LoginDataSource {
             await googleUser.authentication;
 
         final AuthCredential credential = GoogleAuthProvider.getCredential(
-            accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
         final authResult = await firebaseAuth.signInWithCredential(credential);
         user = authResult.user;
       }
@@ -97,11 +96,5 @@ class LoginDataSourceImpl implements LoginDataSource {
     } catch (error) {
       throw FirebaseLoginException(code: error.code);
     }
-  }
-
-  @override
-  Future<FirebaseUser> loginWithTwitter() {
-    // TODO: implement loginWithTwitter
-    throw UnimplementedError();
   }
 }
