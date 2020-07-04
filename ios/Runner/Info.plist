@@ -48,11 +48,26 @@
 		<string>Editor</string>
 		<key>CFBundleURLSchemes</key>
 		<array>
-			<!-- TODO Replace this value: -->
-			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
 			<string>com.googleusercontent.apps.354843081456-rcmq6r0g14k3a38bgsg2suif8dl89tng</string>
+			<string>fb292866328583079</string>
 		</array>
 	</dict>
+</array>
+<key>FacebookAppID</key>
+
+<!-- Replace "000000000000" with your Facebook App ID here. -->
+<string>292866328583079</string>
+<key>FacebookDisplayName</key>
+
+<!-- Replace "YOUR_APP_NAME" with your Facebook App name. -->
+<string>HISO</string>
+
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>fbapi</string>
+    <string>fb-messenger-share-api</string>
+    <string>fbauth2</string>
+    <string>fbshareextension</string>
 </array>
 
 </dict>
