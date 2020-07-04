@@ -59,8 +59,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         password: event.password,
       ),
     );
-    yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess(userId: user.uid));
+    yield* result.fold(
+      (failure) async* {
+        yield LoginFailure(message: failure.message);
+      },
+      (user) async* {
+        yield LoginSuccess(userId: user.uid);
+      },
+    );
   }
 
   Stream<LoginState> _mapToGoogle() async* {

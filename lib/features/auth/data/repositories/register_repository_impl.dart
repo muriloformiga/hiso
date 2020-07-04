@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/exceptions.dart';
-import 'package:hiso/core/network/network_info.dart';
+import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/data/datasources/register_datasource.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/core/error/failures.dart';

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/error/failures.dart';
-import 'package:hiso/core/network/network_info.dart';
+import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/data/datasources/register_datasource.dart';
 import 'package:hiso/features/auth/data/repositories/register_repository_impl.dart';
 import 'package:mockito/mockito.dart';
