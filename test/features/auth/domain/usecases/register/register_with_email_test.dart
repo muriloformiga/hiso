@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:hiso/features/auth/domain/repositories/register_repository.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
 import 'package:mockito/mockito.dart';
@@ -22,19 +23,19 @@ void main() {
 
   final tEmail = 'llucasmendes@hotmail.com';
   final tPass = 'formigaatomica';
-  final tFirebaseUser = mockFirebaseUser;
+  final tAuthUser = AuthUser(firebaseUser: mockFirebaseUser);
 
   test('Deve criar conta do usuário com e-mail', () async {
     // Arrange
     when(mockRegisterRepository.registerWithEmail(any, any))
-        .thenAnswer((_) async => Right(tFirebaseUser));
+        .thenAnswer((_) async => Right(tAuthUser));
     // Act
     final result = await registerWithEmail(Params(
       email: tEmail,
       password: tPass,
     ));
     // Assert
-    expect(result, Right(tFirebaseUser));
+    expect(result, Right(tAuthUser));
     verify(mockRegisterRepository.registerWithEmail(tEmail, tPass));
     verifyNoMoreInteractions(mockRegisterRepository);
   });

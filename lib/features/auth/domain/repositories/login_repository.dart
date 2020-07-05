@@ -1,16 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/failures.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 
 abstract class LoginRepository {
-  Future<Either<Failure, FirebaseUser>> loginWithEmail(
+  Future<Either<Failure, AuthUser>> loginWithEmail(
     String email,
     String password,
   );
 
-  Future<Either<Failure, FirebaseUser>> loginWithGoogle();
+  Future<Either<Failure, AuthUser>> loginWithGoogle();
 
-  Future<Either<Failure, FirebaseUser>> loginWithFacebook();
-
-  Future<Either<Failure, FirebaseUser>> loginWithTwitter();
+  Future<Either<Failure, AuthUser>> loginWithFacebook();
 }

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:hiso/features/auth/domain/repositories/login_repository.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_email.dart';
 import 'package:mockito/mockito.dart';
@@ -22,19 +23,19 @@ void main() {
 
   final tEmail = 'teste@email.com';
   final tPass = 'senhateste123';
-  final tFirebaseUser = mockFirebaseUser;
+  final tAuthUser = AuthUser(firebaseUser: mockFirebaseUser);
 
   test('Deve logar o usuário com e-mail', () async {
     // Arrange
     when(mockLoginRepository.loginWithEmail(any, any))
-        .thenAnswer((_) async => Right(tFirebaseUser));
+        .thenAnswer((_) async => Right(tAuthUser));
     // Act
     final result = await loginWithEmail(Params(
       email: tEmail,
       password: tPass,
     ));
     // Assert
-    expect(result, Right(tFirebaseUser));
+    expect(result, Right(tAuthUser));
     verify(mockLoginRepository.loginWithEmail(tEmail, tPass));
     verifyNoMoreInteractions(mockLoginRepository);
   });

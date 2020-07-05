@@ -7,7 +7,6 @@ import 'package:hiso/core/usecases/usecase.dart';
 
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
-import 'package:hiso/features/auth/domain/usecases/login/login_with_twitter.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_email.dart';
 
@@ -19,17 +18,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     @required this.loginWithEmail,
     @required this.loginWithFacebook,
     @required this.loginWithGoogle,
-    @required this.loginWithTwitter,
   })  : assert(loginWithEmail != null),
         assert(loginWithFacebook != null),
         assert(loginWithGoogle != null),
-        assert(loginWithTwitter != null),
         super(LoginInitial());
 
   final LoginWithEmail loginWithEmail;
   final LoginWithFacebook loginWithFacebook;
   final LoginWithGoogle loginWithGoogle;
-  final LoginWithTwitter loginWithTwitter;
 
   @override
   Stream<LoginState> mapEventToState(
@@ -58,22 +54,24 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginFailure(message: failure.message);
       },
       (user) async* {
-        yield LoginSuccess(userId: user.uid);
+        yield LoginSuccess();
       },
     );
   }
 
   Stream<LoginState> _mapToGoogle() async* {
+    yield LoginLoadInProgress();
     final result = await loginWithGoogle(NoParams());
 
     yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess(userId: user.uid));
+        (user) => LoginSuccess());
   }
 
   Stream<LoginState> _mapToFacebook() async* {
+    yield LoginLoadInProgress();
     final result = await loginWithFacebook(NoParams());
 
     yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess(userId: user.uid));
+        (user) => LoginSuccess());
   }
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/network_info.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/features/auth/data/datasources/login_datasource.dart';
 import 'package:hiso/core/error/failures.dart';
@@ -17,7 +18,7 @@ class LoginRepositoryImpl implements LoginRepository {
   final NetworkInfo networkInfo;
 
   @override
-  Future<Either<Failure, FirebaseUser>> loginWithEmail(
+  Future<Either<Failure, AuthUser>> loginWithEmail(
     String email,
     String password,
   ) async {
@@ -57,7 +58,7 @@ class LoginRepositoryImpl implements LoginRepository {
   }
 
   @override
-  Future<Either<Failure, FirebaseUser>> loginWithFacebook() async {
+  Future<Either<Failure, AuthUser>> loginWithFacebook() async {
     if (await networkInfo.isConnected) {
       try {
         final user = await loginDataSource.loginWithFacebook();
@@ -98,7 +99,7 @@ class LoginRepositoryImpl implements LoginRepository {
   }
 
   @override
-  Future<Either<Failure, FirebaseUser>> loginWithGoogle() async {
+  Future<Either<Failure, AuthUser>> loginWithGoogle() async {
     if (await networkInfo.isConnected) {
       try {
         final user = await loginDataSource.loginWithGoogle();
@@ -136,10 +137,5 @@ class LoginRepositoryImpl implements LoginRepository {
     } else {
       return Left(NetworkFailure());
     }
-  }
-
-  @override
-  Future<Either<Failure, FirebaseUser>> loginWithTwitter() {
-    throw UnimplementedError();
   }
 }

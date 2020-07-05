@@ -6,6 +6,7 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/data/datasources/login_datasource.dart';
 import 'package:hiso/features/auth/data/repositories/login_repository_impl.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:mockito/mockito.dart';
 
 class MockLoginDataSource extends Mock implements LoginDataSource {}
@@ -42,7 +43,7 @@ void main() {
   group('loginWithEmail', () {
     final tEmail = 'teste@email.com';
     final tPass = 'senhateste123';
-    final tFirebaseUser = mockFirebaseUser;
+    final tAuthUser = AuthUser(firebaseUser: mockFirebaseUser);
 
     test(
       'Deve verificar se o dispositivo está online',
@@ -58,16 +59,16 @@ void main() {
 
     runTestsOnline(() {
       test(
-        'Deve retornar um FirebaseUser quando houver sucesso no login com Email',
+        'Deve retornar um AuthUser quando houver sucesso no login com Email',
         () async {
           // arrange
           when(mockLoginDataSource.loginWithEmail(any, any))
-              .thenAnswer((_) async => tFirebaseUser);
+              .thenAnswer((_) async => tAuthUser);
           // act
           final result = await repository.loginWithEmail(tEmail, tPass);
           // assert
           verify(mockLoginDataSource.loginWithEmail(tEmail, tPass));
-          expect(result, equals(Right(tFirebaseUser)));
+          expect(result, equals(Right(tAuthUser)));
         },
       );
 
@@ -92,7 +93,7 @@ void main() {
   });
 
   group('loginWithGoogle', () {
-    final tFirebaseUser = mockFirebaseUser;
+    final tAuthUser = AuthUser(firebaseUser: mockFirebaseUser);
 
     test(
       'Deve verificar se o dispositivo está online',
@@ -108,16 +109,16 @@ void main() {
 
     runTestsOnline(() {
       test(
-        'Deve retornar um FirebaseUser quando houver sucesso no login com Google',
+        'Deve retornar um AuthUser quando houver sucesso no login com Google',
         () async {
           // arrange
           when(mockLoginDataSource.loginWithGoogle())
-              .thenAnswer((_) async => tFirebaseUser);
+              .thenAnswer((_) async => tAuthUser);
           // act
           final result = await repository.loginWithGoogle();
           // assert
           verify(mockLoginDataSource.loginWithGoogle());
-          expect(result, equals(Right(tFirebaseUser)));
+          expect(result, equals(Right(tAuthUser)));
         },
       );
 
