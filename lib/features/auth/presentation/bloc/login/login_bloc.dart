@@ -55,7 +55,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginFailure(message: failure.message);
       },
       (user) async* {
-        User.instance.userId = user.firebaseUser.uid;
+        User.instance.setId(user.firebaseUser.uid);
         yield LoginSuccess();
       },
     );
@@ -65,15 +65,29 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     yield LoginLoadInProgress();
     final result = await loginWithGoogle(NoParams());
 
-    yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess());
+    yield* result.fold(
+      (failure) async* {
+        yield LoginFailure(message: failure.message);
+      },
+      (user) async* {
+        User.instance.setId(user.firebaseUser.uid);
+        yield LoginSuccess();
+      },
+    );
   }
 
   Stream<LoginState> _mapToFacebook() async* {
     yield LoginLoadInProgress();
     final result = await loginWithFacebook(NoParams());
 
-    yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess());
+    yield* result.fold(
+      (failure) async* {
+        yield LoginFailure(message: failure.message);
+      },
+      (user) async* {
+        User.instance.setId(user.firebaseUser.uid);
+        yield LoginSuccess();
+      },
+    );
   }
 }

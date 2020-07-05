@@ -1,13 +1,17 @@
 class User {
-  User._privateConstructor();
-  static final User _instance = User._privateConstructor();
-  static User get instance => _instance;
-
-  factory User() {
-    return _instance;
+  User._() {
+    _userId = 'muriloformiga';
   }
 
-  static String _userId;
+  static final _instance = User._();
+
+  static User get instance => _instance;
   String get userId => _userId;
   set userId(String id) => _userId;
+
+  void setId(String id) {
+    _userId = id;
+  }
+
+  String _userId;
 }

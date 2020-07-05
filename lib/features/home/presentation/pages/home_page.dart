@@ -35,7 +35,9 @@ class HomePage extends StatelessWidget {
                 Text(state.message);
               }
               return Container(
-                child: Text(User.instance.userId),
+                child: Text(
+                  User.instance.userId ?? 'texto pra não quebrar',
+                ),
               );
             },
           ),
