@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/exceptions.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:meta/meta.dart';
 
 abstract class RegisterDataSource {
@@ -7,7 +8,7 @@ abstract class RegisterDataSource {
   /// de autenticação do Firebase usando e-mail e senha.
   ///
   /// Dispara uma [FirebaseRegisterException] com a mensagem de erro.
-  Future<FirebaseUser> registerWithEmail(
+  Future<AuthUser> registerWithEmail(
     String email,
     String password,
   );
@@ -15,17 +16,12 @@ abstract class RegisterDataSource {
   /// Calls the http://numbersapi.com/random endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> registerWithFacebook();
+  Future<AuthUser> registerWithFacebook();
 
   /// Calls the http://numbersapi.com/random endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> registerWithGoogle();
-
-  /// Calls the http://numbersapi.com/random endpoint.
-  ///
-  /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> registerWithTwitter();
+  Future<AuthUser> registerWithGoogle();
 }
 
 class RegisterDataSourceImpl implements RegisterDataSource {
@@ -34,33 +30,27 @@ class RegisterDataSourceImpl implements RegisterDataSource {
   final FirebaseAuth firebaseAuth;
 
   @override
-  Future<FirebaseUser> registerWithEmail(String email, String password) async {
+  Future<AuthUser> registerWithEmail(String email, String password) async {
     try {
       final authResult = await firebaseAuth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return authResult.user;
+      return AuthUser(firebaseUser: authResult.user);
     } catch (error) {
       throw FirebaseRegisterException(code: error.code);
     }
   }
 
   @override
-  Future<FirebaseUser> registerWithFacebook() {
+  Future<AuthUser> registerWithFacebook() {
     // TODO: implement getRegisterWithFacebook
     throw UnimplementedError();
   }
 
   @override
-  Future<FirebaseUser> registerWithGoogle() {
+  Future<AuthUser> registerWithGoogle() {
     // TODO: implement getRegisterWithGoogle
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<FirebaseUser> registerWithTwitter() {
-    // TODO: implement getRegisterWithTwitter
     throw UnimplementedError();
   }
 }

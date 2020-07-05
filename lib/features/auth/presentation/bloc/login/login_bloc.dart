@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 
 import 'package:equatable/equatable.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/usecases/usecase.dart';
 
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
-import 'package:hiso/features/auth/domain/usecases/login/login_with_twitter.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_email.dart';
 
@@ -19,24 +19,21 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     @required this.loginWithEmail,
     @required this.loginWithFacebook,
     @required this.loginWithGoogle,
-    @required this.loginWithTwitter,
   })  : assert(loginWithEmail != null),
         assert(loginWithFacebook != null),
         assert(loginWithGoogle != null),
-        assert(loginWithTwitter != null),
         super(LoginInitial());
 
   final LoginWithEmail loginWithEmail;
   final LoginWithFacebook loginWithFacebook;
   final LoginWithGoogle loginWithGoogle;
-  final LoginWithTwitter loginWithTwitter;
 
   @override
   Stream<LoginState> mapEventToState(
     LoginEvent event,
   ) async* {
     if (event is LoginEmailStarted) {
-      yield* _mapToSend(event);
+      yield* _mapToEmail(event);
     } else if (event is LoginFacebookStarted) {
       yield* _mapToFacebook();
     } else if (event is LoginGoogleStarted) {
@@ -44,7 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  Stream<LoginState> _mapToSend(LoginEmailStarted event) async* {
+  Stream<LoginState> _mapToEmail(LoginEmailStarted event) async* {
     yield LoginLoadInProgress();
 
     final result = await loginWithEmail(
@@ -58,22 +55,25 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginFailure(message: failure.message);
       },
       (user) async* {
-        yield LoginSuccess(userId: user.uid);
+        User.instance.userId = user.firebaseUser.uid;
+        yield LoginSuccess();
       },
     );
   }
 
   Stream<LoginState> _mapToGoogle() async* {
+    yield LoginLoadInProgress();
     final result = await loginWithGoogle(NoParams());
 
     yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess(userId: user.uid));
+        (user) => LoginSuccess());
   }
 
   Stream<LoginState> _mapToFacebook() async* {
+    yield LoginLoadInProgress();
     final result = await loginWithFacebook(NoParams());
 
     yield result.fold((failure) => LoginFailure(message: failure.message),
-        (user) => LoginSuccess(userId: user.uid));
+        (user) => LoginSuccess());
   }
 }

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:hiso/core/error/exceptions.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:meta/meta.dart';
 
 abstract class LoginDataSource {
@@ -9,7 +10,7 @@ abstract class LoginDataSource {
   /// autenticação do Firebase usando e-mail e senha.
   ///
   /// Dispara uma [FirebaseLoginException] com a mensagem de erro.
-  Future<FirebaseUser> loginWithEmail(
+  Future<AuthUser> loginWithEmail(
     String email,
     String password,
   );
@@ -17,12 +18,12 @@ abstract class LoginDataSource {
   /// Calls the http://numbersapi.com/random endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> loginWithFacebook();
+  Future<AuthUser> loginWithFacebook();
 
   /// Calls the http://numbersapi.com/random endpoint.
   ///
   /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> loginWithGoogle();
+  Future<AuthUser> loginWithGoogle();
 }
 
 class LoginDataSourceImpl implements LoginDataSource {
@@ -37,20 +38,20 @@ class LoginDataSourceImpl implements LoginDataSource {
   final FacebookLogin facebookLogin;
 
   @override
-  Future<FirebaseUser> loginWithEmail(String email, String password) async {
+  Future<AuthUser> loginWithEmail(String email, String password) async {
     try {
       final authResult = await firebaseAuth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      return authResult.user;
+      return AuthUser(firebaseUser: authResult.user);
     } catch (error) {
       throw FirebaseLoginException(code: error.code);
     }
   }
 
   @override
-  Future<FirebaseUser> loginWithFacebook() async {
+  Future<AuthUser> loginWithFacebook() async {
     try {
       FirebaseUser user;
       final bool isSignedIn = await facebookLogin.isLoggedIn;
@@ -67,14 +68,14 @@ class LoginDataSourceImpl implements LoginDataSource {
         final authResult = await firebaseAuth.signInWithCredential(credential);
         user = authResult.user;
       }
-      return user;
+      return AuthUser(firebaseUser: user);
     } catch (error) {
       throw FirebaseLoginException(code: error.code);
     }
   }
 
   @override
-  Future<FirebaseUser> loginWithGoogle() async {
+  Future<AuthUser> loginWithGoogle() async {
     try {
       FirebaseUser user;
       final bool isSignedIn = await googleSignIn.isSignedIn();
@@ -92,7 +93,7 @@ class LoginDataSourceImpl implements LoginDataSource {
         final authResult = await firebaseAuth.signInWithCredential(credential);
         user = authResult.user;
       }
-      return user;
+      return AuthUser(firebaseUser: user);
     } catch (error) {
       throw FirebaseLoginException(code: error.code);
     }

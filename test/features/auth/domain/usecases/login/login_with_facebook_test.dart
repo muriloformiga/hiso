@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/usecases/usecase.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:hiso/features/auth/domain/repositories/login_repository.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:mockito/mockito.dart';
@@ -21,16 +22,16 @@ void main() {
     loginWithFacebook = LoginWithFacebook(mockLoginRepository);
   });
 
-  final tFirebaseUser = mockFirebaseUser;
+  final tAuthUser = AuthUser(firebaseUser: mockFirebaseUser);
 
   test('Deve logar o usuário com a conta do Facebook', () async {
     // Arrange
     when(mockLoginRepository.loginWithFacebook())
-        .thenAnswer((_) async => Right(tFirebaseUser));
+        .thenAnswer((_) async => Right(tAuthUser));
     // Act
     final result = await loginWithFacebook(NoParams());
     // Assert
-    expect(result, Right(tFirebaseUser));
+    expect(result, Right(tAuthUser));
     verify(mockLoginRepository.loginWithFacebook());
     verifyNoMoreInteractions(mockLoginRepository);
   });

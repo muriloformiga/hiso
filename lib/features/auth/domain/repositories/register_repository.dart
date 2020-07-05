@@ -1,16 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/failures.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 
 abstract class RegisterRepository {
-  Future<Either<Failure, FirebaseUser>> registerWithEmail(
+  Future<Either<Failure, AuthUser>> registerWithEmail(
     String email,
     String password,
   );
 
-  Future<Either<Failure, FirebaseUser>> registerWithGoogle();
+  Future<Either<Failure, AuthUser>> registerWithGoogle();
 
-  Future<Either<Failure, FirebaseUser>> registerWithFacebook();
-
-  Future<Either<Failure, FirebaseUser>> registerWithTwitter();
+  Future<Either<Failure, AuthUser>> registerWithFacebook();
 }

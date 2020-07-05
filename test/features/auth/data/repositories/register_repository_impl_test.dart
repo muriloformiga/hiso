@@ -6,6 +6,7 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/data/datasources/register_datasource.dart';
 import 'package:hiso/features/auth/data/repositories/register_repository_impl.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:mockito/mockito.dart';
 
 class MockRegisterDataSource extends Mock implements RegisterDataSource {}
@@ -42,7 +43,7 @@ void main() {
   group('registerWithEmail', () {
     final tEmail = 'teste@email.com';
     final tPass = '123456';
-    final tFirebaseUser = mockFirebaseUser;
+    final tAuthUser = AuthUser(firebaseUser: mockFirebaseUser);
 
     test(
       'Deve verificar se o dispositivo está online',
@@ -62,12 +63,12 @@ void main() {
         () async {
           // arrange
           when(mockRegisterDataSource.registerWithEmail(any, any))
-              .thenAnswer((_) async => tFirebaseUser);
+              .thenAnswer((_) async => tAuthUser);
           // act
           final result = await repository.registerWithEmail(tEmail, tPass);
           // assert
           verify(mockRegisterDataSource.registerWithEmail(tEmail, tPass));
-          expect(result, equals(Right(tFirebaseUser)));
+          expect(result, equals(Right(tAuthUser)));
         },
       );
 

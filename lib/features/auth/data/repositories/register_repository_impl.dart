@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/data/datasources/register_datasource.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
@@ -17,7 +18,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
   final NetworkInfo networkInfo;
 
   @override
-  Future<Either<Failure, FirebaseUser>> registerWithEmail(
+  Future<Either<Failure, AuthUser>> registerWithEmail(
     String email,
     String password,
   ) async {
@@ -50,17 +51,12 @@ class RegisterRepositoryImpl implements RegisterRepository {
   }
 
   @override
-  Future<Either<Failure, FirebaseUser>> registerWithFacebook() {
+  Future<Either<Failure, AuthUser>> registerWithFacebook() {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, FirebaseUser>> registerWithGoogle() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, FirebaseUser>> registerWithTwitter() {
+  Future<Either<Failure, AuthUser>> registerWithGoogle() {
     throw UnimplementedError();
   }
 }
