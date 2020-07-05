@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
+import 'package:hiso/core/components/coordinator/coordinator_provider.dart';
+
 import 'package:hiso/features/home/coordinator/home_coordinator.dart';
 import 'package:hiso/features/home/coordinator/home_coordinator_impl.dart';
 import 'package:hiso/features/home/coordinator/home_routes.dart';

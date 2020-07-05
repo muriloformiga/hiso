@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:meta/meta.dart';
 
@@ -22,21 +23,18 @@ abstract class LoginDataSource {
   ///
   /// Throws a [ServerException] for all error codes.
   Future<FirebaseUser> loginWithGoogle();
-
-  /// Calls the http://numbersapi.com/random endpoint.
-  ///
-  /// Throws a [ServerException] for all error codes.
-  Future<FirebaseUser> loginWithTwitter();
 }
 
 class LoginDataSourceImpl implements LoginDataSource {
   LoginDataSourceImpl({
     @required this.firebaseAuth,
     @required this.googleSignIn,
+    @required this.facebookLogin,
   });
 
   final FirebaseAuth firebaseAuth;
   final GoogleSignIn googleSignIn;
+  final FacebookLogin facebookLogin;
 
   @override
   Future<FirebaseUser> loginWithEmail(String email, String password) async {
@@ -52,9 +50,27 @@ class LoginDataSourceImpl implements LoginDataSource {
   }
 
   @override
-  Future<FirebaseUser> loginWithFacebook() {
-    //TODO: implement loginWithFacebook
-    throw UnimplementedError();
+  Future<FirebaseUser> loginWithFacebook() async {
+    try {
+      FirebaseUser user;
+      final bool isSignedIn = await facebookLogin.isLoggedIn;
+      if (isSignedIn) {
+        user = await firebaseAuth.currentUser();
+      } else {
+        final FacebookLoginResult result =
+            await facebookLogin.logIn(['email', 'public_profile']);
+        final FacebookAccessToken accessToken = result.accessToken;
+
+        final AuthCredential credential = FacebookAuthProvider.getCredential(
+          accessToken: accessToken.token,
+        );
+        final authResult = await firebaseAuth.signInWithCredential(credential);
+        user = authResult.user;
+      }
+      return user;
+    } catch (error) {
+      throw FirebaseLoginException(code: error.code);
+    }
   }
 
   @override
@@ -70,7 +86,9 @@ class LoginDataSourceImpl implements LoginDataSource {
             await googleUser.authentication;
 
         final AuthCredential credential = GoogleAuthProvider.getCredential(
-            accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+          accessToken: googleAuth.accessToken,
+          idToken: googleAuth.idToken,
+        );
         final authResult = await firebaseAuth.signInWithCredential(credential);
         user = authResult.user;
       }
@@ -78,11 +96,5 @@ class LoginDataSourceImpl implements LoginDataSource {
     } catch (error) {
       throw FirebaseLoginException(code: error.code);
     }
-  }
-
-  @override
-  Future<FirebaseUser> loginWithTwitter() {
-    // TODO: implement loginWithTwitter
-    throw UnimplementedError();
   }
 }
