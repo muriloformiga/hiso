@@ -39,6 +39,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   ) async* {
     if (event is LoginEmailStarted) {
       yield* _mapToSend(event);
+    } else if (event is LoginFacebookStarted) {
+      yield* _mapToFacebook();
     } else if (event is LoginGoogleStarted) {
       yield* _mapToGoogle();
     }
@@ -65,6 +67,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _mapToGoogle() async* {
     final result = await loginWithGoogle(NoParams());
+
+    yield result.fold((failure) => LoginFailure(message: failure.message),
+        (user) => LoginSuccess(userId: user.uid));
+  }
+
+  Stream<LoginState> _mapToFacebook() async* {
+    final result = await loginWithFacebook(NoParams());
 
     yield result.fold((failure) => LoginFailure(message: failure.message),
         (user) => LoginSuccess(userId: user.uid));

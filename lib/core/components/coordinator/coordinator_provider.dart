@@ -1,4 +1,4 @@
-import 'package:hiso/core/coordinator/coordinator.dart';
+import 'package:hiso/core/components/coordinator/coordinator.dart';
 
 class CoordinatorProvider {
   CoordinatorProvider._();
