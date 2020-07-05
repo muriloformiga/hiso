@@ -5,7 +5,7 @@ import 'package:hiso/core/error/exceptions.dart';
 import 'package:meta/meta.dart';
 
 abstract class LogoutDataSource {
-  /// Faz requisição local para o serviço de autenticação
+  /// Faz requisição local no serviço de autenticação
   /// do Firebase para desconectar o usuário atual.
   ///
   /// Dispara uma [FirebaseLogoutException] com a mensagem de erro.
@@ -25,14 +25,13 @@ class LogoutDataSourceImpl implements LogoutDataSource {
   @override
   Future<void> logout() async {
     try {
-      //TODO: Sair do Google Account junto com FirebaseAuth é necessário?
       final currentUser = await firebaseAuth.currentUser();
-      final isSignedIng = await googleSignIn.isSignedIn();
-      final isSignedInf = await facebookLogin.isLoggedIn;
-      if (isSignedIng) {
+      final isSignedInGoogle = await googleSignIn.isSignedIn();
+      final isSignedInFacebook = await facebookLogin.isLoggedIn;
+      if (isSignedInGoogle) {
         googleSignIn.disconnect();
       }
-      if (isSignedInf) {
+      if (isSignedInFacebook) {
         facebookLogin.logOut();
       }
       if (currentUser == null) {
