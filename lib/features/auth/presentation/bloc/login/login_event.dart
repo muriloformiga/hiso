@@ -20,5 +20,3 @@ class LoginEmailStarted extends LoginEvent {
 class LoginGoogleStarted extends LoginEvent {}
 
 class LoginFacebookStarted extends LoginEvent {}
-
-class LoginLogoutStarted extends LoginEvent {}

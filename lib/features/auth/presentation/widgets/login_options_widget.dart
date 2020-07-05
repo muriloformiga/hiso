@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hiso/core/utils/strings/strings.dart';
-import 'package:hiso/features/auth/presentation/bloc/login_bloc.dart';
+import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/social_button_widget.dart';
+import 'package:hiso/features/auth/utils/auth_strings.dart';
 
 class LoginOptionsWidget extends StatelessWidget {
   @override
@@ -16,7 +15,7 @@ class LoginOptionsWidget extends StatelessWidget {
               LoginGoogleStarted(),
             );
           },
-          text: Strings.loginGoogle,
+          text: AuthStrings.loginGoogle,
           color: Colors.orange,
           icon: Icons.golf_course,
         ),
@@ -29,21 +28,8 @@ class LoginOptionsWidget extends StatelessWidget {
               LoginFacebookStarted(),
             );
           },
-          text: Strings.loginFacebook,
+          text: AuthStrings.loginFacebook,
           color: Colors.blueAccent,
-          icon: Icons.golf_course,
-        ),
-        SizedBox(
-          height: 5.0,
-        ),
-        SocialButtonWidget(
-          onPressed: () {
-            BlocProvider.of<LoginBloc>(context).add(
-              LoginLogoutStarted(),
-            );
-          },
-          text: Strings.loginTwitter,
-          color: Colors.lightBlue,
           icon: Icons.golf_course,
         ),
       ],
