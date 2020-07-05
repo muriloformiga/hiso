@@ -23,7 +23,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   })  : assert(loginWithEmail != null),
         assert(loginWithFacebook != null),
         assert(loginWithGoogle != null),
-        assert(loginWithTwitter != null);
+        assert(loginWithTwitter != null),
+        super(null);
 
   final LoginWithEmail loginWithEmail;
   final LoginWithFacebook loginWithFacebook;
