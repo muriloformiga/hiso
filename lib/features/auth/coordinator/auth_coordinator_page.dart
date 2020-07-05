@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/components/coordinator/coordinator_provider.dart';
+import 'package:hiso/core/themes/theme.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
+import 'package:hiso/features/auth/presentation/pages/presentation_page.dart';
 import 'package:hiso/features/auth/presentation/pages/register_page.dart';
 import 'package:hiso/features/home/coordinator/home_coordinator_page.dart';
 import 'package:hiso/features/auth/presentation/pages/login_page.dart';
@@ -37,9 +39,7 @@ class _AuthCoordinatorScreenState extends State<AuthCoordinatorScreen> {
     return MaterialApp(
       navigatorKey: _coordinator.navigationKey,
       title: 'Hiso',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: Themes.hisoTheme,
       initialRoute: AuthRoutes.splashPage,
       onGenerateRoute: (settings) {
         WidgetBuilder builder;
@@ -60,6 +60,11 @@ class _AuthCoordinatorScreenState extends State<AuthCoordinatorScreen> {
                 create: (_) => dep<LoginBloc>(),
                 child: LoginPage(),
               );
+            };
+            break;
+          case AuthRoutes.presentationPage:
+            builder = (_) {
+              return PresentationPage();
             };
             break;
           case AuthRoutes.registerPage:

@@ -12,6 +12,9 @@ class AuthStrings {
   static final loginGoogle = 'Login com Google';
   static final loginFacebook = 'Login com Facebook';
 
+  // Presentation
+  static final nextStep = 'Avançar';
+
   // Register
   static final createAccountMessage = 'Crie sua conta gratuitamente';
   static final signInMessage = 'Entre e comece a fazer a diferença';

@@ -37,6 +37,13 @@ class AuthCoordinatorImpl implements AuthCoordinator {
   }
 
   @override
+  void goToPresentation() {
+    _navigationKey.currentState.pushNamed(
+      AuthRoutes.presentationPage,
+    );
+  }
+
+  @override
   void goToRegister() {
     _navigationKey.currentState.pushNamed(
       AuthRoutes.registerPage,

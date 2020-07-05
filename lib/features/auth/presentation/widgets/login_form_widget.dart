@@ -44,7 +44,7 @@ class LoginFormWidget extends StatelessWidget {
           child: Text(AuthStrings.register),
           onPressed: () => CoordinatorProvider.instance
               .get<AuthCoordinator>()
-              .goToRegister(),
+              .goToPresentation(),
         ),
       ],
     );

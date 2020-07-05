@@ -13,12 +13,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({
     @required this.logout,
   })  : assert(logout != null),
-        super(null);
+        super(HomeInitial());
 
   final Logout logout;
 
-  @override
-  HomeState get initialState => HomeInitial();
   @override
   Stream<HomeState> mapEventToState(
     HomeEvent event,

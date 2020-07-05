@@ -24,15 +24,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         assert(loginWithFacebook != null),
         assert(loginWithGoogle != null),
         assert(loginWithTwitter != null),
-        super(null);
+        super(LoginInitial());
 
   final LoginWithEmail loginWithEmail;
   final LoginWithFacebook loginWithFacebook;
   final LoginWithGoogle loginWithGoogle;
   final LoginWithTwitter loginWithTwitter;
-
-  @override
-  LoginState get initialState => LoginInitial();
 
   @override
   Stream<LoginState> mapEventToState(

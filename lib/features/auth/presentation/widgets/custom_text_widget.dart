@@ -5,7 +5,7 @@ class CustomTextWidget extends StatelessWidget {
   CustomTextWidget({
     @required this.text,
     @required this.fontSize,
-    @required this.paddingValue,
+    this.paddingValue = 0,
   });
 
   final double paddingValue;
@@ -15,7 +15,7 @@ class CustomTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(paddingValue),
+      padding: EdgeInsets.symmetric(vertical: paddingValue),
       child: Container(
         child: Text(
           text,
