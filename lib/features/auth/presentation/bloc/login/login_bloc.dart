@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 
 import 'package:equatable/equatable.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/usecases/usecase.dart';
 
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
@@ -32,7 +33,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginEvent event,
   ) async* {
     if (event is LoginEmailStarted) {
-      yield* _mapToSend(event);
+      yield* _mapToEmail(event);
     } else if (event is LoginFacebookStarted) {
       yield* _mapToFacebook();
     } else if (event is LoginGoogleStarted) {
@@ -40,7 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  Stream<LoginState> _mapToSend(LoginEmailStarted event) async* {
+  Stream<LoginState> _mapToEmail(LoginEmailStarted event) async* {
     yield LoginLoadInProgress();
 
     final result = await loginWithEmail(
@@ -54,6 +55,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         yield LoginFailure(message: failure.message);
       },
       (user) async* {
+        User.instance.userId = user.firebaseUser.uid;
         yield LoginSuccess();
       },
     );

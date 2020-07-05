@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/home/presentation/bloc/home_bloc.dart';
 
@@ -33,7 +34,9 @@ class HomePage extends StatelessWidget {
               if (state is HomeFailure) {
                 Text(state.message);
               }
-              return Container();
+              return Container(
+                child: Text(User.instance.userId),
+              );
             },
           ),
         ),

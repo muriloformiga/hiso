@@ -1,14 +1,13 @@
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:meta/meta.dart';
+class User {
+  User._privateConstructor();
+  static final User _instance = User._privateConstructor();
+  static User get instance => _instance;
 
-class User extends Equatable {
-  User({
-    @required this.firebaseUser,
-  });
+  factory User() {
+    return _instance;
+  }
 
-  final FirebaseUser firebaseUser;
-
-  @override
-  List<Object> get props => [firebaseUser];
+  static String _userId;
+  String get userId => _userId;
+  set userId(String id) => _userId;
 }
