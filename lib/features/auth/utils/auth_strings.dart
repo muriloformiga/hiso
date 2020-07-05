@@ -7,8 +7,8 @@ class AuthStrings {
 
   // Login
   static final welcomeMessage = 'Seja bem-vindo ao\nHISO';
-  static final send = 'Enviar';
-  static final register = 'Cadastrar';
+  static final send = 'Entrar';
+  static final register = 'Cadastrar-se';
   static final loginGoogle = 'Login com Google';
   static final loginFacebook = 'Login com Facebook';
 
@@ -17,11 +17,11 @@ class AuthStrings {
 
   // Register
   static final createAccountMessage = 'Crie sua conta gratuitamente 😀';
-  static final signInMessage = 'Entre e comece a fazer a diferença';
+  static final signInMessage = 'Entre e comece a fazer a diferença!';
   static final provideInfoMessage =
       'Como Médico(a), Enfermeiro(a) ou entidade de Saúde, você pode fornecer '
       'informações sobre pacientes internados para ajudar a tranquilizar os familiares e amigos';
-  static final getInfoMessage = 'Como Familiar ou Amigo, obtenha informações do'
+  static final getInfoMessage = 'Como Familiar, obtenha informações do '
       'seu ente querido que está internado provenientes de um responsável da área médica.';
   static final healthEntity = 'Entidade de saúde';
   static final pacienteRelative = 'Familiar de paciente';

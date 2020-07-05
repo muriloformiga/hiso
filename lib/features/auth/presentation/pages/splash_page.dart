@@ -28,8 +28,22 @@ class _SplashPageState extends State<SplashPage> {
       body: Container(
         color: Colors.greenAccent[100],
         child: Center(
-          child: Image.asset(
-            AppImages.logo,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                AppImages.logo,
+              ),
+              Text(
+                'Observações Sobre Internamentos Hospitalares',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Helvetica Neue',
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
           ),
         ),
       ),
