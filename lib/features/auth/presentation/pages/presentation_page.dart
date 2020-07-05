@@ -5,6 +5,7 @@ import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
+import 'package:hiso/core/utils/ui/dimensoes_tela.dart';
 
 class PresentationPage extends StatelessWidget {
   @override
@@ -20,7 +21,7 @@ class PresentationPage extends StatelessWidget {
                 flex: 1,
                 child: CustomTextWidget(
                   text: AuthStrings.createAccountMessage,
-                  fontSize: 16,
+                  fontSize: 18,
                 ),
               ),
               Expanded(
@@ -34,23 +35,23 @@ class PresentationPage extends StatelessWidget {
                 flex: 3,
                 child: CustomTextWidget(
                   text: AuthStrings.provideInfoMessage,
-                  fontSize: 16,
-                  paddingValue: 20,
+                  fontSize: 16.h,
+                  paddingValue: 20.h,
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: Image.asset(
                   AppImages.man,
-                  height: 80,
+                  height: 80.h,
                 ),
               ),
               Expanded(
                 flex: 3,
                 child: CustomTextWidget(
-                  text: AuthStrings.provideInfoMessage,
-                  fontSize: 16,
-                  paddingValue: 20,
+                  text: AuthStrings.getInfoMessage,
+                  fontSize: 16.h,
+                  paddingValue: 20.h,
                 ),
               ),
               CupertinoButton.filled(

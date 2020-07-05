@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
+import 'package:hiso/core/utils/ui/dimensoes_tela.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   @override
@@ -8,22 +9,21 @@ class RegisterFormWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
         CupertinoTextField(
-          placeholder: AuthStrings.name,
-        ),
-        CupertinoTextField(
           placeholder: AuthStrings.email,
         ),
         SizedBox(
-          height: 10.0,
+          height: 10.0.h,
         ),
         CupertinoTextField(
           placeholder: AuthStrings.password,
+          obscureText: true,
         ),
         CupertinoTextField(
           placeholder: AuthStrings.passwordRepeat,
+          obscureText: true,
         ),
         SizedBox(
-          height: 10.0,
+          height: 10.0.h,
         ),
         CupertinoButton.filled(
           child: Text(AuthStrings.register),

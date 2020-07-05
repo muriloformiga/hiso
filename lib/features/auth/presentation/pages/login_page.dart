@@ -10,60 +10,63 @@ import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart'
 import 'package:hiso/features/auth/presentation/widgets/login_form_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_options_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
+import 'package:hiso/core/utils/ui/dimensoes_tela.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: SafeArea(
+    return Scaffold(
+      body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
-            left: 15,
-            right: 15,
-            bottom: 15,
+            left: 10,
+            right: 10,
+            bottom: 10,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Center(
-                child: Image(
-                  height: 130,
-                  image: AssetImage(AppImages.logo),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Center(
+                  child: Image(
+                    height: 130.h,
+                    image: AssetImage(AppImages.logo),
+                  ),
                 ),
-              ),
-              BlocBuilder<LoginBloc, LoginState>(
-                builder: (context, state) {
-                  if (state is LoginSuccess) {
-                    WidgetsBinding.instance.addPostFrameCallback(
-                      (_) => CoordinatorProvider.instance
-                          .get<AuthCoordinator>()
-                          .goToHome(),
-                    );
-                  } else if (state is LoginFailure) {
+                BlocBuilder<LoginBloc, LoginState>(
+                  builder: (context, state) {
+                    if (state is LoginSuccess) {
+                      WidgetsBinding.instance.addPostFrameCallback(
+                        (_) => CoordinatorProvider.instance
+                            .get<AuthCoordinator>()
+                            .goToHome(),
+                      );
+                    } else if (state is LoginFailure) {
+                      return Text(
+                        state.message,
+                        textAlign: TextAlign.center,
+                      );
+                    } else if (state is LoginLoadInProgress) {
+                      return Text(
+                        'Carregando...',
+                        textAlign: TextAlign.center,
+                      );
+                    }
                     return Text(
-                      state.message,
+                      Strings.welcomeMessage,
                       textAlign: TextAlign.center,
                     );
-                  } else if (state is LoginLoadInProgress) {
-                    return Text(
-                      'Carregando...',
-                      textAlign: TextAlign.center,
-                    );
-                  }
-                  return Text(
-                    Strings.welcomeMessage,
-                    textAlign: TextAlign.center,
-                  );
-                },
-              ),
-              CustomTextWidget(
-                text: AuthStrings.signInMessage,
-                fontSize: 20,
-                paddingValue: 10,
-              ),
-              LoginFormWidget(),
-              LoginOptionsWidget(),
-            ],
+                  },
+                ),
+                CustomTextWidget(
+                  text: AuthStrings.signInMessage,
+                  fontSize: 20.h,
+                  paddingValue: 10.h,
+                ),
+                LoginFormWidget(),
+                LoginOptionsWidget(),
+              ],
+            ),
           ),
         ),
       ),

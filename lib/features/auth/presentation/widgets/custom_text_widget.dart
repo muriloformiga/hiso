@@ -19,6 +19,7 @@ class CustomTextWidget extends StatelessWidget {
       child: Container(
         child: Text(
           text,
+          textAlign: TextAlign.justify,
           style: TextStyle(
             color: Colors.black,
             fontSize: fontSize,

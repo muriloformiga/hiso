@@ -16,10 +16,16 @@ class AuthStrings {
   static final nextStep = 'Avançar';
 
   // Register
-  static final createAccountMessage = 'Crie sua conta gratuitamente';
+  static final createAccountMessage = 'Crie sua conta gratuitamente 😀';
   static final signInMessage = 'Entre e comece a fazer a diferença';
   static final provideInfoMessage =
-      'Forneça informações sobre pacientes internados para tranquilizar os familiares e amigos';
+      'Como Médico(a), Enfermeiro(a) ou entidade de Saúde, você pode fornecer '
+      'informações sobre pacientes internados para ajudar a tranquilizar os familiares e amigos';
+  static final getInfoMessage = 'Como Familiar ou Amigo, obtenha informações do'
+      'seu ente querido que está internado provenientes de um responsável da área médica.';
   static final healthEntity = 'Entidade de saúde';
   static final pacienteRelative = 'Familiar de paciente';
+  static final coolTextRecipe =
+      'Só precisamos de algumas informações, é coisa rápida! '
+      'Após esse breve cadastro você já poderá usar nossa plataforma solidária.';
 }
