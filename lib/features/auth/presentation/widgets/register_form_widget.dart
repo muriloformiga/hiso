@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
-import 'package:hiso/core/utils/ui/dimensoes_tela.dart';
+import 'package:hiso/core/utils/sizes.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   @override

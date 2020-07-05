@@ -4,7 +4,7 @@ import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/register_form_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
-import 'package:hiso/core/utils/ui/dimensoes_tela.dart';
+import 'package:hiso/core/utils/sizes.dart';
 
 class RegisterPage extends StatelessWidget {
   @override

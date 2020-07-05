@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/components/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_images.dart';
-import 'package:hiso/core/utils/strings/strings.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_form_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_options_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
-import 'package:hiso/core/utils/ui/dimensoes_tela.dart';
+import 'package:hiso/core/utils/sizes.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -53,7 +52,7 @@ class LoginPage extends StatelessWidget {
                       );
                     }
                     return Text(
-                      Strings.welcomeMessage,
+                      AuthStrings.welcomeMessage,
                       textAlign: TextAlign.center,
                     );
                   },
