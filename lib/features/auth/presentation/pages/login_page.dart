@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hiso/core/components/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/strings/strings.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_form_widget.dart';
@@ -32,9 +34,10 @@ class LoginPage extends StatelessWidget {
               BlocBuilder<LoginBloc, LoginState>(
                 builder: (context, state) {
                   if (state is LoginSuccess) {
-                    return Text(
-                      state.userId,
-                      textAlign: TextAlign.center,
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) => CoordinatorProvider.instance
+                          .get<AuthCoordinator>()
+                          .goToHome(),
                     );
                   } else if (state is LoginFailure) {
                     return Text(
