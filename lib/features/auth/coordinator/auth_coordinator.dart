@@ -5,5 +5,5 @@ abstract class AuthCoordinator extends Coordinator {
   void goToLogin();
   void goToPresentation();
   void goToRegister();
-  void goToHome();
+  void goToHome(String userId);
 }

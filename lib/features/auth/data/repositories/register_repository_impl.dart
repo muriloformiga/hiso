@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/data/datasources/register_datasource.dart';
@@ -43,20 +42,10 @@ class RegisterRepositoryImpl implements RegisterRepository {
           default:
             errorMessage = 'Ocorrou um erro inesperado';
         }
-        return Left(FirebaseLoginFailure(message: errorMessage));
+        return Left(FirebaseRegisterFailure(message: errorMessage));
       }
     } else {
       return Left(NetworkFailure());
     }
-  }
-
-  @override
-  Future<Either<Failure, AuthUser>> registerWithFacebook() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<Either<Failure, AuthUser>> registerWithGoogle() {
-    throw UnimplementedError();
   }
 }

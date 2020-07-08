@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/domain/entities/auth_user.dart';

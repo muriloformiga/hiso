@@ -6,12 +6,10 @@ class User {
   static final _instance = User._();
 
   static User get instance => _instance;
-  String get userId => _userId;
-  set userId(String id) => _userId;
 
+  String _userId;
+  String get userId => _userId;
   void setId(String id) {
     _userId = id;
   }
-
-  String _userId;
 }

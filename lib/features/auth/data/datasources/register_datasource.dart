@@ -12,16 +12,6 @@ abstract class RegisterDataSource {
     String email,
     String password,
   );
-
-  /// Calls the http://numbersapi.com/random endpoint.
-  ///
-  /// Throws a [ServerException] for all error codes.
-  Future<AuthUser> registerWithFacebook();
-
-  /// Calls the http://numbersapi.com/random endpoint.
-  ///
-  /// Throws a [ServerException] for all error codes.
-  Future<AuthUser> registerWithGoogle();
 }
 
 class RegisterDataSourceImpl implements RegisterDataSource {
@@ -40,17 +30,5 @@ class RegisterDataSourceImpl implements RegisterDataSource {
     } catch (error) {
       throw FirebaseRegisterException(code: error.code);
     }
-  }
-
-  @override
-  Future<AuthUser> registerWithFacebook() {
-    // TODO: implement getRegisterWithFacebook
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<AuthUser> registerWithGoogle() {
-    // TODO: implement getRegisterWithGoogle
-    throw UnimplementedError();
   }
 }

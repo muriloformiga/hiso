@@ -70,8 +70,12 @@ void main() {
         when(mockLoginWithEmail(any)).thenAnswer((_) async => Right(tAuthUser));
         return bloc;
       },
-      act: (bloc) async =>
-          bloc.add(LoginEmailStarted(email: tEmail, password: tPass)),
+      act: (bloc) async => bloc.add(
+        LoginEmailStarted(
+          email: tEmail,
+          password: tPass,
+        ),
+      ),
       expect: <dynamic>[
         isA<LoginLoadInProgress>(),
         isA<LoginSuccess>(),

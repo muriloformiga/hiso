@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class FirebaseInfo {
-  Future<bool> get hasUserLogged;
+  Future<FirebaseUser> get currentUser;
 }
 
 class FirebaseInfoImpl implements FirebaseInfo {
@@ -10,6 +10,6 @@ class FirebaseInfoImpl implements FirebaseInfo {
   final FirebaseAuth firebaseAuth;
 
   @override
-  Future<bool> get hasUserLogged async =>
-      await firebaseAuth.currentUser() != null ? true : false;
+  Future<FirebaseUser> get currentUser async =>
+      await firebaseAuth.currentUser();
 }
