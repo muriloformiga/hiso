@@ -12,7 +12,5 @@ class InformationBloc extends Bloc<InformationEvent, InformationState> {
   @override
   Stream<InformationState> mapEventToState(
     InformationEvent event,
-  ) async* {
-    // TODO: implement mapEventToState
-  }
+  ) async* {}
 }
