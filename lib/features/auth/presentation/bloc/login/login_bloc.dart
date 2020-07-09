@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 
 import 'package:equatable/equatable.dart';
-import 'package:hiso/core/singletons/user.dart';
+import 'package:hiso/core/error/failures.dart';
 import 'package:hiso/core/usecases/usecase.dart';
+import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
@@ -50,44 +52,26 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         password: event.password,
       ),
     );
-    yield* result.fold(
-      (failure) async* {
-        yield LoginFailure(message: failure.message);
-      },
-      (user) async* {
-        User.instance.setId(user.firebaseUser.uid);
-        yield LoginSuccess();
-      },
-    );
+    yield* _mapToSucessOrFailure(result);
   }
 
   Stream<LoginState> _mapToGoogle() async* {
     yield LoginLoadInProgress();
     final result = await loginWithGoogle(NoParams());
-
-    yield* result.fold(
-      (failure) async* {
-        yield LoginFailure(message: failure.message);
-      },
-      (user) async* {
-        User.instance.setId(user.firebaseUser.uid);
-        yield LoginSuccess();
-      },
-    );
+    yield* _mapToSucessOrFailure(result);
   }
 
   Stream<LoginState> _mapToFacebook() async* {
     yield LoginLoadInProgress();
     final result = await loginWithFacebook(NoParams());
+    yield* _mapToSucessOrFailure(result);
+  }
 
-    yield* result.fold(
-      (failure) async* {
-        yield LoginFailure(message: failure.message);
-      },
-      (user) async* {
-        User.instance.setId(user.firebaseUser.uid);
-        yield LoginSuccess();
-      },
+  Stream<LoginState> _mapToSucessOrFailure(
+      Either<Failure, AuthUser> result) async* {
+    yield result.fold(
+      (failure) => LoginFailure(message: failure.message),
+      (user) => LoginSuccess(userId: user.firebaseUser.uid),
     );
   }
 }

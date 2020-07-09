@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_images.dart';
+import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/register_form_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
@@ -31,6 +35,28 @@ class RegisterPage extends StatelessWidget {
                 text: AuthStrings.coolTextRecipe,
                 fontSize: 16.h,
                 paddingValue: 10.h,
+              ),
+              BlocBuilder<RegisterBloc, RegisterState>(
+                builder: (context, state) {
+                  if (state is RegisterSuccess) {
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) => CoordinatorProvider.instance
+                          .get<AuthCoordinator>()
+                          .goToHome(state.userId),
+                    );
+                  } else if (state is RegisterFailure) {
+                    return Text(
+                      state.message,
+                      textAlign: TextAlign.center,
+                    );
+                  } else if (state is RegisterLoadInProgress) {
+                    return Text(
+                      'Carregando...',
+                      textAlign: TextAlign.center,
+                    );
+                  }
+                  return Container();
+                },
               ),
               Divider(),
               RegisterFormWidget(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiso/core/info/auth_info.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
 
@@ -15,15 +16,17 @@ class AuthCoordinatorImpl implements AuthCoordinator {
   @override
   Future<void> start() async {
     await Future<void>.delayed(Duration(seconds: 3));
-    if (await firebaseInfo.hasUserLogged) {
-      goToHome();
+    final currentUser = await firebaseInfo.currentUser;
+    if (currentUser != null) {
+      goToHome(currentUser.uid);
       return;
     }
     goToLogin();
   }
 
   @override
-  void goToHome() {
+  void goToHome(String userId) {
+    User.instance.setId(userId);
     _navigationKey.currentState.pushReplacementNamed(
       AuthRoutes.homePage,
     );

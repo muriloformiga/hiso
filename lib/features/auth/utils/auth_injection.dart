@@ -12,10 +12,9 @@ import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dar
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
 import 'package:hiso/features/auth/domain/usecases/logout/logout.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
-import 'package:hiso/features/auth/domain/usecases/register/register_with_facebook.dart';
-import 'package:hiso/features/auth/domain/usecases/register/register_with_google.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
+import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/injection_container.dart';
 
 void initAuth() {
@@ -25,6 +24,11 @@ void initAuth() {
       loginWithEmail: dep(),
       loginWithFacebook: dep(),
       loginWithGoogle: dep(),
+    ),
+  );
+  dep.registerFactory(
+    () => RegisterBloc(
+      registerWithEmail: dep(),
     ),
   );
 
@@ -41,8 +45,6 @@ void initAuth() {
   dep.registerLazySingleton(() => LoginWithGoogle(dep()));
 
   dep.registerLazySingleton(() => RegisterWithEmail(dep()));
-  dep.registerLazySingleton(() => RegisterWithFacebook(dep()));
-  dep.registerLazySingleton(() => RegisterWithGoogle(dep()));
 
   dep.registerLazySingleton(() => Logout(dep()));
 

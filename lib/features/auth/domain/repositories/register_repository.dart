@@ -7,8 +7,4 @@ abstract class RegisterRepository {
     String email,
     String password,
   );
-
-  Future<Either<Failure, AuthUser>> registerWithGoogle();
-
-  Future<Either<Failure, AuthUser>> registerWithFacebook();
 }

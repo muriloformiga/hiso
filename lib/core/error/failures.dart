@@ -21,6 +21,10 @@ class FirebaseLoginFailure extends Failure {
   FirebaseLoginFailure({@required String message}) : super(message: message);
 }
 
+class FirebaseRegisterFailure extends Failure {
+  FirebaseRegisterFailure({@required String message}) : super(message: message);
+}
+
 class FirebaseLogoutFailure extends Failure {
   FirebaseLogoutFailure({
     String message = 'Falha ao sair, reinicie a aplicação.',
