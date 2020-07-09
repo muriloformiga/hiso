@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_images.dart';
+import 'package:hiso/core/utils/sizes.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 
 class SplashPage extends StatefulWidget {
@@ -26,21 +27,52 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.greenAccent[100],
+        color: Color(0xFFcfe3fc),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                AppImages.logo,
+              Expanded(
+                flex: 3,
+                child: Container(
+                  child: Image.asset(
+                    AppImages.family,
+                  ),
+                ),
               ),
-              Text(
-                'Observações Sobre Internamentos Hospitalares',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Helvetica Neue',
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                flex: 1,
+                child: Container(
+                  padding: EdgeInsets.all(26.0.w),
+                  width: 414.w,
+                  height: 297.h,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(35),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        'Observações Sobre Internamentos Hospitalares',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 28.h,
+                          fontFamily: 'Questrial',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 20.h),
+                      Text(
+                        'Bem vindo ao App que ajuda a confortar famílias',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18.h,
+                          fontFamily: 'Questrial',
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

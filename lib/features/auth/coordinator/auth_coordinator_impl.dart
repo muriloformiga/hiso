@@ -14,7 +14,7 @@ class AuthCoordinatorImpl implements AuthCoordinator {
 
   @override
   Future<void> start() async {
-    await Future<void>.delayed(Duration(seconds: 2));
+    await Future<void>.delayed(Duration(seconds: 3));
     if (await firebaseInfo.hasUserLogged) {
       goToHome();
       return;

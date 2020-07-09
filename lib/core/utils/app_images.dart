@@ -13,6 +13,10 @@ class AppImages {
 
   static String get womanDoctor => _geral(iconName: 'doutora');
 
+  static String get doctor => _geral(iconName: 'medico');
+
+  static String get family => _geral(iconName: 'familia');
+
   static String get logo => _geral(iconName: 'hiso_logo');
 
   static String get facebook => _geral(iconName: 'facebook');
