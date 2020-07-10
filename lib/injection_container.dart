@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -23,6 +24,7 @@ void init() {
   dep.registerLazySingleton<FirebaseInfo>(() => FirebaseInfoImpl(dep()));
   //! External
   dep.registerLazySingleton(() => FirebaseAuth.instance);
+  dep.registerLazySingleton(() => Firestore.instance);
   dep.registerLazySingleton(() => GoogleSignIn());
   dep.registerLazySingleton(() => FacebookLogin());
   dep.registerLazySingleton(() => DataConnectionChecker());

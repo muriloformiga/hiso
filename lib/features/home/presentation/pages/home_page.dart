@@ -34,10 +34,18 @@ class HomePage extends StatelessWidget {
               if (state is HomeFailure) {
                 Text(state.message);
               }
-              return Container(
-                child: Text(
-                  User.instance.userId ?? 'texto pra não quebrar',
-                ),
+              return Column(
+                children: <Widget>[
+                  Text(
+                    User.instance.userId,
+                  ),
+                  Text(
+                    User.instance.name,
+                  ),
+                  Text(
+                    User.instance.accountType,
+                  ),
+                ],
               );
             },
           ),
