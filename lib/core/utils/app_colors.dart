@@ -20,7 +20,8 @@ class AppColors {
   static const Color amareloOuro = Color(0xFFDFAD2C);
   static const Color roxoOrquideaNegra = Color(0xFF8836B8);
   static const Color transparente = Colors.transparent;
-
+  static const Color azulHiso = Color(0xFF78d0e5);
+  static const Color verdeHiso = Color(0xFF4ce6be);
   // CFE3FC 9156EC F49E6F 157FFB FC1441 30A64A 6D757D
 
   static const MaterialColor cinza = MaterialColor(

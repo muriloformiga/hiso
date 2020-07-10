@@ -18,19 +18,43 @@ class LoginFormWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          CupertinoTextField(
-            placeholder: AuthStrings.email,
-            controller: emailController,
+          Container(
+            width: 329.w,
+            height: 51.h,
+            child: CupertinoTextField(
+              textAlign: TextAlign.start,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(32),
+              ),
+              placeholder: AuthStrings.email,
+              controller: emailController,
+            ),
           ),
           SizedBox(
             height: 10.0.h,
           ),
-          CupertinoTextField(
-            placeholder: AuthStrings.password,
-            controller: passwordController,
+          Container(
+            width: 329.w,
+            height: 51.h,
+            child: CupertinoTextField(
+              textAlign: TextAlign.start,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.grey,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(32),
+              ),
+              placeholder: AuthStrings.password,
+              controller: passwordController,
+            ),
           ),
           SizedBox(
-            height: 10.0.h,
+            height: 20.0.h,
           ),
           CupertinoButton.filled(
             child: Text(AuthStrings.send),
@@ -43,6 +67,8 @@ class LoginFormWidget extends StatelessWidget {
               );
             },
           ),
+          SizedBox(height: 5.h),
+          Text('ou'),
           CupertinoButton(
             child: Text(AuthStrings.register),
             onPressed: () => CoordinatorProvider.instance
