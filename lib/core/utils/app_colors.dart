@@ -22,7 +22,14 @@ class AppColors {
   static const Color transparente = Colors.transparent;
   static const Color azulHiso = Color(0xFF78d0e5);
   static const Color verdeHiso = Color(0xFF4ce6be);
-  // CFE3FC 9156EC F49E6F 157FFB FC1441 30A64A 6D757D
+  static const Color hawkesBlue = Color(0xFFCFE3FC);
+  static const Color paleSky = Color(0xFF6D757D);
+
+  static const Color seaGreen = Color(0xFF30A64A);
+  static const Color torchRed = Color(0xFFFC1441);
+  static const Color dodgerBlue = Color(0xFF157FFB);
+  static const Color sandyBrown = Color(0xFFF49E6F);
+  static const Color mediumPurple = Color(0xFF9156EC);
 
   static const MaterialColor cinza = MaterialColor(
     0xFFF3F3F3,
