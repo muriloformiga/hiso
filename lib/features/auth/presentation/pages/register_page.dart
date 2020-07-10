@@ -55,7 +55,7 @@ class RegisterPage extends StatelessWidget {
                       WidgetsBinding.instance.addPostFrameCallback(
                         (_) => CoordinatorProvider.instance
                             .get<AuthCoordinator>()
-                            .goToHome(state.userId),
+                            .goToValidation(state.userId),
                       );
                     } else if (state is RegisterFailure) {
                       return Text(

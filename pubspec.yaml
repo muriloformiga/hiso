@@ -39,6 +39,7 @@ dependencies:
   equatable: ^1.2.0
   dartz: ^0.9.1
   get_it: ^4.0.2
+  cloud_firestore: ^0.13.7
 
 dev_dependencies:
   flutter_test:

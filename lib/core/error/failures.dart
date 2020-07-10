@@ -30,3 +30,9 @@ class FirebaseLogoutFailure extends Failure {
     String message = 'Falha ao sair, reinicie a aplicação.',
   }) : super(message: message);
 }
+
+class FirestoreFailure extends Failure {
+  FirestoreFailure({
+    String message = 'Não foi possível acessar o servidor. Tente novamente.',
+  }) : super(message: message);
+}

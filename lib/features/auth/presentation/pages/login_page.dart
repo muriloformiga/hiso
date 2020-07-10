@@ -52,17 +52,7 @@ class LoginPage extends StatelessWidget {
                         WidgetsBinding.instance.addPostFrameCallback(
                           (_) => CoordinatorProvider.instance
                               .get<AuthCoordinator>()
-                              .goToHome(state.userId),
-                        );
-                      } else if (state is LoginFailure) {
-                        return Text(
-                          state.message,
-                          textAlign: TextAlign.center,
-                        );
-                      } else if (state is LoginLoadInProgress) {
-                        return Text(
-                          'Carregando...',
-                          textAlign: TextAlign.center,
+                              .goToValidation(state.userId),
                         );
                       }
                       return Text(
