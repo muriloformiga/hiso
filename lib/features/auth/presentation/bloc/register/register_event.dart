@@ -12,14 +12,27 @@ class RegisterEmailStarted extends RegisterEvent {
     @required this.email,
     @required this.password,
     @required this.passwordRepeat,
+    @required this.name,
+    @required this.accountType,
+    @required this.phone,
   });
 
   final String email;
   final String password;
   final String passwordRepeat;
+  final String name;
+  final String accountType;
+  final String phone;
 
   @override
-  List<Object> get props => [email, password, passwordRepeat];
+  List<Object> get props => [
+        email,
+        password,
+        passwordRepeat,
+        name,
+        accountType,
+        phone,
+      ];
 }
 
 class RegisterGoogleStarted extends RegisterEvent {}

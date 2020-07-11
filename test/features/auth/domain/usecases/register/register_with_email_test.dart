@@ -30,7 +30,7 @@ void main() {
     when(mockRegisterRepository.registerWithEmail(any, any))
         .thenAnswer((_) async => Right(tAuthUser));
     // Act
-    final result = await registerWithEmail(Params(
+    final result = await registerWithEmail(AuthParams(
       email: tEmail,
       password: tPass,
     ));

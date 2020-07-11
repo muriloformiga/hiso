@@ -4,6 +4,8 @@ class AuthStrings {
   static final email = 'E-mail';
   static final password = 'Senha';
   static final passwordRepeat = 'Repita a senha';
+  static final phone = 'Telefone';
+  static final accountType = 'Tipo de conta';
 
   // Login
   static final welcomeMessage = 'Seja bem-vindo ao\nHISO';

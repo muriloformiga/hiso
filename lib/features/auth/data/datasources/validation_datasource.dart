@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
+import 'package:hiso/core/info/firebase_info.dart';
 import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/features/auth/data/models/user_data_model.dart';
 import 'package:meta/meta.dart';
@@ -22,7 +23,7 @@ class ValidationDataSourceImpl implements ValidationDataSource {
   Future<UserDataModel> getUserData() async {
     try {
       final document = await firestore
-          .collection('users')
+          .collection(FirebaseInfo.usersCollection)
           .document(User.instance.userId)
           .get();
       return UserDataModel.fromJson(document.data);

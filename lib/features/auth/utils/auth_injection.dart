@@ -14,6 +14,7 @@ import 'package:hiso/features/auth/domain/usecases/login/login_with_email.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
 import 'package:hiso/features/auth/domain/usecases/logout/logout.dart';
+import 'package:hiso/features/auth/domain/usecases/register/register_user_data.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/domain/usecases/validation/get_user_data.dart';
@@ -34,6 +35,7 @@ void initAuth() {
   dep.registerFactory(
     () => RegisterBloc(
       registerWithEmail: dep(),
+      registerUserData: dep(),
     ),
   );
   dep.registerFactory(
@@ -58,6 +60,7 @@ void initAuth() {
 
   dep.registerLazySingleton(() => Logout(dep()));
 
+  dep.registerLazySingleton(() => RegisterUserData(dep()));
   dep.registerLazySingleton(() => GetUserData(dep()));
 
   // Repository
@@ -94,7 +97,10 @@ void initAuth() {
     ),
   );
   dep.registerLazySingleton<RegisterDataSource>(
-    () => RegisterDataSourceImpl(firebaseAuth: dep()),
+    () => RegisterDataSourceImpl(
+      firebaseAuth: dep(),
+      firestore: dep(),
+    ),
   );
   dep.registerLazySingleton<LogoutDataSource>(
     () => LogoutDataSourceImpl(

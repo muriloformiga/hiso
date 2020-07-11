@@ -6,7 +6,7 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hiso/core/usecases/usecase.dart';
 
-class RegisterWithEmail implements UseCase<AuthUser, Params> {
+class RegisterWithEmail implements UseCase<AuthUser, AuthParams> {
   RegisterWithEmail(this.registerRepository);
 
   final RegisterRepository registerRepository;
@@ -20,11 +20,11 @@ class RegisterWithEmail implements UseCase<AuthUser, Params> {
   }
 }
 
-class Params extends Equatable {
+class AuthParams extends Equatable {
   final String email;
   final String password;
 
-  Params({
+  AuthParams({
     @required this.email,
     @required this.password,
   });

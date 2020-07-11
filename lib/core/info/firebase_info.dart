@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class FirebaseInfo {
   Future<FirebaseUser> get currentUser;
+
+  // Firebase Collections
+  static final usersCollection = 'users';
 }
 
 class FirebaseInfoImpl implements FirebaseInfo {

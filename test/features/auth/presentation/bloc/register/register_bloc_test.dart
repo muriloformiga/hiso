@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/error/failures.dart';
 import 'package:hiso/features/auth/domain/entities/auth_user.dart';
+import 'package:hiso/features/auth/domain/usecases/register/register_user_data.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:mockito/mockito.dart';
@@ -10,19 +11,24 @@ import 'package:flutter_test/flutter_test.dart';
 
 class MockRegisterWithEmail extends Mock implements RegisterWithEmail {}
 
+class MockRegisterUserData extends Mock implements RegisterUserData {}
+
 class MockFirebaseUser extends Mock implements FirebaseUser {}
 
 void main() {
   RegisterBloc bloc;
   MockRegisterWithEmail mockRegisterWithEmail;
+  MockRegisterUserData mockRegisterUserData;
   MockFirebaseUser mockFirebaseUser;
 
   setUp(() {
     mockRegisterWithEmail = MockRegisterWithEmail();
+    mockRegisterUserData = MockRegisterUserData();
     mockFirebaseUser = MockFirebaseUser();
 
     bloc = RegisterBloc(
       registerWithEmail: mockRegisterWithEmail,
+      registerUserData: mockRegisterUserData,
     );
   });
 
@@ -54,7 +60,8 @@ void main() {
         );
         await untilCalled(mockRegisterWithEmail(any));
         // assert
-        verify(mockRegisterWithEmail(Params(email: tEmail, password: tPass)));
+        verify(
+            mockRegisterWithEmail(AuthParams(email: tEmail, password: tPass)));
       },
     );
 

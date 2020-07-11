@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hiso/core/info/auth_info.dart';
+import 'package:hiso/core/info/firebase_info.dart';
 import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
