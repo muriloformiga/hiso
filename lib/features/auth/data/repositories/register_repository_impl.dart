@@ -68,7 +68,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
         Left(FirestoreFailure());
       }
     } else {
-      Left(NetworkFailure());
+      return Left(NetworkFailure());
     }
   }
 }

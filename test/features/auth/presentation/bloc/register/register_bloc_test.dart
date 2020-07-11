@@ -53,6 +53,9 @@ void main() {
         // act
         bloc.add(
           RegisterEmailStarted(
+            phone: null,
+            accountType: null,
+            name: null,
             email: tEmail,
             password: tPass,
             passwordRepeat: tPass,
@@ -74,6 +77,9 @@ void main() {
       },
       act: (bloc) async => bloc.add(
         RegisterEmailStarted(
+          phone: null,
+          accountType: null,
+          name: null,
           email: tEmail,
           password: tPass,
           passwordRepeat: tPass,
@@ -94,6 +100,9 @@ void main() {
       },
       act: (bloc) async => bloc.add(
         RegisterEmailStarted(
+          phone: null,
+          accountType: null,
+          name: null,
           email: tEmail,
           password: tPass,
           passwordRepeat: tPass,
