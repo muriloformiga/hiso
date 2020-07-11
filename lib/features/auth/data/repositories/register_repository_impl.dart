@@ -48,4 +48,27 @@ class RegisterRepositoryImpl implements RegisterRepository {
       return Left(NetworkFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, void>> registerUserData(
+    String name,
+    String accountType,
+    String phone,
+  ) async {
+    if (await networkInfo.isConnected) {
+      try {
+        final data = <String, dynamic>{
+          'name': name,
+          'accountType': accountType,
+          'phone': phone,
+        };
+        void registerData = await registerDataSource.registerUserData(data);
+        return Right(registerData);
+      } on FirestoreException catch (_) {
+        Left(FirestoreFailure());
+      }
+    } else {
+      Left(NetworkFailure());
+    }
+  }
 }

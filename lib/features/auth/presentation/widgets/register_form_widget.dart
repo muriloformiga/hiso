@@ -9,6 +9,9 @@ class RegisterFormWidget extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordRepeatController = TextEditingController();
+  final nameController = TextEditingController();
+  final accountTypeController = TextEditingController();
+  final phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,18 @@ class RegisterFormWidget extends StatelessWidget {
               placeholder: AuthStrings.email,
             ),
           ),
+        ),
+        CupertinoTextField(
+          controller: nameController,
+          placeholder: AuthStrings.name,
+        ),
+        CupertinoTextField(
+          controller: accountTypeController,
+          placeholder: AuthStrings.accountType,
+        ),
+        CupertinoTextField(
+          controller: phoneController,
+          placeholder: AuthStrings.phone,
         ),
         SizedBox(
           height: 10.h,
@@ -81,6 +96,9 @@ class RegisterFormWidget extends StatelessWidget {
                 email: emailController.text,
                 password: passwordController.text,
                 passwordRepeat: passwordRepeatController.text,
+                name: nameController.text,
+                accountType: accountTypeController.text,
+                phone: phoneController.text,
               ),
             );
           },

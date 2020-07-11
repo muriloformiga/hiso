@@ -7,4 +7,10 @@ abstract class RegisterRepository {
     String email,
     String password,
   );
+
+  Future<Either<Failure, void>> registerUserData(
+    String name,
+    String accountType,
+    String phone,
+  );
 }

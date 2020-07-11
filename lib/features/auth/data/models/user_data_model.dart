@@ -5,15 +5,18 @@ class UserDataModel extends UserData {
   UserDataModel({
     @required String name,
     @required String accountType,
+    @required String phone,
   }) : super(
           name: name,
           accountType: accountType,
+          phone: phone,
         );
 
   factory UserDataModel.fromJson(Map<String, dynamic> data) {
     return UserDataModel(
       name: data['name'],
       accountType: data['accountType'],
+      phone: data['phone'],
     );
   }
 
@@ -21,6 +24,7 @@ class UserDataModel extends UserData {
     return {
       'name': name,
       'accountType': accountType,
+      'phone': phone,
     };
   }
 }
