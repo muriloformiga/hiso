@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
           end: Alignment.bottomLeft,
           colors: [
             AppColors.verdeHiso,
-            Color(0xFFcfe3fc),
+            AppColors.hawkesBlue,
             AppColors.azulHiso,
           ],
         ),

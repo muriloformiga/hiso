@@ -23,7 +23,7 @@ class CustomTextWidget extends StatelessWidget {
           style: TextStyle(
             color: Colors.black,
             fontSize: fontSize,
-            fontFamily: 'Georgia',
+            fontFamily: 'Questrial',
           ),
         ),
       ),

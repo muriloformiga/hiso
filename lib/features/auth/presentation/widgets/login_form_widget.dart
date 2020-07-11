@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
+import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 
@@ -18,40 +19,17 @@ class LoginFormWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Container(
-            width: 329.w,
-            height: 51.h,
-            child: CupertinoTextField(
-              textAlign: TextAlign.start,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(32),
-              ),
-              placeholder: AuthStrings.email,
-              controller: emailController,
-            ),
+          ImputDecoratedWidget(
+            controller: emailController,
+            placeholder: AuthStrings.email,
           ),
           SizedBox(
             height: 10.0.h,
           ),
-          Container(
-            width: 329.w,
-            height: 51.h,
-            child: CupertinoTextField(
-              textAlign: TextAlign.start,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(32),
-              ),
-              placeholder: AuthStrings.password,
-              controller: passwordController,
-            ),
+          ImputDecoratedWidget(
+            controller: passwordController,
+            placeholder: AuthStrings.password,
+            isHideText: true,
           ),
           SizedBox(
             height: 20.0.h,
