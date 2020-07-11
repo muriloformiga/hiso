@@ -1,26 +1,33 @@
 import 'package:flutter/cupertino.dart';
+import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 
 class InformationFormWidget extends StatelessWidget {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final passwordRepeatController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        CupertinoTextField(
+        ImputDecoratedWidget(
           placeholder: AuthStrings.email,
+          controller: emailController,
         ),
         SizedBox(
           height: 10.0.h,
         ),
-        CupertinoTextField(
+        ImputDecoratedWidget(
           placeholder: AuthStrings.password,
-          obscureText: true,
+          controller: passwordController,
+          isHideText: true,
         ),
-        CupertinoTextField(
+        ImputDecoratedWidget(
           placeholder: AuthStrings.passwordRepeat,
-          obscureText: true,
+          controller: passwordRepeatController,
+          isHideText: true,
         ),
         SizedBox(
           height: 10.0.h,
