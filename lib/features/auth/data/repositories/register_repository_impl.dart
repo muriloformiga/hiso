@@ -67,8 +67,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
       } on FirestoreException catch (_) {
         Left(FirestoreFailure());
       }
-    } else {
-      return Left(NetworkFailure());
     }
+    return Left(NetworkFailure());
   }
 }
