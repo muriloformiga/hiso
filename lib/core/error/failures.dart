@@ -36,3 +36,9 @@ class FirestoreFailure extends Failure {
     String message = 'Não foi possível acessar o servidor. Tente novamente.',
   }) : super(message: message);
 }
+
+class FirestoreNotFoundFailure extends Failure {
+  FirestoreNotFoundFailure({
+    String message = 'Dados não encontrados no servidor. Tente novamente.',
+  }) : super(message: message);
+}

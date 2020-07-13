@@ -34,3 +34,8 @@ class FirestoreException extends Equatable implements Exception {
   @override
   List<Object> get props => [code];
 }
+
+class FirestoreNotFoundException extends Equatable implements Exception {
+  @override
+  List<Object> get props => [];
+}
