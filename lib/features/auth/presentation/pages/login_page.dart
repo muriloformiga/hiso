@@ -29,6 +29,7 @@ class LoginPage extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(
