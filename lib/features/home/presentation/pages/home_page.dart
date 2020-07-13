@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
-import 'package:hiso/features/home/presentation/bloc/home_bloc.dart';
+import 'package:hiso/features/home/coordinator/home_coordinator.dart';
+import 'package:hiso/features/home/presentation/bloc/home/home_bloc.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -31,22 +32,32 @@ class HomePage extends StatelessWidget {
                       .goToLogin(),
                 );
               }
-              if (state is HomeFailure) {
-                Text(state.message);
+              if (state is HomeUserDataInexist) {
+                WidgetsBinding.instance.addPostFrameCallback(
+                  (_) => CoordinatorProvider.instance
+                      .get<HomeCoordinator>()
+                      .goToValidation(),
+                );
               }
-              return Column(
-                children: <Widget>[
-                  Text(
-                    User.instance.userId,
-                  ),
-                  Text(
-                    User.instance.name,
-                  ),
-                  Text(
-                    User.instance.accountType,
-                  ),
-                ],
-              );
+              if (state is HomeDataLoadInProgress) {
+                return Text('carregando...');
+              }
+              if (state is HomeUserDataLoadSucess) {
+                return Column(
+                  children: <Widget>[
+                    Text(
+                      User.instance.userId,
+                    ),
+                    Text(
+                      User.instance.name,
+                    ),
+                    Text(
+                      User.instance.accountType,
+                    ),
+                  ],
+                );
+              }
+              return Container();
             },
           ),
         ),

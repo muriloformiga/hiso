@@ -65,9 +65,10 @@ class RegisterRepositoryImpl implements RegisterRepository {
         void registerData = await registerDataSource.registerUserData(data);
         return Right(registerData);
       } on FirestoreException catch (_) {
-        Left(FirestoreFailure());
+        return Left(FirestoreFailure());
       }
+    } else {
+      return Left(NetworkFailure());
     }
-    return Left(NetworkFailure());
   }
 }

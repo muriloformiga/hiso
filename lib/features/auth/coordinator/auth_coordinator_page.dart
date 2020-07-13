@@ -7,10 +7,8 @@ import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
-import 'package:hiso/features/auth/presentation/bloc/validation/validation_bloc.dart';
 import 'package:hiso/features/auth/presentation/pages/presentation_page.dart';
 import 'package:hiso/features/auth/presentation/pages/register_page.dart';
-import 'package:hiso/features/auth/presentation/pages/validation_page.dart';
 import 'package:hiso/features/home/coordinator/home_coordinator_page.dart';
 import 'package:hiso/features/auth/presentation/pages/login_page.dart';
 import 'package:hiso/features/auth/presentation/pages/splash_page.dart';
@@ -51,17 +49,7 @@ class _AuthCoordinatorScreenState extends State<AuthCoordinatorScreen> {
               return SplashPage();
             };
             break;
-          case AuthRoutes.validationPage:
-            builder = (_) {
-              return BlocProvider<ValidationBloc>(
-                create: (_) => dep<ValidationBloc>()
-                  ..add(
-                    ValidationLoadDataStarted(),
-                  ),
-                child: ValidationPage(),
-              );
-            };
-            break;
+
           case AuthRoutes.homePage:
             return MaterialPageRoute<void>(
               builder: (_) => HomeCoordinatorScreen(),

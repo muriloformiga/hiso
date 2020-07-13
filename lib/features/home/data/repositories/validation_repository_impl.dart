@@ -4,8 +4,8 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hiso/features/auth/domain/entities/user_data.dart';
 import 'package:meta/meta.dart';
-import 'package:hiso/features/auth/data/datasources/validation_datasource.dart';
-import 'package:hiso/features/auth/domain/repositories/validation_repository.dart';
+import 'package:hiso/features/home/data/datasources/validation_datasource.dart';
+import 'package:hiso/features/home/domain/repositories/validation_repository.dart';
 
 class ValidationRepositoryImpl implements ValidationRepository {
   ValidationRepositoryImpl({
@@ -22,8 +22,8 @@ class ValidationRepositoryImpl implements ValidationRepository {
       try {
         final user = await validationDataSource.getUserData();
         return Right(user);
-      } on FirestoreException catch (_) {
-        return Left(FirestoreFailure());
+      } on FirestoreNotFoundException catch (_) {
+        return Left(FirestoreNotFoundFailure());
       }
     } else {
       return Left(NetworkFailure());
