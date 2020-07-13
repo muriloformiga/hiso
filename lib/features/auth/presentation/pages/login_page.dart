@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                       WidgetsBinding.instance.addPostFrameCallback(
                         (_) => CoordinatorProvider.instance
                             .get<AuthCoordinator>()
-                            .goToValidation(state.userId),
+                            .goToHome(state.userId),
                       );
                     } else if (state is LoginFailure) {
                       return Text(

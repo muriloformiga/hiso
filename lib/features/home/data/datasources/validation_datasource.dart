@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/firebase_info.dart';
 import 'package:hiso/core/singletons/user.dart';
-import 'package:hiso/features/auth/data/models/user_data_model.dart';
+import 'package:hiso/features/home/data/models/user_data_model.dart';
 import 'package:meta/meta.dart';
 
 abstract class ValidationDataSource {
@@ -21,14 +21,14 @@ class ValidationDataSourceImpl implements ValidationDataSource {
 
   @override
   Future<UserDataModel> getUserData() async {
-    try {
-      final document = await firestore
-          .collection(FirebaseInfo.usersCollection)
-          .document(User.instance.userId)
-          .get();
+    final document = await firestore
+        .collection(FirebaseInfo.usersCollection)
+        .document(User.instance.userId)
+        .get();
+    if (!document.exists) {
+      throw FirestoreNotFoundException();
+    } else {
       return UserDataModel.fromJson(document.data);
-    } catch (error) {
-      throw FirestoreException(code: error.code);
     }
   }
 }

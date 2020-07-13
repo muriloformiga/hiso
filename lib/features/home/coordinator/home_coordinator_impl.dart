@@ -14,4 +14,11 @@ class HomeCoordinatorImpl implements HomeCoordinator {
       HomeRoutes.settingsPage,
     );
   }
+
+  @override
+  void goToValidation() {
+    _navigationKey.currentState.pushReplacementNamed(
+      HomeRoutes.validationPage,
+    );
+  }
 }

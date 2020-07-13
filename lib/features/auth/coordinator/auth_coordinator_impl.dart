@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/info/firebase_info.dart';
 import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
-import 'package:hiso/features/auth/domain/entities/user_data.dart';
 
 class AuthCoordinatorImpl implements AuthCoordinator {
   AuthCoordinatorImpl({@required this.firebaseInfo});
@@ -22,26 +22,19 @@ class AuthCoordinatorImpl implements AuthCoordinator {
       () => firebaseInfo.currentUser,
     );
     if (currentUser != null) {
-      goToValidation(currentUser.uid);
+      CoordinatorProvider.instance
+          .get<AuthCoordinator>()
+          .goToHome(currentUser.uid);
       return;
     }
     goToLogin();
   }
 
   @override
-  void goToHome(UserData userData) {
-    User.instance.setName(userData.name);
-    User.instance.setAccountType(userData.accountType);
-    _navigationKey.currentState.pushReplacementNamed(
-      AuthRoutes.homePage,
-    );
-  }
-
-  @override
-  void goToValidation(String userId) {
+  void goToHome(String userId) {
     User.instance.setId(userId);
     _navigationKey.currentState.pushReplacementNamed(
-      AuthRoutes.validationPage,
+      AuthRoutes.homePage,
     );
   }
 
