@@ -19,6 +19,7 @@ class ImputDecoratedWidget extends StatelessWidget {
     return Container(
       width: 329.w,
       height: 51.h,
+      margin: EdgeInsets.only(bottom: 2.0),
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
