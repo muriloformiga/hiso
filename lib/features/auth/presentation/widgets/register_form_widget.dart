@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
-import 'package:hiso/features/auth/presentation/widgets/custom_switch.dart';
+import 'package:hiso/features/auth/presentation/widgets/custom_switch/custom_switch_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
@@ -17,10 +17,18 @@ class RegisterFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String accountTypeSelected = AuthStrings.relative;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        CustomSwitch(value: false),
+        CustomSwitchWidget(
+          onTap: (value) {
+            accountTypeSelected = value;
+          },
+        ),
+        SizedBox(
+          height: 30.h,
+        ),
         ImputDecoratedWidget(
           controller: emailController,
           placeholder: AuthStrings.email,
@@ -28,10 +36,6 @@ class RegisterFormWidget extends StatelessWidget {
         ImputDecoratedWidget(
           controller: nameController,
           placeholder: AuthStrings.name,
-        ),
-        ImputDecoratedWidget(
-          controller: accountTypeController,
-          placeholder: AuthStrings.accountType,
         ),
         ImputDecoratedWidget(
           controller: phoneController,
@@ -62,7 +66,7 @@ class RegisterFormWidget extends StatelessWidget {
                 password: passwordController.text,
                 passwordRepeat: passwordRepeatController.text,
                 name: nameController.text,
-                accountType: accountTypeController.text,
+                accountType: accountTypeSelected,
                 phone: phoneController.text,
               ),
             );

@@ -20,6 +20,8 @@ class AuthStrings {
   // Register
   static final createAccountMessage = 'Crie sua conta gratuitamente 😀';
   static final signInMessage = 'Entre e comece a fazer a diferença!';
+  static final relative = 'Familiar';
+  static final professional = 'Profissional';
   static final provideInfoMessage =
       'Como Médico(a), Enfermeiro(a) ou entidade de Saúde, você pode fornecer '
       'informações sobre pacientes internados para ajudar a tranquilizar os familiares e amigos';
