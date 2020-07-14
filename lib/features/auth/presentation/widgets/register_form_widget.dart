@@ -18,28 +18,28 @@ class RegisterFormWidget extends StatelessWidget {
     return Column(
       children: <Widget>[
         RegisterCardWidget(
-          controller: [
-            nameController,
-            accountTypeController,
-            phoneController,
-          ],
-          placeholder: [
-            AuthStrings.name,
-            AuthStrings.accountType,
-            AuthStrings.phone,
-          ],
+          controller: {
+            0: nameController,
+            1: accountTypeController,
+            2: phoneController,
+          },
+          placeholder: {
+            0: AuthStrings.name,
+            1: AuthStrings.accountType,
+            2: AuthStrings.phone,
+          },
         ),
         RegisterCardWidget(
-          controller: [
-            emailController,
-            passwordController,
-            passwordRepeatController,
-          ],
-          placeholder: [
-            AuthStrings.email,
-            AuthStrings.password,
-            AuthStrings.passwordRepeat,
-          ],
+          controller: {
+            0: emailController,
+            1: passwordController,
+            2: passwordRepeatController,
+          },
+          placeholder: {
+            0: AuthStrings.email,
+            1: AuthStrings.password,
+            2: AuthStrings.passwordRepeat,
+          },
         ),
         CupertinoButton.filled(
           child: Text(AuthStrings.register),
