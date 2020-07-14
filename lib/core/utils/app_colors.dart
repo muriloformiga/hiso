@@ -5,10 +5,12 @@ class AppColors {
   static const Color coralLight = Color(0xFFE89388);
   static const Color verdeCaribe = Color(0xFF0BBA94);
   static const Color verdeSombra = Color(0x4B0BBA94);
+
   static const Color black = Colors.black;
   static const Color white = Colors.white;
   static const Color blueAccent = Colors.blueAccent;
   static const Color orange = Colors.orange;
+
   static const Color azulFacebook = Color(0xFF2A64B2);
   static const Color vermelhoGoogle = Color(0xFFEB3838);
   static const Color roxo = Color(0xFF8836B8);

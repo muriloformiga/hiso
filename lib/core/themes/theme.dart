@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiso/core/utils/app_colors.dart';
+import 'package:hiso/core/utils/sizes.dart';
 
 class Themes {
   static final hisoTheme = ThemeData(
@@ -13,9 +14,18 @@ class Themes {
     ),
     fontFamily: 'Questrial',
     textTheme: TextTheme(
-      headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-      headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-      bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
+      headline1: TextStyle(
+        fontSize: 72.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      headline6: TextStyle(
+        fontSize: 36.sp,
+        fontStyle: FontStyle.italic,
+      ),
+      bodyText2: TextStyle(
+        fontSize: 14.sp,
+        fontFamily: 'Hind',
+      ),
     ),
     inputDecorationTheme: InputDecorationTheme(
       enabledBorder: OutlineInputBorder(
