@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 
 class RegisterCardWidget extends StatelessWidget {
@@ -13,9 +12,7 @@ class RegisterCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: AppColors.hawkesBlue,
-      borderOnForeground: true,
+    return Container(
       child: ListView.builder(
         shrinkWrap: true,
         physics: NeverScrollableScrollPhysics(),

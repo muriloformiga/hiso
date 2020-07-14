@@ -4,15 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/register_card_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_switch/custom_switch_widget.dart';
-import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
+import 'package:hiso/core/utils/sizes.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordRepeatController = TextEditingController();
   final nameController = TextEditingController();
-  final accountTypeController = TextEditingController();
   final phoneController = TextEditingController();
 
   @override
@@ -30,6 +29,16 @@ class RegisterFormWidget extends StatelessWidget {
         ),
         RegisterCardWidget(
           controller: {
+            0: nameController,
+            1: phoneController,
+          },
+          placeholder: {
+            0: AuthStrings.name,
+            1: AuthStrings.phone,
+          },
+        ),
+        RegisterCardWidget(
+          controller: {
             0: emailController,
             1: passwordController,
             2: passwordRepeatController,
@@ -40,6 +49,7 @@ class RegisterFormWidget extends StatelessWidget {
             2: AuthStrings.passwordRepeat,
           },
         ),
+        SizedBox(height: 10),
         CupertinoButton.filled(
           child: Text(AuthStrings.register),
           onPressed: () {
