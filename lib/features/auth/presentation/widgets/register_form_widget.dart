@@ -2,10 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
-import 'package:hiso/features/auth/presentation/widgets/custom_switch.dart';
-import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
+import 'package:hiso/features/auth/presentation/widgets/register_card_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
-import 'package:hiso/core/utils/sizes.dart';
 
 class RegisterFormWidget extends StatelessWidget {
   final emailController = TextEditingController();
@@ -18,40 +16,30 @@ class RegisterFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        CustomSwitch(value: false),
-        ImputDecoratedWidget(
-          controller: emailController,
-          placeholder: AuthStrings.email,
+        RegisterCardWidget(
+          controller: [
+            nameController,
+            accountTypeController,
+            phoneController,
+          ],
+          placeholder: [
+            AuthStrings.name,
+            AuthStrings.accountType,
+            AuthStrings.phone,
+          ],
         ),
-        ImputDecoratedWidget(
-          controller: nameController,
-          placeholder: AuthStrings.name,
-        ),
-        ImputDecoratedWidget(
-          controller: accountTypeController,
-          placeholder: AuthStrings.accountType,
-        ),
-        ImputDecoratedWidget(
-          controller: phoneController,
-          placeholder: AuthStrings.phone,
-        ),
-        SizedBox(
-          height: 10.h,
-        ),
-        ImputDecoratedWidget(
-          controller: passwordController,
-          placeholder: AuthStrings.password,
-          isHideText: true,
-        ),
-        ImputDecoratedWidget(
-          controller: passwordRepeatController,
-          placeholder: AuthStrings.passwordRepeat,
-          isHideText: true,
-        ),
-        SizedBox(
-          height: 10.h,
+        RegisterCardWidget(
+          controller: [
+            emailController,
+            passwordController,
+            passwordRepeatController,
+          ],
+          placeholder: [
+            AuthStrings.email,
+            AuthStrings.password,
+            AuthStrings.passwordRepeat,
+          ],
         ),
         CupertinoButton.filled(
           child: Text(AuthStrings.register),
