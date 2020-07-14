@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/register_card_widget.dart';
+import 'package:hiso/features/auth/presentation/widgets/custom_switch/custom_switch_widget.dart';
+import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 
 class RegisterFormWidget extends StatelessWidget {
@@ -15,19 +17,16 @@ class RegisterFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String accountTypeSelected = AuthStrings.relative;
     return Column(
       children: <Widget>[
-        RegisterCardWidget(
-          controller: {
-            0: nameController,
-            1: accountTypeController,
-            2: phoneController,
+        CustomSwitchWidget(
+          onTap: (value) {
+            accountTypeSelected = value;
           },
-          placeholder: {
-            0: AuthStrings.name,
-            1: AuthStrings.accountType,
-            2: AuthStrings.phone,
-          },
+        ),
+        SizedBox(
+          height: 30.h,
         ),
         RegisterCardWidget(
           controller: {
@@ -50,7 +49,7 @@ class RegisterFormWidget extends StatelessWidget {
                 password: passwordController.text,
                 passwordRepeat: passwordRepeatController.text,
                 name: nameController.text,
-                accountType: accountTypeController.text,
+                accountType: accountTypeSelected,
                 phone: phoneController.text,
               ),
             );

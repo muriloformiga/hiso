@@ -14,67 +14,50 @@ import 'package:hiso/core/utils/sizes.dart';
 class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            AppColors.verdeHiso,
-            AppColors.hawkesBlue,
-            AppColors.azulHiso,
-          ],
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Image.asset(
-                  AppImages.logo,
-                  height: 150.h,
-                ),
-                CustomTextWidget(
-                  text: AuthStrings.createAccountMessage,
-                  fontSize: 20.h,
-                  paddingValue: 10.h,
-                ),
-                CustomTextWidget(
-                  text: AuthStrings.coolTextRecipe,
-                  fontSize: 16.h,
-                  paddingValue: 10.h,
-                ),
-                BlocBuilder<RegisterBloc, RegisterState>(
-                  builder: (context, state) {
-                    if (state is RegisterSuccess) {
-                      WidgetsBinding.instance.addPostFrameCallback(
-                        (_) => CoordinatorProvider.instance
-                            .get<AuthCoordinator>()
-                            .goToHome(state.userId),
-                      );
-                    } else if (state is RegisterFailure) {
-                      return Text(
-                        state.message,
-                        textAlign: TextAlign.center,
-                      );
-                    } else if (state is RegisterLoadInProgress) {
-                      return Text(
-                        'Carregando...',
-                        textAlign: TextAlign.center,
-                      );
-                    }
-                    return Container();
-                  },
-                ),
-                Divider(),
-                RegisterFormWidget(),
-              ],
-            ),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CustomTextWidget(
+                text: AuthStrings.createAccountMessage,
+                fontSize: 20.h,
+                paddingValue: 10.h,
+              ),
+              CustomTextWidget(
+                text: AuthStrings.coolTextRecipe,
+                fontSize: 16.h,
+                paddingValue: 10.h,
+              ),
+              BlocBuilder<RegisterBloc, RegisterState>(
+                builder: (context, state) {
+                  if (state is RegisterSuccess) {
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) => CoordinatorProvider.instance
+                          .get<AuthCoordinator>()
+                          .goToHome(state.userId),
+                    );
+                  } else if (state is RegisterFailure) {
+                    return Text(
+                      state.message,
+                      textAlign: TextAlign.center,
+                    );
+                  } else if (state is RegisterLoadInProgress) {
+                    return Text(
+                      'Carregando...',
+                      textAlign: TextAlign.center,
+                    );
+                  }
+                  return Container();
+                },
+              ),
+              Divider(),
+              RegisterFormWidget(),
+            ],
           ),
         ),
       ),

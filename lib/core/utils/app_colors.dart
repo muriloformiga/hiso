@@ -5,8 +5,10 @@ class AppColors {
   static const Color coralLight = Color(0xFFE89388);
   static const Color verdeCaribe = Color(0xFF0BBA94);
   static const Color verdeSombra = Color(0x4B0BBA94);
-  static const Color preto = Colors.black;
-  static const Color branco = Colors.white;
+  static const Color black = Colors.black;
+  static const Color white = Colors.white;
+  static const Color blueAccent = Colors.blueAccent;
+  static const Color orange = Colors.orange;
   static const Color azulFacebook = Color(0xFF2A64B2);
   static const Color vermelhoGoogle = Color(0xFFEB3838);
   static const Color roxo = Color(0xFF8836B8);
@@ -27,8 +29,8 @@ class AppColors {
 
   static const Color seaGreen = Color(0xFF30A64A);
   static const Color torchRed = Color(0xFFFC1441);
-  static const Color dodgerBlue = Color(0xFF157FFB);
-  static const Color sandyBrown = Color(0xFFF49E6F);
+  static const Color dodgerBlue = Color(0xFFCFE3FC);
+  static const Color sandyBrown = Color(0xFFFBD8C5);
   static const Color mediumPurple = Color(0xFF9156EC);
 
   static const MaterialColor cinza = MaterialColor(
