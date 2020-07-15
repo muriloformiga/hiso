@@ -42,5 +42,8 @@ class Themes {
       ),
       hintStyle: TextStyle(color: Colors.grey),
     ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.orange,
+    ),
   );
 }
