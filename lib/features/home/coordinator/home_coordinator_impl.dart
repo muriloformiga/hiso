@@ -21,4 +21,11 @@ class HomeCoordinatorImpl implements HomeCoordinator {
       HomeRoutes.validationPage,
     );
   }
+
+  @override
+  void goToPost() {
+    _navigationKey.currentState.pushNamed(
+      HomeRoutes.postPage,
+    );
+  }
 }

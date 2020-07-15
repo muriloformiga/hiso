@@ -44,6 +44,7 @@ class Themes {
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.orange,
+      elevation: 1,
     ),
   );
 }

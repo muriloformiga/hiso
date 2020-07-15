@@ -8,6 +8,7 @@ import 'package:hiso/core/info/firebase_info.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/utils/auth_injection.dart';
 import 'package:hiso/features/home/utils/home_injection.dart';
+import 'package:hiso/features/post/utils/post_injection.dart';
 
 // Service Locator (Dependency)
 final dep = GetIt.instance;
@@ -18,6 +19,8 @@ void init() {
   initAuth();
   //! Home
   initHome();
+  //! Post
+  initPost();
 
   //! Core
   dep.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(dep()));

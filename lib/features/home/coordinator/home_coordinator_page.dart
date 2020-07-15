@@ -8,6 +8,8 @@ import 'package:hiso/features/home/coordinator/home_coordinator.dart';
 import 'package:hiso/features/home/coordinator/home_coordinator_impl.dart';
 import 'package:hiso/features/home/coordinator/home_routes.dart';
 import 'package:hiso/features/home/presentation/pages/home_page.dart';
+import 'package:hiso/features/post/presentation/bloc/post_bloc.dart';
+import 'package:hiso/features/post/presentation/pages/post_page.dart';
 import 'package:hiso/injection_container.dart';
 
 class HomeCoordinatorScreen extends StatefulWidget {
@@ -54,6 +56,14 @@ class _HomeCoordinatorScreenState extends State<HomeCoordinatorScreen> {
                     ValidationLoadDataStarted(),
                   ),
                 child: ValidationPage(),
+              );
+            };
+            break;
+          case HomeRoutes.postPage:
+            builder = (_) {
+              return BlocProvider<PostBloc>(
+                create: (_) => dep<PostBloc>(),
+                child: PostPage(),
               );
             };
             break;
