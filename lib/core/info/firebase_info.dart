@@ -5,6 +5,7 @@ abstract class FirebaseInfo {
 
   // Firebase Collections
   static final usersCollection = 'users';
+  static final pacientCollection = 'pacients';
 }
 
 class FirebaseInfoImpl implements FirebaseInfo {

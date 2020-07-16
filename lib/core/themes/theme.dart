@@ -6,11 +6,8 @@ class Themes {
   static final hisoTheme = ThemeData(
     //primarySwatch: Colors.black,
     appBarTheme: AppBarTheme(
-      color: Colors.transparent,
+      color: AppColors.blueAccent,
       elevation: 0,
-      iconTheme: IconThemeData(
-        color: Colors.black,
-      ),
     ),
     fontFamily: 'Questrial',
     textTheme: TextTheme(
