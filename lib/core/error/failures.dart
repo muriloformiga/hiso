@@ -42,3 +42,9 @@ class FirestoreNotFoundFailure extends Failure {
     String message = 'Dados não encontrados no servidor. Tente novamente.',
   }) : super(message: message);
 }
+
+class FirestorePacientAlreadyExistsFailure extends Failure {
+  FirestorePacientAlreadyExistsFailure({
+    String message = 'O paciente já foi cadastrado no sistema.',
+  }) : super(message: message);
+}

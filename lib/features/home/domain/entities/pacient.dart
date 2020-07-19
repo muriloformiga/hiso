@@ -1,15 +1,14 @@
-part of 'post_bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart';
 
-abstract class PostEvent extends Equatable {
-  const PostEvent();
-}
-
-class PostPacientRegisterStarted extends PostEvent {
-  PostPacientRegisterStarted({
+class Pacient extends Equatable {
+  Pacient({
     @required this.name,
     @required this.lastName,
     @required this.hospital,
     @required this.healthNumber,
+    @required this.phone,
     @required this.birthDate,
   });
 
@@ -17,7 +16,8 @@ class PostPacientRegisterStarted extends PostEvent {
   final String lastName;
   final String hospital;
   final String healthNumber;
-  final DateTime birthDate;
+  final String phone;
+  final Timestamp birthDate;
 
   @override
   List<Object> get props => [
@@ -25,6 +25,7 @@ class PostPacientRegisterStarted extends PostEvent {
         lastName,
         hospital,
         healthNumber,
+        phone,
         birthDate,
       ];
 }

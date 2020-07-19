@@ -50,7 +50,7 @@ class RegisterPage extends StatelessWidget {
                       WidgetsBinding.instance.addPostFrameCallback(
                         (_) => CoordinatorProvider.instance
                             .get<AuthCoordinator>()
-                            .goToHome(state.userId),
+                            .goToHome(state.authUser.firebaseUser),
                       );
                     } else if (state is RegisterFailure) {
                       return Text(

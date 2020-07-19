@@ -11,6 +11,13 @@ class PostInitial extends PostState {}
 
 class PostPacientRegisterLoading extends PostState {}
 
-class PostPacientRegisterError extends PostState {}
+class PostPacientRegisterError extends PostState {
+  PostPacientRegisterError({@required this.message});
+
+  final String message;
+
+  @override
+  List<Object> get props => [message];
+}
 
 class PostPacientRegisterSucess extends PostState {}

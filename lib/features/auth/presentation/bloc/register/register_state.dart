@@ -10,12 +10,12 @@ abstract class RegisterState extends Equatable {
 class RegisterInitial extends RegisterState {}
 
 class RegisterSuccess extends RegisterState {
-  RegisterSuccess({@required this.userId});
+  RegisterSuccess({@required this.authUser});
 
-  final String userId;
+  final AuthUser authUser;
 
   @override
-  List<Object> get props => [userId];
+  List<Object> get props => [authUser];
 }
 
 class RegisterLoadInProgress extends RegisterState {}

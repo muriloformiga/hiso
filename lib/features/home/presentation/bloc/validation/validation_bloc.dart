@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:hiso/core/usecases/usecase.dart';
-import 'package:hiso/features/auth/domain/entities/user_data.dart';
+import 'package:hiso/features/home/domain/entities/user_data.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hiso/features/home/domain/usecases/validation/get_user_data.dart';

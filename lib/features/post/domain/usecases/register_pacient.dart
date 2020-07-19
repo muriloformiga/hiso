@@ -16,6 +16,8 @@ class RegisterPacient implements UseCase<void, Params> {
       params.name,
       params.lastName,
       params.hospital,
+      params.healthNumber,
+      params.birthDate,
     );
   }
 }
@@ -25,16 +27,22 @@ class Params extends Equatable {
     @required this.name,
     @required this.lastName,
     @required this.hospital,
+    @required this.healthNumber,
+    @required this.birthDate,
   });
 
   final String name;
   final String lastName;
   final String hospital;
+  final String healthNumber;
+  final DateTime birthDate;
 
   @override
   List<Object> get props => [
         name,
         lastName,
         hospital,
+        healthNumber,
+        birthDate,
       ];
 }

@@ -73,7 +73,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         message: 'Ocorreu uma falha ao salvar seus dados. '
             'Reinicie o aplicativo e tente novamente.',
       ),
-      (_) => RegisterSuccess(userId: user.firebaseUser.uid),
+      (_) => RegisterSuccess(authUser: user),
     );
   }
 }

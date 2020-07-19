@@ -71,7 +71,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       Either<Failure, AuthUser> result) async* {
     yield result.fold(
       (failure) => LoginFailure(message: failure.message),
-      (user) => LoginSuccess(userId: user.firebaseUser.uid),
+      (user) => LoginSuccess(authUser: user),
     );
   }
 }

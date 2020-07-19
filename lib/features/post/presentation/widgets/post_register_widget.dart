@@ -40,6 +40,8 @@ class PostRegisterWidget extends StatelessWidget {
                   name: nameController.text,
                   lastName: lastNameController.text,
                   hospital: hospitalController.text,
+                  healthNumber: '1234567894',
+                  birthDate: DateTime.now(),
                 ),
               ),
             );

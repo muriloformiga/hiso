@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hiso/core/coordinator/coordinator.dart';
 
 abstract class AuthCoordinator extends Coordinator {
@@ -5,5 +6,5 @@ abstract class AuthCoordinator extends Coordinator {
   void goToLogin();
   void goToPresentation();
   void goToRegister();
-  void goToHome(String userId);
+  void goToHome(FirebaseUser user);
 }

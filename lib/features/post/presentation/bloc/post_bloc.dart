@@ -32,10 +32,12 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         name: event.name,
         lastName: event.lastName,
         hospital: event.hospital,
+        healthNumber: event.healthNumber,
+        birthDate: event.birthDate,
       ),
     );
     yield result.fold(
-      (failure) => PostPacientRegisterError(),
+      (failure) => PostPacientRegisterError(message: failure.message),
       (_) => PostPacientRegisterSucess(),
     );
   }

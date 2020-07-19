@@ -22,17 +22,16 @@ class AuthCoordinatorImpl implements AuthCoordinator {
       () => firebaseInfo.currentUser,
     );
     if (currentUser != null) {
-      CoordinatorProvider.instance
-          .get<AuthCoordinator>()
-          .goToHome(currentUser.uid);
+      CoordinatorProvider.instance.get<AuthCoordinator>().goToHome(currentUser);
       return;
     }
     goToLogin();
   }
 
   @override
-  void goToHome(String userId) {
-    User.instance.setId(userId);
+  void goToHome(FirebaseUser user) {
+    User.instance.setId(user.uid);
+    User.instance.setEmail(user.email);
     _navigationKey.currentState.pushReplacementNamed(
       AuthRoutes.homePage,
     );

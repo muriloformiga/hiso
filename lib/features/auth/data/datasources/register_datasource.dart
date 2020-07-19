@@ -50,12 +50,12 @@ class RegisterDataSourceImpl implements RegisterDataSource {
   @override
   Future<void> registerUserData(Map<String, dynamic> data) async {
     try {
-      firestore
+      await firestore
           .collection(FirebaseInfo.usersCollection)
           .document(User.instance.userId)
           .setData(data);
-    } catch (error) {
-      throw FirestoreException(code: error.code);
+    } catch (_) {
+      throw FirestoreException();
     }
   }
 }

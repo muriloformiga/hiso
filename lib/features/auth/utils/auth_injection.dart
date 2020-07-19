@@ -1,15 +1,12 @@
 import 'package:hiso/features/auth/data/datasources/login_datasource.dart';
 import 'package:hiso/features/auth/data/datasources/logout_datasource.dart';
 import 'package:hiso/features/auth/data/datasources/register_datasource.dart';
-import 'package:hiso/features/home/data/datasources/validation_datasource.dart';
 import 'package:hiso/features/auth/data/repositories/login_repository_impl.dart';
 import 'package:hiso/features/auth/data/repositories/logout_repository_impl.dart';
 import 'package:hiso/features/auth/data/repositories/register_repository_impl.dart';
-import 'package:hiso/features/home/data/repositories/validation_repository_impl.dart';
 import 'package:hiso/features/auth/domain/repositories/login_repository.dart';
 import 'package:hiso/features/auth/domain/repositories/logout_repository.dart';
 import 'package:hiso/features/auth/domain/repositories/register_repository.dart';
-import 'package:hiso/features/home/domain/repositories/validation_repository.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_email.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_facebook.dart';
 import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart';
@@ -73,12 +70,6 @@ void initAuth() {
       logoutDataSource: dep(),
     ),
   );
-  dep.registerLazySingleton<ValidationRepository>(
-    () => ValidationRepositoryImpl(
-      validationDataSource: dep(),
-      networkInfo: dep(),
-    ),
-  );
 
   // Data sources
   dep.registerLazySingleton<LoginDataSource>(
@@ -99,11 +90,6 @@ void initAuth() {
       firebaseAuth: dep(),
       googleSignIn: dep(),
       facebookLogin: dep(),
-    ),
-  );
-  dep.registerLazySingleton<ValidationDataSource>(
-    () => ValidationDataSourceImpl(
-      firestore: dep(),
     ),
   );
 }

@@ -9,6 +9,7 @@ abstract class PostDataSource {
   ///
   /// Dispara uma [FirestoreException] com a mensagem de erro.
   Future<void> registerPacient(
+    String healthNumber,
     Map<String, dynamic> data,
   );
 }
@@ -19,14 +20,25 @@ class PostDataSourceImpl implements PostDataSource {
   final Firestore firestore;
 
   @override
-  Future<void> registerPacient(Map<String, dynamic> data) async {
+  Future<void> registerPacient(
+      String healthNumber, Map<String, dynamic> data) async {
     try {
-      await firestore
+      final documentSnapshot = await firestore
           .collection(FirebaseInfo.pacientCollection)
-          .document()
-          .setData(data);
-    } catch (error) {
-      throw FirestoreException(code: error.code);
+          .document(healthNumber)
+          .get();
+      if (documentSnapshot.exists == false) {
+        await firestore
+            .collection(FirebaseInfo.pacientCollection)
+            .document(healthNumber)
+            .setData(data);
+      } else {
+        throw FirestorePacientAlreadyExistsException();
+      }
+    } on FirestorePacientAlreadyExistsException catch (_) {
+      throw FirestorePacientAlreadyExistsException();
+    } catch (_) {
+      throw FirestoreException();
     }
   }
 }

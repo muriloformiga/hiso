@@ -27,12 +27,14 @@ class FirebaseRegisterException extends Equatable implements Exception {
 }
 
 class FirestoreException extends Equatable implements Exception {
-  FirestoreException({@required this.code});
-
-  final String code;
-
   @override
-  List<Object> get props => [code];
+  List<Object> get props => [];
+}
+
+class FirestorePacientAlreadyExistsException extends Equatable
+    implements Exception {
+  @override
+  List<Object> get props => [];
 }
 
 class FirestoreNotFoundException extends Equatable implements Exception {

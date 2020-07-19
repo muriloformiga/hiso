@@ -21,19 +21,25 @@ class PostRepositoryImpl implements PostRepository {
     String name,
     String lastName,
     String hospital,
+    String healthNumber,
+    DateTime birthDate,
   ) async {
     if (await networkInfo.isConnected) {
       try {
         final data = <String, dynamic>{
           'creatorId': User.instance.userId,
           'creatorName': User.instance.name,
+          'creatorCode': User.instance.code,
           'name': name,
           'lastName': lastName,
           'hospital': hospital,
+          'birthDate': birthDate,
         };
-        final result = await postDataSource.registerPacient(data);
+        final result = await postDataSource.registerPacient(healthNumber, data);
         return Right(result);
       } on FirestoreException catch (_) {
+        return Left(FirestorePacientAlreadyExistsFailure());
+      } catch (_) {
         return Left(FirestoreFailure());
       }
     } else {
