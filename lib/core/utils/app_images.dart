@@ -5,15 +5,13 @@ class AppImages {
     return 'assets/images/$iconName.png';
   }
 
-  static String get man => _geral(iconName: 'homem');
+  static String get man => _geral(iconName: 'person');
 
-  static String get woman => _geral(iconName: 'mulher');
+  static String get relatives => _geral(iconName: 'parentes');
 
-  static String get manDoctor => _geral(iconName: 'doutor');
+  static String get doctors => _geral(iconName: 'medicos');
 
-  static String get womanDoctor => _geral(iconName: 'doutora');
-
-  static String get doctor => _geral(iconName: 'medico');
+  static String get doctor => _geral(iconName: 'medica');
 
   static String get family => _geral(iconName: 'familia');
 
@@ -23,5 +21,5 @@ class AppImages {
 
   static String get google => _geral(iconName: 'google');
 
-  static String get twitter => _geral(iconName: 'twitter');
+  static String get apple => _geral(iconName: 'apple');
 }
