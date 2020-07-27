@@ -41,7 +41,7 @@ class PresentationPage extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Image.asset(
-                    AppImages.manDoctor,
+                    AppImages.doctor,
                     height: 80,
                   ),
                 ),

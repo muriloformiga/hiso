@@ -64,9 +64,9 @@ void main() {
       },
     );
 
-    blocTest<LoginBloc, LoginEvent, LoginState>(
+    blocTest<LoginBloc, LoginState>(
       'Deve emitir [LoginLoadInProgress, LoginSucess] quando conseguir pegar os dados',
-      build: () async {
+      build: () {
         when(mockLoginWithEmail(any)).thenAnswer((_) async => Right(tAuthUser));
         return bloc;
       },
@@ -84,7 +84,7 @@ void main() {
 
     blocTest(
       'Deve emitir [LoginLoadInProgress, LoginFailure] quando não conseguir pegar os dados',
-      build: () async {
+      build: () {
         when(mockLoginWithEmail(any)).thenAnswer(
             (_) async => Left(FirebaseLoginFailure(message: tMessage)));
         return bloc;
@@ -117,9 +117,9 @@ void main() {
       },
     );
 
-    blocTest<LoginBloc, LoginEvent, LoginState>(
+    blocTest<LoginBloc, LoginState>(
       'Deve emitir [LoginLoadInProgress, LoginSucess] quando conseguir pegar os dados',
-      build: () async {
+      build: () {
         when(mockLoginWithFacebook(any))
             .thenAnswer((_) async => Right(tAuthUser));
         return bloc;
@@ -133,7 +133,7 @@ void main() {
 
     blocTest(
       'Deve emitir [LoginLoadInProgress, LoginFailure] quando não conseguir pegar os dados',
-      build: () async {
+      build: () {
         when(mockLoginWithFacebook(any)).thenAnswer(
             (_) async => Left(FirebaseLoginFailure(message: tMessage)));
         return bloc;

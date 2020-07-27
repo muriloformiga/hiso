@@ -68,9 +68,9 @@ void main() {
       },
     );
 
-    blocTest<RegisterBloc, RegisterEvent, RegisterState>(
+    blocTest<RegisterBloc, RegisterState>(
       'Deve emitir [RegisterLoadInProgress, RegisterSucess] quando conseguir pegar os dados',
-      build: () async {
+      build: () {
         when(mockRegisterWithEmail(any))
             .thenAnswer((_) async => Right(tAuthUser));
         return bloc;
@@ -93,7 +93,7 @@ void main() {
 
     blocTest(
       'Deve emitir [RegisterLoadInProgress, RegisterFailure] quando não conseguir pegar os dados',
-      build: () async {
+      build: () {
         when(mockRegisterWithEmail(any)).thenAnswer(
             (_) async => Left(FirebaseRegisterFailure(message: tMessage)));
         return bloc;

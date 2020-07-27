@@ -37,12 +37,13 @@ class LoginFormWidget extends StatelessWidget {
           CupertinoButton.filled(
             child: Text(AuthStrings.send),
             onPressed: () {
-              BlocProvider.of<LoginBloc>(context).add(
-                LoginEmailStarted(
-                  email: emailController.text,
-                  password: passwordController.text,
-                ),
-              );
+              BlocProvider.of<LoginBloc>(context)
+                ..add(
+                  LoginEmailStarted(
+                    email: emailController.text,
+                    password: passwordController.text,
+                  ),
+                );
             },
           ),
           SizedBox(height: 5.h),
