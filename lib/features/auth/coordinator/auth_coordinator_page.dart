@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/themes/theme.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
-import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
-import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
-import 'package:hiso/features/auth/presentation/pages/presentation_page.dart';
-import 'package:hiso/features/auth/presentation/pages/register_page.dart';
-import 'package:hiso/features/home/coordinator/home_coordinator_page.dart';
-import 'package:hiso/features/auth/presentation/pages/login_page.dart';
-import 'package:hiso/features/auth/presentation/pages/splash_page.dart';
 import 'package:hiso/injection_container.dart';
 
-class AuthCoordinatorScreen extends StatefulWidget {
+class AuthCoordinatorPage extends StatefulWidget {
   @override
-  _AuthCoordinatorScreenState createState() => _AuthCoordinatorScreenState();
+  _AuthCoordinatorPageState createState() => _AuthCoordinatorPageState();
 }
 
-class _AuthCoordinatorScreenState extends State<AuthCoordinatorScreen> {
+class _AuthCoordinatorPageState extends State<AuthCoordinatorPage> {
   final _coordinator = dep<AuthCoordinatorImpl>();
 
   @override
@@ -41,44 +33,7 @@ class _AuthCoordinatorScreenState extends State<AuthCoordinatorScreen> {
       title: 'Hiso',
       theme: Themes.hisoTheme,
       initialRoute: AuthRoutes.splashPage,
-      onGenerateRoute: (settings) {
-        WidgetBuilder builder;
-        switch (settings.name) {
-          case AuthRoutes.splashPage:
-            builder = (_) {
-              return SplashPage();
-            };
-            break;
-
-          case AuthRoutes.homePage:
-            return MaterialPageRoute<void>(
-              builder: (_) => HomeCoordinatorScreen(),
-            );
-            break;
-          case AuthRoutes.loginPage:
-            builder = (_) {
-              return BlocProvider<LoginBloc>(
-                create: (_) => dep<LoginBloc>(),
-                child: LoginPage(),
-              );
-            };
-            break;
-          case AuthRoutes.presentationPage:
-            builder = (_) {
-              return PresentationPage();
-            };
-            break;
-          case AuthRoutes.registerPage:
-            builder = (_) {
-              return BlocProvider<RegisterBloc>(
-                create: (_) => dep<RegisterBloc>(),
-                child: RegisterPage(),
-              );
-            };
-            break;
-        }
-        return MaterialPageRoute<dynamic>(builder: builder, settings: settings);
-      },
+      onGenerateRoute: AuthRoutes.onGenerateRoute,
     );
   }
 }

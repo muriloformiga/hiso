@@ -11,6 +11,6 @@ void main() {
 class HisoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AuthCoordinatorScreen();
+    return AuthCoordinatorPage();
   }
 }
