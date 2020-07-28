@@ -19,9 +19,9 @@ class RegisterPage extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            AppColors.verde,
-            AppColors.azul,
-            AppColors.azul,
+            AppColors.green,
+            AppColors.blue,
+            AppColors.blue,
           ],
         ),
       ),

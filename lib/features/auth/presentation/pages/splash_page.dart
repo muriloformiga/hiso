@@ -5,6 +5,7 @@ import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/sizes.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/presentation/widgets/splash/rounded_box_widget.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage();
@@ -33,12 +34,12 @@ class _SplashPageState extends State<SplashPage> {
           end: Alignment.bottomCenter,
           colors: [
             AppColors.white,
-            AppColors.verde,
+            AppColors.green[10],
           ],
         ),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.transparent,
         body: Container(
           child: Center(
             child: Column(
@@ -48,16 +49,7 @@ class _SplashPageState extends State<SplashPage> {
                   flex: 1,
                   child: RotatedBox(
                     quarterTurns: 2,
-                    child: Container(
-                      width: 375.w,
-                      height: 196.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(250),
-                        ),
-                        color: Colors.orange,
-                      ),
-                    ),
+                    child: RoundedBoxWidget(),
                   ),
                 ),
                 Expanded(
@@ -72,16 +64,7 @@ class _SplashPageState extends State<SplashPage> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: Container(
-                    width: 375.w,
-                    height: 196.h,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(250),
-                      ),
-                      color: Colors.orange,
-                    ),
-                  ),
+                  child: RoundedBoxWidget(),
                 ),
               ],
             ),

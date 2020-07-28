@@ -6,7 +6,7 @@ class Themes {
   static final hisoTheme = ThemeData(
     //primarySwatch: Colors.black,
     appBarTheme: AppBarTheme(
-      color: AppColors.blueAccent,
+      color: AppColors.blue,
       elevation: 0,
     ),
     fontFamily: 'Questrial',
@@ -28,15 +28,15 @@ class Themes {
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(32),
         borderSide: BorderSide(
-          color: AppColors.cinza,
+          color: AppColors.gray,
         ),
       ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(32),
-        borderSide: BorderSide(
-          color: AppColors.mediumPurple,
-        ),
-      ),
+      // focusedBorder: OutlineInputBorder(
+      //   borderRadius: BorderRadius.circular(32),
+      //   borderSide: BorderSide(
+      //     color: AppColors.mediumPurple,
+      //   ),
+      // ),
       hintStyle: TextStyle(color: Colors.grey),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(

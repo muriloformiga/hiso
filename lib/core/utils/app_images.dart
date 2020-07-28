@@ -13,7 +13,7 @@ class AppImages {
 
   static String get doctor => _geral(iconName: 'medica');
 
-  static String get family => _geral(iconName: 'familia');
+  static String get family => _geral(iconName: 'family');
 
   static String get logo => _geral(iconName: 'hiso_logo');
 

@@ -11,7 +11,7 @@ class StackActionWidget extends StatelessWidget {
       children: <Widget>[
         Container(
           height: 80.h,
-          color: AppColors.blueAccent,
+          color: AppColors.blue,
         ),
         Align(
           alignment: Alignment(0.8, 0.5),

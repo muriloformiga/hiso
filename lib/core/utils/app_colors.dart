@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color black = Colors.black;
-  static const Color white = Colors.white;
-  static const Color blueAccent = Colors.blueAccent;
-  static const Color orange = Color(0xFFFF6A38);
+  static Color black = Color(0xFF000000);
+  static Color white = Color(0xFFFFFFFF);
+  static Color transparent = Color(0x00000000);
 
-  static const Color azulFacebook = Color(0xFF2A64B2);
-  static const Color vermelhoGoogle = Color(0xFFEB3838);
-  static const Color roxo = Color(0xFF8836B8);
-
-  static const Color seaGreen = Color(0xFF30A64A);
-  static const Color torchRed = Color(0xFFFC1441);
-  static const Color dodgerBlue = Color(0xFFCFE3FC);
-  static const Color sandyBrown = Color(0xFFFBD8C5);
-  static const Color mediumPurple = Color(0xFF9156EC);
-
-  static const MaterialColor cinza = MaterialColor(
+  static const gray = MaterialColor(
     0xFFF3F3F3,
     <int, Color>{
       0: Color(0xFFFFFFFF),
@@ -37,7 +26,7 @@ class AppColors {
     },
   );
 
-  static const MaterialColor azul = MaterialColor(
+  static const blue = MaterialColor(
     0xFF3CFFEB,
     <int, Color>{
       0: Color(0xFF35F2DF),
@@ -48,7 +37,7 @@ class AppColors {
     },
   );
 
-  static const MaterialColor verde = MaterialColor(
+  static const green = MaterialColor(
     0xFF3FF5B6,
     <int, Color>{
       0: Color(0xFF35F29A),
@@ -59,7 +48,7 @@ class AppColors {
     },
   );
 
-  static const MaterialColor laranja = MaterialColor(
+  static const orange = MaterialColor(
     0xFFFF8359,
     <int, Color>{
       0: Color(0xFFFF6A38),
@@ -69,27 +58,4 @@ class AppColors {
       200: Color(0xFF73301),
     },
   );
-
-  static final List<Color> gradienteBanese = <Color>[
-    Color(0xFF2D9D6D),
-    Color(0xFF2fc498),
-  ];
-
-  static final List<Color> gradienteApple = <Color>[
-    Color(0xFF3E3E3E),
-    Color(0xFF000000),
-    Color(0xFF000000),
-  ];
-}
-
-class HexColor extends Color {
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
-
-  static int _getColorFromHex(String hexColor) {
-    String _hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (_hexColor.length == 6) {
-      _hexColor = 'FF' + _hexColor;
-    }
-    return int.parse(_hexColor, radix: 16);
-  }
 }

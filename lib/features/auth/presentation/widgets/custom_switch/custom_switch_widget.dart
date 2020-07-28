@@ -30,7 +30,7 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                 height: 170.h,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.blueAccent,
+                  color: AppColors.blue,
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
@@ -60,7 +60,7 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
             height: 60.h,
             width: 320.w,
             decoration: BoxDecoration(
-              color: _selected ? AppColors.sandyBrown : AppColors.dodgerBlue,
+              color: _selected ? AppColors.blue : AppColors.green,
               borderRadius: BorderRadius.circular(50),
             ),
             child: Stack(
@@ -73,11 +73,11 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                     height: 50.h,
                     width: 160.w,
                     decoration: BoxDecoration(
-                      color: AppColors.white,
+                      color: AppColors.gray,
                       borderRadius: BorderRadius.circular(50),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
-                          color: AppColors.black.withOpacity(0.3),
+                          color: AppColors.gray.withOpacity(0.3),
                           offset: Offset(1.h, 1.w),
                           blurRadius: 2,
                         ),
@@ -96,12 +96,12 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                               ? TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.black,
+                                  color: AppColors.gray,
                                 )
                               : TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.normal,
-                                  color: AppColors.blueAccent,
+                                  color: AppColors.blue,
                                 ),
                           duration: _duration,
                         ),
@@ -115,7 +115,7 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                               ? TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.black,
+                                  color: AppColors.gray,
                                 )
                               : TextStyle(
                                   fontSize: 16.sp,

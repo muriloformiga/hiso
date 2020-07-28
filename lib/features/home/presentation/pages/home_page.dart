@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
-        backgroundColor: AppColors.blueAccent,
+        backgroundColor: AppColors.blue,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.exit_to_app),

@@ -17,9 +17,9 @@ class PresentationPage extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            AppColors.verde,
+            AppColors.gray,
             Color(0xFFcfe3fc),
-            AppColors.azul,
+            AppColors.blue,
           ],
         ),
       ),
