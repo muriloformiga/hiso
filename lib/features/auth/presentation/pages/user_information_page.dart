@@ -16,9 +16,9 @@ class UserInformationPage extends StatelessWidget {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            AppColors.verdeHiso,
+            AppColors.verde,
             Color(0xFFcfe3fc),
-            AppColors.azulHiso,
+            AppColors.azul,
           ],
         ),
       ),

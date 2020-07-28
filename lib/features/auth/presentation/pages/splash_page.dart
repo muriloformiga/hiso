@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
+import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/sizes.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
@@ -25,57 +26,65 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Color(0xFFcfe3fc),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                flex: 3,
-                child: Container(
-                  child: Image.asset(
-                    AppImages.family,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            AppColors.white,
+            AppColors.verde,
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Container(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: RotatedBox(
+                    quarterTurns: 2,
+                    child: Container(
+                      width: 375.w,
+                      height: 196.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(250),
+                        ),
+                        color: Colors.orange,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  padding: EdgeInsets.all(26.0.w),
-                  width: 414.w,
-                  height: 297.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(35),
-                    color: Colors.white,
-                  ),
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        'Observações Sobre Internamentos Hospitalares',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 28.h,
-                          fontFamily: 'Questrial',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      SizedBox(height: 20.h),
-                      Text(
-                        'Bem vindo ao App que ajuda a confortar famílias',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18.h,
-                          fontFamily: 'Questrial',
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    width: 466.w,
+                    height: 336.h,
+                    child: Image.asset(
+                      AppImages.family,
+                    ),
                   ),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: 375.w,
+                    height: 196.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(250),
+                      ),
+                      color: Colors.orange,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,33 +1,14 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color coral = Color(0xFFEE716E);
-  static const Color coralLight = Color(0xFFE89388);
-  static const Color verdeCaribe = Color(0xFF0BBA94);
-  static const Color verdeSombra = Color(0x4B0BBA94);
-
   static const Color black = Colors.black;
   static const Color white = Colors.white;
   static const Color blueAccent = Colors.blueAccent;
-  static const Color orange = Colors.orange;
+  static const Color orange = Color(0xFFFF6A38);
 
   static const Color azulFacebook = Color(0xFF2A64B2);
   static const Color vermelhoGoogle = Color(0xFFEB3838);
   static const Color roxo = Color(0xFF8836B8);
-  static const Color laranja = Colors.orange;
-  static const Color azulArdosia = Color(0xFF564DD6);
-  static const Color azulReal = Color(0xFF3B7CE4);
-  static const Color verdePastel = Color(0xFF21B54B);
-  static const Color verdeBanese = Color(0xFF00BC72);
-  static const Color verdeMusgo = Color(0xFF00AE5F);
-  static const Color rosaAmoreira = Color(0xFFDE4D94);
-  static const Color amareloOuro = Color(0xFFDFAD2C);
-  static const Color roxoOrquideaNegra = Color(0xFF8836B8);
-  static const Color transparente = Colors.transparent;
-  static const Color azulHiso = Color(0xFF78d0e5);
-  static const Color verdeHiso = Color(0xFF4ce6be);
-  static const Color hawkesBlue = Color(0xFFCFE3FC);
-  static const Color paleSky = Color(0xFF6D757D);
 
   static const Color seaGreen = Color(0xFF30A64A);
   static const Color torchRed = Color(0xFFFC1441);
@@ -56,15 +37,42 @@ class AppColors {
     },
   );
 
+  static const MaterialColor azul = MaterialColor(
+    0xFF3CFFEB,
+    <int, Color>{
+      0: Color(0xFF35F2DF),
+      10: Color(0xFF35DFF2),
+      50: Color(0xFF3BD9F5),
+      100: Color(0xFF37B8F5),
+      200: Color(0xFF3C94F5),
+    },
+  );
+
+  static const MaterialColor verde = MaterialColor(
+    0xFF3FF5B6,
+    <int, Color>{
+      0: Color(0xFF35F29A),
+      10: Color(0xFF00A880),
+      50: Color(0xFF197349),
+      100: Color(0xFF082618),
+      200: Color(0xFF061C12),
+    },
+  );
+
+  static const MaterialColor laranja = MaterialColor(
+    0xFFFF8359,
+    <int, Color>{
+      0: Color(0xFFFF6A38),
+      10: Color(0xFFF26535),
+      50: Color(0xFFD95A30),
+      100: Color(0xFFB34A27),
+      200: Color(0xFF73301),
+    },
+  );
+
   static final List<Color> gradienteBanese = <Color>[
     Color(0xFF2D9D6D),
     Color(0xFF2fc498),
-  ];
-
-  static final List<Color> gradienteInstagram = <Color>[
-    Color(0xFFFFC107),
-    Color(0xFFF44336),
-    Color(0xFF9C27B0),
   ];
 
   static final List<Color> gradienteApple = <Color>[

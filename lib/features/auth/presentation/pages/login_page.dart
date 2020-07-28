@@ -18,13 +18,14 @@ class LoginPage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [
-            AppColors.verdeHiso,
-            AppColors.hawkesBlue,
-            AppColors.azulHiso,
+            AppColors.verde,
+            AppColors.white,
+            AppColors.white,
           ],
+          stops: [0, 0.5, 1],
         ),
       ),
       child: Scaffold(

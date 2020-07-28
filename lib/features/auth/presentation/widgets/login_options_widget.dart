@@ -35,6 +35,19 @@ class LoginOptionsWidget extends StatelessWidget {
             color: Colors.transparent,
             icon: AppImages.facebook,
           ),
+          SizedBox(
+            height: 5.0,
+          ),
+          SocialButtonWidget(
+            onPressed: () {
+              BlocProvider.of<LoginBloc>(context).add(
+                LoginFacebookStarted(),
+              );
+            },
+            text: AuthStrings.loginFacebook,
+            color: Colors.transparent,
+            icon: AppImages.apple,
+          ),
         ],
       ),
     );
