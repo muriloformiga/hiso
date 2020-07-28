@@ -20,7 +20,7 @@ class PacientDataSourceImpl implements PacientDataSource {
   final String creatorIdField = 'creatorId';
   final int queryLimit = 2;
 
-  static DocumentSnapshot _lastDocument;
+  static List<DocumentSnapshot> _lastDocument;
 
   @override
   Future<List<PacientModel>> getMedicalPacients() async {
@@ -31,7 +31,7 @@ class PacientDataSourceImpl implements PacientDataSource {
       } else {
         querySnapshot = await _getMoreData();
       }
-      _lastDocument = querySnapshot.documents.last;
+
       List<PacientModel> list = [];
       for (DocumentSnapshot document in querySnapshot.documents) {
         list.add(
@@ -61,7 +61,7 @@ class PacientDataSourceImpl implements PacientDataSource {
         .collection(FirebaseInfo.pacientCollection)
         .where(creatorIdField, isEqualTo: User.instance.userId)
         .orderBy('name')
-        .startAfterDocument(_lastDocument)
+        .startAfterDocument(_lastDocument[_lastDocument.length - 1])
         .limit(queryLimit)
         .getDocuments();
     return querySnapshot;
