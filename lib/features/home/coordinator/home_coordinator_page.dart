@@ -3,6 +3,7 @@ import 'package:hiso/features/home/coordinator/home_routes.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/features/home/coordinator/home_coordinator.dart';
 import 'package:hiso/features/home/coordinator/home_coordinator_impl.dart';
+import 'package:hiso/injection_container.dart';
 
 class HomeCoordinatorPage extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class HomeCoordinatorPage extends StatefulWidget {
 }
 
 class _HomeCoordinatorPageState extends State<HomeCoordinatorPage> {
-  final _coordinator = HomeCoordinatorImpl();
+  final _coordinator = dep<HomeCoordinatorImpl>();
 
   @override
   void initState() {
