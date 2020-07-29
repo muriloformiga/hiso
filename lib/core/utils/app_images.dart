@@ -1,6 +1,6 @@
 import 'package:meta/meta.dart';
 
-class AppImages {
+abstract class AppImages {
   static String _geral({@required String iconName}) {
     return 'assets/images/$iconName.png';
   }
@@ -9,7 +9,7 @@ class AppImages {
 
   static String get relatives => _geral(iconName: 'parentes');
 
-  static String get doctors => _geral(iconName: 'medicos');
+  static String get doctorMan => _geral(iconName: 'doctor_man');
 
   static String get doctor => _geral(iconName: 'medica');
 

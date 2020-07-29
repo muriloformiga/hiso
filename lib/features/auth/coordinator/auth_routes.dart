@@ -24,7 +24,7 @@ abstract class AuthRoutes {
         builder = (_) => SplashPage();
         break;
       case AuthRoutes.homePage:
-        builder = (_) => HomeCoordinatorScreen();
+        builder = (_) => HomeCoordinatorPage();
         break;
       case AuthRoutes.loginPage:
         builder = (_) {

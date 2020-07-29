@@ -5,10 +5,7 @@ import 'package:hiso/core/utils/sizes.dart';
 class Themes {
   static final hisoTheme = ThemeData(
     //primarySwatch: Colors.black,
-    appBarTheme: AppBarTheme(
-      color: AppColors.blue,
-      elevation: 0,
-    ),
+    primaryColor: AppColors.orange[400],
     fontFamily: 'Questrial',
     textTheme: TextTheme(
       headline1: TextStyle(
