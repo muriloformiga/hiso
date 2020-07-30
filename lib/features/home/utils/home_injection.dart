@@ -42,6 +42,12 @@ void initHome() {
       networkInfo: dep(),
     ),
   );
+
+  // Coordinator
+  dep.registerFactory(
+    () => HomeCoordinatorImpl(),
+  );
+
   dep.registerLazySingleton<PacientRepository>(
     () => PacientRepositoryImpl(
       pacientDataSource: dep(),
