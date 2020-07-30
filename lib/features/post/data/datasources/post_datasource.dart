@@ -35,7 +35,7 @@ class PostDataSourceImpl implements PostDataSource {
       } else {
         throw FirestorePacientAlreadyExistsException();
       }
-    } on FirestorePacientAlreadyExistsException catch (_) {
+    } on FirestorePacientAlreadyExistsException {
       throw FirestorePacientAlreadyExistsException();
     } catch (_) {
       throw FirestoreException();

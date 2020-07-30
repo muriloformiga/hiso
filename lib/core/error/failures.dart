@@ -45,6 +45,6 @@ class FirestoreNotFoundFailure extends Failure {
 
 class FirestorePacientAlreadyExistsFailure extends Failure {
   FirestorePacientAlreadyExistsFailure({
-    String message = 'O paciente já foi cadastrado no sistema.',
+    String message = 'Erro: O paciente já foi cadastrado no sistema.',
   }) : super(message: message);
 }

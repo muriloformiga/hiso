@@ -1,6 +1,8 @@
 class AppStrings {
-  static String get appName => 'Hiso';
-  static String get welcomeMessage => 'Seja bem-vindo ao\nHISO';
-  static String get loginGoogle => 'Login com Google';
-  static String get loginFacebook => 'Login com Facebook';
+  static String appName = 'Hiso';
+  static String welcomeMessage = 'Seja bem-vindo ao\nHISO';
+  static String register = 'Cadastrar';
+  static String enter = 'Entrar';
+  static String loginGoogle = 'Login com Google';
+  static String loginFacebook = 'Login com Facebook';
 }

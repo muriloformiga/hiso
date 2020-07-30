@@ -22,7 +22,8 @@ class PostRepositoryImpl implements PostRepository {
     String lastName,
     String hospital,
     String healthNumber,
-    DateTime birthDate,
+    String birthDate,
+    String message,
   ) async {
     if (await networkInfo.isConnected) {
       try {
@@ -34,10 +35,14 @@ class PostRepositoryImpl implements PostRepository {
           'lastName': lastName,
           'hospital': hospital,
           'birthDate': birthDate,
+          'updates': <String, dynamic>{
+            'message': message,
+            'date': DateTime.now(),
+          },
         };
         final result = await postDataSource.registerPacient(healthNumber, data);
         return Right(result);
-      } on FirestoreException catch (_) {
+      } on FirestorePacientAlreadyExistsException {
         return Left(FirestorePacientAlreadyExistsFailure());
       } catch (_) {
         return Left(FirestoreFailure());

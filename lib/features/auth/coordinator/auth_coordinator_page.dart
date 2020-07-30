@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
-import 'package:hiso/core/themes/theme.dart';
+import 'package:hiso/core/theme/app_theme.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/coordinator/auth_routes.dart';
@@ -22,6 +22,7 @@ class _AuthCoordinatorPageState extends State<AuthCoordinatorPage> {
 
   @override
   void dispose() {
+    print('dispose');
     CoordinatorProvider.instance.remove<AuthCoordinator>();
     super.dispose();
   }
@@ -31,7 +32,7 @@ class _AuthCoordinatorPageState extends State<AuthCoordinatorPage> {
     return MaterialApp(
       navigatorKey: _coordinator.navigationKey,
       title: 'Hiso',
-      theme: Themes.hisoTheme,
+      theme: AppTheme.hisoTheme,
       initialRoute: AuthRoutes.splashPage,
       onGenerateRoute: AuthRoutes.onGenerateRoute,
     );

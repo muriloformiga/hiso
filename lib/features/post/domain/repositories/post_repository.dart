@@ -7,6 +7,7 @@ abstract class PostRepository {
     String lastName,
     String hospital,
     String healthNumber,
-    DateTime birthDate,
+    String birthDate,
+    String message,
   );
 }

@@ -11,13 +11,15 @@ class PostPacientRegisterStarted extends PostEvent {
     @required this.hospital,
     @required this.healthNumber,
     @required this.birthDate,
+    @required this.message,
   });
 
   final String name;
   final String lastName;
   final String hospital;
   final String healthNumber;
-  final DateTime birthDate;
+  final String birthDate;
+  final String message;
 
   @override
   List<Object> get props => [
@@ -26,5 +28,6 @@ class PostPacientRegisterStarted extends PostEvent {
         hospital,
         healthNumber,
         birthDate,
+        message,
       ];
 }

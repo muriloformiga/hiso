@@ -16,13 +16,11 @@ class PostPage extends StatelessWidget {
           slivers: <Widget>[
             SliverAppBar(),
             SliverToBoxAdapter(
-              child: Form(
-                child: Column(
-                  children: <Widget>[
-                    DoctorMessageStackWidget(),
-                    PostRegisterFormWidget(),
-                  ],
-                ),
+              child: Column(
+                children: <Widget>[
+                  DoctorMessageStackWidget(),
+                  PostRegisterFormWidget(),
+                ],
               ),
             ),
           ],
