@@ -1,3 +1,4 @@
+import 'package:hiso/features/home/coordinator/home_coordinator_impl.dart';
 import 'package:hiso/features/home/data/datasources/pacient_datasource.dart';
 import 'package:hiso/features/home/data/datasources/validation_datasource.dart';
 import 'package:hiso/features/home/data/repositories/pacient_repository_impl.dart';
@@ -36,6 +37,12 @@ void initHome() {
       networkInfo: dep(),
     ),
   );
+
+  // Coordinator
+  dep.registerFactory(
+    () => HomeCoordinatorImpl(),
+  );
+
   dep.registerLazySingleton<PacientRepository>(
     () => PacientRepositoryImpl(
       pacientDataSource: dep(),
