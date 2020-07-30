@@ -1,12 +1,24 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/sizes.dart';
 
-class Themes {
+abstract class Themes {
   static final hisoTheme = ThemeData(
-    //primarySwatch: Colors.black,
-    primaryColor: AppColors.orange[400],
-    fontFamily: 'Questrial',
+    //primarySwatch: AppColors.orange[300],
+    primaryColor: AppColors.white,
+    //fontFamily: 'Questrial',
+    scaffoldBackgroundColor: AppColors.transparent,
+    appBarTheme: AppBarTheme(
+      color: AppColors.transparent,
+      elevation: 0,
+      iconTheme: IconThemeData(
+        color: AppColors.orange[400],
+      ),
+    ),
+    cupertinoOverrideTheme: CupertinoThemeData(
+      primaryColor: AppColors.orange[400],
+    ),
     textTheme: TextTheme(
       headline1: TextStyle(
         fontSize: 72.sp,
@@ -18,27 +30,32 @@ class Themes {
       ),
       bodyText2: TextStyle(
         fontSize: 14.sp,
-        fontFamily: 'Hind',
+        //fontFamily: 'Hind',
       ),
-    ),
-    inputDecorationTheme: InputDecorationTheme(
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(32),
-        borderSide: BorderSide(
-          color: AppColors.gray,
-        ),
-      ),
-      // focusedBorder: OutlineInputBorder(
-      //   borderRadius: BorderRadius.circular(32),
-      //   borderSide: BorderSide(
-      //     color: AppColors.mediumPurple,
-      //   ),
-      // ),
-      hintStyle: TextStyle(color: Colors.grey),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.orange,
       elevation: 1,
+    ),
+    //
+    //
+    //
+    //
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          width: 2.h,
+          color: AppColors.orange[400],
+        ),
+      ),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          width: 2.h,
+          color: AppColors.gray[100],
+        ),
+        borderRadius: BorderRadius.all(Radius.zero),
+      ),
     ),
   );
 }

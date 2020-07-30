@@ -26,6 +26,11 @@ void initHome() {
     ),
   );
 
+  // Coordinator
+  dep.registerFactory(
+    () => HomeCoordinatorImpl(),
+  );
+
   // Usecase
   dep.registerLazySingleton(() => GetUserData(dep()));
   dep.registerLazySingleton(() => GetMedicalPacients(dep()));
