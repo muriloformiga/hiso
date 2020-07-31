@@ -32,14 +32,14 @@ class AuthCoordinatorImpl implements AuthCoordinator {
   void goToHome(FirebaseUser user) {
     User.instance.setId(user.uid);
     User.instance.setEmail(user.email);
-    _navigationKey.currentState.pushReplacementNamed(
+    _navigationKey.currentState.pushNamed(
       AuthRoutes.homePage,
     );
   }
 
   @override
   void goToLogin() {
-    _navigationKey.currentState.pushReplacementNamed(
+    _navigationKey.currentState.pushNamed(
       AuthRoutes.loginPage,
     );
   }

@@ -17,7 +17,7 @@ class HomeCoordinatorImpl implements HomeCoordinator {
 
   @override
   void goToValidation() {
-    _navigationKey.currentState.pushReplacementNamed(
+    _navigationKey.currentState.pushNamed(
       HomeRoutes.validationPage,
     );
   }
