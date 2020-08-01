@@ -13,7 +13,6 @@ import 'package:hiso/features/auth/domain/usecases/login/login_with_google.dart'
 import 'package:hiso/features/auth/domain/usecases/logout/logout.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_user_data.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
-import 'package:hiso/features/auth/coordinator/auth_coordinator_impl.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/injection_container.dart';
@@ -31,13 +30,6 @@ void initAuth() {
     () => RegisterBloc(
       registerWithEmail: dep(),
       registerUserData: dep(),
-    ),
-  );
-
-  // Coordinator
-  dep.registerFactory(
-    () => AuthCoordinatorImpl(
-      firebaseInfo: dep(),
     ),
   );
 

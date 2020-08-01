@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_colors.dart';
-import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
-import 'package:hiso/features/home/coordinator/home_coordinator.dart';
+import 'package:hiso/features/auth/navigator/auth_navigator.dart';
+import 'package:hiso/features/home/navigator/home_navigator.dart';
 import 'package:hiso/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:hiso/features/home/presentation/widgets/home/stack_action_widget.dart';
 
@@ -30,16 +29,12 @@ class HomePage extends StatelessWidget {
             builder: (context, state) {
               if (state is HomeLogout) {
                 WidgetsBinding.instance.addPostFrameCallback(
-                  (_) => CoordinatorProvider.instance
-                      .get<AuthCoordinator>()
-                      .goToLogin(),
+                  (_) => AuthNavigator.goToLogin(),
                 );
               }
               if (state is HomeUserDataInexist) {
                 WidgetsBinding.instance.addPostFrameCallback(
-                  (_) => CoordinatorProvider.instance
-                      .get<HomeCoordinator>()
-                      .goToValidation(),
+                  (_) => HomeNavigator.goToValidation(),
                 );
               }
               if (state is HomeDataLoadInProgress) {
