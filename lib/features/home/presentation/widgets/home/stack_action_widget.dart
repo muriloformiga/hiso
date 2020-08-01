@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
-import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/sizes.dart';
-import 'package:hiso/features/home/coordinator/home_coordinator.dart';
+import 'package:hiso/core/utils/app_colors.dart';
+import 'package:hiso/features/home/navigator/home_navigator.dart';
 
 class StackActionWidget extends StatelessWidget {
   @override
@@ -19,8 +18,7 @@ class StackActionWidget extends StatelessWidget {
           child: FloatingActionButton.extended(
             label: Text('Cadastrar'),
             icon: Icon(Icons.add),
-            onPressed: () =>
-                CoordinatorProvider.instance.get<HomeCoordinator>().goToPost(),
+            onPressed: () => HomeNavigator.goToPost(),
           ),
         ),
       ],

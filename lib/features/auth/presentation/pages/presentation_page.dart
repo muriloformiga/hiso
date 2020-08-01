@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_images.dart';
-import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
@@ -70,9 +69,7 @@ class PresentationPage extends StatelessWidget {
                 ),
                 CupertinoButton.filled(
                   child: Text(AuthStrings.nextStep),
-                  onPressed: () => CoordinatorProvider.instance
-                      .get<AuthCoordinator>()
-                      .goToRegister(),
+                  onPressed: () => AuthNavigator.goToRegister(),
                 ),
               ],
             ),

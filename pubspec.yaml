@@ -40,6 +40,7 @@ dependencies:
   get_it: ^4.0.2
   cloud_firestore: ^0.13.7
   flutter_masked_text: ^0.8.0
+  sailor: ^0.7.1
 
 dev_dependencies:
   flutter_test:

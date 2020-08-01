@@ -2,12 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 import 'package:hiso/core/widgets/input_text_widget.dart';
-import 'package:hiso/features/home/coordinator/home_coordinator.dart';
 import 'package:hiso/features/post/presentation/bloc/post_bloc.dart';
 import 'package:hiso/features/post/utils/post_strings.dart';
 import 'package:hiso/features/post/presentation/widgets/input_large_text_widget.dart';
@@ -67,11 +65,11 @@ class PostRegisterFormWidget extends StatelessWidget {
                     ),
                   );
                 }
-                if (state is PostPacientRegisterSucess) {
-                  CoordinatorProvider.instance
-                      .get<HomeCoordinator>()
-                      .goToSettings();
-                }
+                // if (state is PostPacientRegisterSucess) {
+                //   CoordinatorProvider.instance
+                //       .get<HomeCoordinator>()
+                //       .goToSettings();
+                // }
               },
               builder: (context, state) {
                 if (state is PostPacientRegisterLoading) {

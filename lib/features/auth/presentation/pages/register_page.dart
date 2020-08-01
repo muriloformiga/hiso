@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/utils/app_colors.dart';
-import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/register_form_widget.dart';
@@ -48,9 +48,12 @@ class RegisterPage extends StatelessWidget {
                   builder: (context, state) {
                     if (state is RegisterSuccess) {
                       WidgetsBinding.instance.addPostFrameCallback(
-                        (_) => CoordinatorProvider.instance
-                            .get<AuthCoordinator>()
-                            .goToHome(state.authUser.firebaseUser),
+                        (_) {
+                          User.instance.setId(state.authUser.firebaseUser.uid);
+                          User.instance
+                              .setEmail(state.authUser.firebaseUser.email);
+                          AuthNavigator.goToHome();
+                        },
                       );
                     } else if (state is RegisterFailure) {
                       return Text(

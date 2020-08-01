@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:hiso/core/coordinator/coordinator_provider.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/sizes.dart';
-import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
+import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/widgets/splash/rounded_box_widget.dart';
 
 class SplashPage extends StatefulWidget {
@@ -21,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback(
-      (_) => CoordinatorProvider.instance.get<AuthCoordinator>().start(),
+      (_) => AuthNavigator.goToLogin(),
     );
   }
 
