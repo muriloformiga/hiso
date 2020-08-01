@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/coordinator/coordinator_provider.dart';
+import 'package:hiso/core/widgets/input_text_widget.dart';
 import 'package:hiso/features/auth/coordinator/auth_coordinator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
-import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 
@@ -19,17 +19,17 @@ class LoginFormWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          ImputDecoratedWidget(
+          InputTextWidget(
             controller: emailController,
-            placeholder: AuthStrings.email,
+            text: AuthStrings.email,
           ),
           SizedBox(
             height: 10.0.h,
           ),
-          ImputDecoratedWidget(
+          InputTextWidget(
             controller: passwordController,
-            placeholder: AuthStrings.password,
-            isHideText: true,
+            text: AuthStrings.password,
+            isObscure: true,
           ),
           SizedBox(
             height: 20.0.h,

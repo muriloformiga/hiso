@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
+import 'package:hiso/core/widgets/input_text_widget.dart';
 
 class RegisterCardWidget extends StatelessWidget {
   const RegisterCardWidget({
@@ -20,9 +20,9 @@ class RegisterCardWidget extends StatelessWidget {
         itemCount: controller.length,
         itemBuilder: (BuildContext context, int index) {
           int key = placeholder.keys.elementAt(index);
-          return ImputDecoratedWidget(
+          return InputTextWidget(
             controller: controller[key],
-            placeholder: placeholder[key],
+            text: placeholder[key],
           );
         },
       ),

@@ -70,10 +70,7 @@ class LoginPage extends StatelessWidget {
                     fontSize: 20.h,
                     paddingValue: 10.h,
                   ),
-                  Container(
-                    margin: EdgeInsets.all(50.h),
-                    child: LoginFormWidget(),
-                  ),
+                  LoginFormWidget(),
                   LoginOptionsWidget(),
                 ],
               ),
