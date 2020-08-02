@@ -10,7 +10,7 @@ class AuthStrings {
   // Login
   static final welcomeMessage = 'Seja bem-vindo ao\nHISO';
   static final send = 'Entrar';
-  static final register = 'Cadastrar-se';
+  static final register = 'Cadastrar';
   static final loginGoogle = 'Login com Google';
   static final loginFacebook = 'Login com Facebook';
 

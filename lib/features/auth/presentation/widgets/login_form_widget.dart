@@ -14,7 +14,6 @@ class LoginFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      //padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -33,7 +32,7 @@ class LoginFormWidget extends StatelessWidget {
           SizedBox(
             height: 20.0.h,
           ),
-          CupertinoButton.filled(
+          CupertinoButton(
             child: Text(AuthStrings.send),
             onPressed: () {
               BlocProvider.of<LoginBloc>(context)
