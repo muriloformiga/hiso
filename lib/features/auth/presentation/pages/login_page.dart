@@ -7,6 +7,7 @@ import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
+import 'package:hiso/features/auth/presentation/widgets/decorated_divider_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_form_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_options_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/login_switch/login_switch_widget.dart';
@@ -68,10 +69,17 @@ class LoginPage extends StatelessWidget {
                   fontSize: 20.h,
                   paddingValue: 10.h,
                 ),
+                SizedBox(
+                  height: 30.h,
+                ),
                 LoginSwitchWidget(
                   onTap: (String value) {},
                 ),
+                SizedBox(
+                  height: 20.h,
+                ),
                 LoginFormWidget(),
+                DecoratedDividerWidget(),
                 LoginOptionsWidget(),
               ],
             ),

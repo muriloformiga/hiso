@@ -21,18 +21,24 @@ class LoginFormWidget extends StatelessWidget {
             controller: emailController,
             text: AuthStrings.email,
           ),
-          SizedBox(
-            height: 10.0.h,
-          ),
           InputTextWidget(
             controller: passwordController,
             text: AuthStrings.password,
             isObscure: true,
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              CupertinoButton(
+                child: Text(AuthStrings.register),
+                onPressed: () => AuthNavigator.goToPresentation(),
+              ),
+            ],
+          ),
           SizedBox(
             height: 20.0.h,
           ),
-          CupertinoButton(
+          CupertinoButton.filled(
             child: Text(AuthStrings.send),
             onPressed: () {
               BlocProvider.of<LoginBloc>(context)
@@ -44,11 +50,8 @@ class LoginFormWidget extends StatelessWidget {
                 );
             },
           ),
-          SizedBox(height: 5.h),
-          Text('ou'),
-          CupertinoButton(
-            child: Text(AuthStrings.register),
-            onPressed: () => AuthNavigator.goToPresentation(),
+          SizedBox(
+            height: 40.0.h,
           ),
         ],
       ),
