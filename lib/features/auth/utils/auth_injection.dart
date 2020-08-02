@@ -15,6 +15,7 @@ import 'package:hiso/features/auth/domain/usecases/register/register_user_data.d
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
+import 'package:hiso/features/auth/presentation/bloc/splash/splash_cubit.dart';
 import 'package:hiso/injection_container.dart';
 
 void initAuth() {
@@ -30,6 +31,11 @@ void initAuth() {
     () => RegisterBloc(
       registerWithEmail: dep(),
       registerUserData: dep(),
+    ),
+  );
+  dep.registerFactory(
+    () => SplashCubit(
+      firebaseInfo: dep(),
     ),
   );
 
