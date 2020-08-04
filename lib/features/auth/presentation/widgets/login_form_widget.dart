@@ -26,15 +26,6 @@ class LoginFormWidget extends StatelessWidget {
             text: AuthStrings.password,
             isObscure: true,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              CupertinoButton(
-                child: Text(AuthStrings.register),
-                onPressed: () => AuthNavigator.goToPresentation(),
-              ),
-            ],
-          ),
           SizedBox(
             height: 20.0.h,
           ),
@@ -49,6 +40,25 @@ class LoginFormWidget extends StatelessWidget {
                   ),
                 );
             },
+          ),
+          SizedBox(
+            height: 30.0.h,
+          ),
+          Container(
+            height: 50.h,
+            width: 150.w,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.red,
+              ),
+              borderRadius: BorderRadius.all(
+                Radius.circular(8.0),
+              ),
+            ),
+            child: CupertinoButton(
+              child: Text(AuthStrings.register),
+              onPressed: () => AuthNavigator.goToPresentation(),
+            ),
           ),
           SizedBox(
             height: 40.0.h,

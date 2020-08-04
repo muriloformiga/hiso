@@ -5,6 +5,7 @@ import 'package:hiso/core/utils/sizes.dart';
 
 abstract class AppTheme {
   static final hisoTheme = ThemeData(
+    fontFamily: 'SFPro',
     primaryColor: AppColors.white,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.transparent,
