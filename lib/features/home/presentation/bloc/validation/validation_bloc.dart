@@ -29,7 +29,15 @@ class ValidationBloc extends Bloc<ValidationEvent, ValidationState> {
     final result = await getUserData(NoParams());
     yield result.fold(
       (failure) => ValidationFailure(message: failure.message),
-      (userData) => ValidationSucess(userData: userData),
+      (userData) {
+        // User.instance.setName(userData.name);
+        // User.instance.setLastName(userData.lastName);
+        // User.instance.setCpf(userData.cpf);
+        // User.instance.setCode(userData.code);
+        // User.instance.setPhone(userData.phone);
+        // User.instance.setAccountType(userData.accountType);
+        return ValidationSucess(userData: userData);
+      },
     );
   }
 }

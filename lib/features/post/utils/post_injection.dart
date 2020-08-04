@@ -1,8 +1,10 @@
 import 'package:hiso/features/post/data/datasources/post_datasource.dart';
 import 'package:hiso/features/post/data/repositories/post_repository_impl.dart';
 import 'package:hiso/features/post/domain/repositories/post_repository.dart';
+import 'package:hiso/features/post/domain/usecases/get_pacient_data.dart';
 import 'package:hiso/features/post/domain/usecases/register_pacient.dart';
-import 'package:hiso/features/post/presentation/bloc/post_bloc.dart';
+import 'package:hiso/features/post/presentation/bloc/post/post_bloc.dart';
+import 'package:hiso/features/post/presentation/bloc/timeline/timeline_bloc.dart';
 import 'package:hiso/injection_container.dart';
 
 void initPost() {
@@ -12,9 +14,15 @@ void initPost() {
       registerPacient: dep(),
     ),
   );
+  dep.registerFactory(
+    () => TimelineBloc(
+      getPacientData: dep(),
+    ),
+  );
 
   // Use cases
   dep.registerLazySingleton(() => RegisterPacient(dep()));
+  dep.registerLazySingleton(() => GetPacientData(dep()));
 
   // Repository
   dep.registerLazySingleton<PostRepository>(

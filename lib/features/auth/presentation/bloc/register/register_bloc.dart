@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 
 import 'package:equatable/equatable.dart';
 import 'package:hiso/core/singletons/user.dart';
-import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_user_data.dart';
 import 'package:hiso/features/auth/domain/usecases/register/register_with_email.dart';
 import 'package:meta/meta.dart';
@@ -54,13 +53,14 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       },
       (user) async* {
         User.instance.setId(user.firebaseUser.uid);
-        yield* _mapToRegisterUserData(event, user);
+        User.instance.setEmail(user.firebaseUser.email);
+        yield* _mapToRegisterUserData(event);
       },
     );
   }
 
   Stream<RegisterState> _mapToRegisterUserData(
-      RegisterEmailStarted event, AuthUser user) async* {
+      RegisterEmailStarted event) async* {
     final result = await registerUserData(
       DataParams(
         name: event.name,
@@ -73,7 +73,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         message: 'Ocorreu uma falha ao salvar seus dados. '
             'Reinicie o aplicativo e tente novamente.',
       ),
-      (_) => RegisterSuccess(authUser: user),
+      (_) => RegisterSuccess(),
     );
   }
 }

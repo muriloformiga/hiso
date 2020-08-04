@@ -7,7 +7,6 @@ import 'package:hiso/features/auth/presentation/bloc/splash/splash_cubit.dart';
 import 'package:hiso/features/auth/presentation/pages/splash_page.dart';
 import 'package:hiso/injection_container.dart' as di;
 import 'package:hiso/injection_container.dart';
-import 'package:sailor/sailor.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,9 +28,6 @@ class HisoApp extends StatelessWidget {
         create: (_) => dep<SplashCubit>()..verifyCurrentUser(),
         child: SplashPage(),
       ),
-      navigatorObservers: [
-        SailorLoggingObserver(),
-      ],
       onGenerateRoute: Routes.sailor.generator(),
       navigatorKey: Routes.sailor.navigatorKey,
     );

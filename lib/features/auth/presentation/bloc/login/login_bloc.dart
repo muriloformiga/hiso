@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:equatable/equatable.dart';
 import 'package:hiso/core/error/failures.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/usecases/usecase.dart';
 import 'package:hiso/features/auth/domain/entities/auth_user.dart';
 
@@ -71,7 +72,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       Either<Failure, AuthUser> result) async* {
     yield result.fold(
       (failure) => LoginFailure(message: failure.message),
-      (user) => LoginSuccess(authUser: user),
+      (user) {
+        User.instance.setId(user.firebaseUser.uid);
+        User.instance.setEmail(user.firebaseUser.email);
+        return LoginSuccess();
+      },
     );
   }
 }

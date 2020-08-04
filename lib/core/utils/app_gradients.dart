@@ -11,4 +11,15 @@ abstract class AppGradients {
     ],
     stops: [0.5, 1],
   );
+
+  static final topGreenGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      AppColors.green[200],
+      AppColors.gray,
+      AppColors.gray,
+    ],
+    stops: [0.1, 0.5, 1],
+  );
 }
