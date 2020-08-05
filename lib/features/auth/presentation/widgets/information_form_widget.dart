@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
+import 'package:hiso/core/widgets/input_text_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 
@@ -12,22 +12,22 @@ class InformationFormWidget extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        ImputDecoratedWidget(
-          placeholder: AuthStrings.email,
+        InputTextWidget(
+          text: AuthStrings.email,
           controller: emailController,
         ),
         SizedBox(
           height: 10.0.h,
         ),
-        ImputDecoratedWidget(
-          placeholder: AuthStrings.password,
+        InputTextWidget(
+          text: AuthStrings.password,
           controller: passwordController,
-          isHideText: true,
+          isObscure: true,
         ),
-        ImputDecoratedWidget(
-          placeholder: AuthStrings.passwordRepeat,
+        InputTextWidget(
+          text: AuthStrings.passwordRepeat,
           controller: passwordRepeatController,
-          isHideText: true,
+          isObscure: true,
         ),
         SizedBox(
           height: 10.0.h,

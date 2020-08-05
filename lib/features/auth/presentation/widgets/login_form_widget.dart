@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hiso/core/widgets/input_text_widget.dart';
 import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
-import 'package:hiso/features/auth/presentation/widgets/imput_decorated_widget.dart';
 import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 
@@ -14,21 +14,26 @@ class LoginFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      //padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          ImputDecoratedWidget(
+          InputTextWidget(
             controller: emailController,
-            placeholder: AuthStrings.email,
+            text: AuthStrings.email,
           ),
-          SizedBox(
-            height: 10.0.h,
-          ),
-          ImputDecoratedWidget(
+          InputTextWidget(
             controller: passwordController,
-            placeholder: AuthStrings.password,
-            isHideText: true,
+            text: AuthStrings.password,
+            isObscure: true,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              CupertinoButton(
+                child: Text(AuthStrings.register),
+                onPressed: () => AuthNavigator.goToPresentation(),
+              ),
+            ],
           ),
           SizedBox(
             height: 20.0.h,
@@ -45,11 +50,8 @@ class LoginFormWidget extends StatelessWidget {
                 );
             },
           ),
-          SizedBox(height: 5.h),
-          Text('ou'),
-          CupertinoButton(
-            child: Text(AuthStrings.register),
-            onPressed: () => AuthNavigator.goToPresentation(),
+          SizedBox(
+            height: 40.0.h,
           ),
         ],
       ),
