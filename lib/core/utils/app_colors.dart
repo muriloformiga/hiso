@@ -13,8 +13,9 @@ abstract class AppColors {
       200: Color(0xFFF7F7FA),
       300: Color(0xFFD0D9D5),
       400: Color(0xFFABB3B0),
-      500: Color(0xFF6E7371),
-      600: Color(0xFF0D0D0D),
+      500: Color(0xFF9A99A2),
+      600: Color(0xFF6E7371),
+      700: Color(0xFF0D0D0D),
     },
   );
 

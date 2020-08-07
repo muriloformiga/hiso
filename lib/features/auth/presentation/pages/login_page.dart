@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/features/auth/navigator/auth_navigator.dart';
@@ -48,9 +47,6 @@ class LoginPage extends StatelessWidget {
                     if (state is LoginSuccess) {
                       WidgetsBinding.instance.addPostFrameCallback(
                         (_) {
-                          User.instance.setId(state.authUser.firebaseUser.uid);
-                          User.instance
-                              .setEmail(state.authUser.firebaseUser.email);
                           AuthNavigator.goToHome();
                         },
                       );

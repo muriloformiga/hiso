@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:hiso/core/info/firebase_info.dart';
+import 'package:hiso/core/singletons/user.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
@@ -21,6 +22,8 @@ class SplashCubit extends Cubit<SplashState> {
       emit(SplashUserIsNotLoggedIn());
       return;
     }
+    User.instance.setId(user.uid);
+    User.instance.setEmail(user.email);
     emit(SplashUserIsLoggedIn());
   }
 }

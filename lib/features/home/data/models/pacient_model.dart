@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/features/home/domain/entities/pacient.dart';
 import 'package:meta/meta.dart';
 
@@ -8,15 +7,23 @@ class PacientModel extends Pacient {
     @required String lastName,
     @required String hospital,
     @required String phone,
+    @required String creatorName,
+    @required String creatorLastName,
+    @required String creatorCode,
     @required String healthNumber,
-    @required Timestamp birthDate,
+    @required String birthDate,
+    @required Map<String, dynamic> updates,
   }) : super(
           name: name,
           lastName: lastName,
           hospital: hospital,
           phone: phone,
+          creatorName: creatorName,
+          creatorLastName: creatorLastName,
+          creatorCode: creatorCode,
           healthNumber: healthNumber,
           birthDate: birthDate,
+          updates: updates,
         );
 
   factory PacientModel.fromJson(Map<String, dynamic> data, String documentId) {
@@ -25,8 +32,12 @@ class PacientModel extends Pacient {
       lastName: data['lastName'],
       hospital: data['hospital'],
       phone: data['phone'],
+      creatorName: data['creatorName'],
+      creatorLastName: data['creatorLastName'],
+      creatorCode: data['creatorCode'],
       healthNumber: documentId,
       birthDate: data['birthDate'],
+      updates: data['updates'],
     );
   }
 

@@ -5,7 +5,6 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/usecases/usecase.dart';
 import 'package:hiso/features/auth/domain/usecases/logout/logout.dart';
-import 'package:hiso/features/home/domain/entities/pacient.dart';
 import 'package:hiso/features/home/domain/usecases/home/get_medical_pacients.dart';
 import 'package:hiso/features/home/domain/usecases/validation/get_user_data.dart';
 import 'package:meta/meta.dart';
@@ -62,24 +61,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         User.instance.setPhone(userData.phone);
         User.instance.setCpf(userData.cpf);
         User.instance.setCode(userData.code);
-        final result = await getMedicalPacients(NoParams());
-        result.fold(
-          (l) => null,
-          (pacients) {
-            for (Pacient p in pacients) {
-              print(p.name);
-            }
-          },
-        );
-        final results = await getMedicalPacients(NoParams());
-        results.fold(
-          (l) => null,
-          (pacients) {
-            for (Pacient p in pacients) {
-              print(p.name);
-            }
-          },
-        );
+        // final result = await getMedicalPacients(NoParams());
+        // result.fold(
+        //   (l) => null,
+        //   (pacients) {
+        //     for (Pacient p in pacients) {
+        //       print(p.name);
+        //     }
+        //   },
+        // );
+        // final results = await getMedicalPacients(NoParams());
+        // results.fold(
+        //   (l) => null,
+        //   (pacients) {
+        //     for (Pacient p in pacients) {
+        //       print(p.name);
+        //     }
+        //   },
+        // );
         yield HomeUserDataLoadSucess();
       },
     );

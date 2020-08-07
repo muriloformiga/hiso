@@ -2,14 +2,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/navigator/routes.dart';
 import 'package:hiso/features/home/presentation/bloc/validation/validation_bloc.dart';
 import 'package:hiso/features/home/presentation/pages/validation_page.dart';
-import 'package:hiso/features/post/presentation/bloc/post_bloc.dart';
+import 'package:hiso/features/post/presentation/bloc/post/post_bloc.dart';
+import 'package:hiso/features/post/presentation/bloc/timeline/timeline_bloc.dart';
 import 'package:hiso/features/post/presentation/pages/post_page.dart';
+import 'package:hiso/features/post/presentation/pages/timeline_page.dart';
 import 'package:hiso/injection_container.dart';
 import 'package:sailor/sailor.dart';
 
 abstract class HomeRoutes {
   static const validationPage = '/validation';
   static const postPage = '/post';
+  static const timelinePage = '/timeline';
   static const settingsPage = '/settings';
 
   static void createRoutes() {
@@ -21,6 +24,15 @@ abstract class HomeRoutes {
             return BlocProvider<ValidationBloc>(
               create: (_) => dep<ValidationBloc>(),
               child: ValidationPage(),
+            );
+          },
+        ),
+        SailorRoute(
+          name: timelinePage,
+          builder: (context, args, params) {
+            return BlocProvider<TimelineBloc>(
+              create: (_) => dep<TimelineBloc>(),
+              child: TimelinePage(args),
             );
           },
         ),

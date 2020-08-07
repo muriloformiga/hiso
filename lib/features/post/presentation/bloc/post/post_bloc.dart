@@ -45,7 +45,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     );
     yield result.fold(
       (failure) => PostPacientRegisterError(message: failure.message),
-      (_) => PostPacientRegisterSucess(),
+      (_) => PostPacientRegisterSucess(healthNumber: event.healthNumber),
     );
   }
 

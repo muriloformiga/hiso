@@ -47,7 +47,10 @@ abstract class AuthRoutes {
           name: homePage,
           builder: (context, args, params) {
             return BlocProvider<HomeBloc>(
-              create: (_) => dep<HomeBloc>(),
+              create: (_) => dep<HomeBloc>()
+                ..add(
+                  HomeGetUserData(),
+                ),
               child: HomePage(),
             );
           },

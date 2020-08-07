@@ -20,4 +20,13 @@ class PostPacientRegisterError extends PostState {
   List<Object> get props => [message];
 }
 
-class PostPacientRegisterSucess extends PostState {}
+class PostPacientRegisterSucess extends PostState {
+  PostPacientRegisterSucess({
+    @required this.healthNumber,
+  });
+
+  final String healthNumber;
+
+  @override
+  List<Object> get props => [healthNumber];
+}
