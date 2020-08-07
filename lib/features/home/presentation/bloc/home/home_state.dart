@@ -26,8 +26,8 @@ class HomeUserDataInexist extends HomeState {
   List<Object> get props => [message];
 }
 
-class HomeUserDataError extends HomeState {
-  HomeUserDataError({@required this.message});
+class HomeUserDataLoadError extends HomeState {
+  HomeUserDataLoadError({@required this.message});
 
   final String message;
 
@@ -37,4 +37,19 @@ class HomeUserDataError extends HomeState {
 
 class HomeUserDataLoadSucess extends HomeState {}
 
-class HomeDataLoadInProgress extends HomeState {}
+class HomeUserDataLoading extends HomeState {}
+
+class HomeMedicalPacientsLoading extends HomeState {}
+
+class HomeMedicalPacientsLoadError extends HomeState {}
+
+class HomeMedicalPacientsLoadSucess extends HomeState {
+  HomeMedicalPacientsLoadSucess({
+    @required this.pacients,
+  });
+
+  final List<Pacient> pacients;
+
+  @override
+  List<Object> get props => [pacients];
+}

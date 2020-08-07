@@ -1,4 +1,5 @@
-import 'package:hiso/features/home/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/update.dart';
 import 'package:meta/meta.dart';
 
 class PacientModel extends Pacient {
@@ -12,7 +13,7 @@ class PacientModel extends Pacient {
     @required String creatorCode,
     @required String healthNumber,
     @required String birthDate,
-    @required Map<String, dynamic> updates,
+    @required List<Update> updates,
   }) : super(
           name: name,
           lastName: lastName,
@@ -26,28 +27,22 @@ class PacientModel extends Pacient {
           updates: updates,
         );
 
-  factory PacientModel.fromJson(Map<String, dynamic> data, String documentId) {
+  factory PacientModel.fromDocument(
+    Map<String, dynamic> pacientData,
+    List<Update> updateData,
+    String documentId,
+  ) {
     return PacientModel(
-      name: data['name'],
-      lastName: data['lastName'],
-      hospital: data['hospital'],
-      phone: data['phone'],
-      creatorName: data['creatorName'],
-      creatorLastName: data['creatorLastName'],
-      creatorCode: data['creatorCode'],
+      name: pacientData['name'],
+      lastName: pacientData['lastName'],
+      hospital: pacientData['hospital'],
+      phone: pacientData['phone'],
+      creatorName: pacientData['creatorName'],
+      creatorLastName: pacientData['creatorLastName'],
+      creatorCode: pacientData['creatorCode'],
       healthNumber: documentId,
-      birthDate: data['birthDate'],
-      updates: data['updates'],
+      birthDate: pacientData['birthDate'],
+      updates: updateData,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'lastName': lastName,
-      'hospital': hospital,
-      'phone': phone,
-      'birthDate': birthDate,
-    };
   }
 }

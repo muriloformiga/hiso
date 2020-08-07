@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:hiso/features/post/domain/repositories/post_repository.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/core/usecases/usecase.dart';
-import 'package:hiso/features/home/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
 
 class GetPacientData implements UseCase<Pacient, Params> {
   GetPacientData(this.postRepository);

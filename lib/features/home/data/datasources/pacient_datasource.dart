@@ -1,4 +1,4 @@
-import 'package:hiso/features/home/data/models/pacient_model.dart';
+import 'package:hiso/features/post/data/models/pacient_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/firebase_info.dart';
@@ -33,14 +33,14 @@ class PacientDataSourceImpl implements PacientDataSource {
       }
 
       List<PacientModel> list = [];
-      for (DocumentSnapshot document in querySnapshot.documents) {
-        list.add(
-          PacientModel.fromJson(
+      //for (DocumentSnapshot document in querySnapshot.documents) {
+      /*list.add(
+          PacientModel.fromDocument(
             document.data,
             document.documentID,
           ),
-        );
-      }
+        );*/
+      //}
       return list;
     } catch (_) {
       throw FirestoreException();

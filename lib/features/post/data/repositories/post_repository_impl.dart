@@ -3,7 +3,7 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/core/singletons/user.dart';
-import 'package:hiso/features/home/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
 import 'package:hiso/features/post/data/datasources/post_datasource.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/features/post/domain/repositories/post_repository.dart';
@@ -28,7 +28,7 @@ class PostRepositoryImpl implements PostRepository {
   ) async {
     if (await networkInfo.isConnected) {
       try {
-        final data = <String, dynamic>{
+        final pacientData = <String, dynamic>{
           'creatorId': User.instance.userId,
           'creatorName': User.instance.name,
           'creatorLastName': User.instance.lastName,
@@ -37,12 +37,16 @@ class PostRepositoryImpl implements PostRepository {
           'lastName': lastName,
           'hospital': hospital,
           'birthDate': birthDate,
-          'updates': <String, dynamic>{
-            'message': message,
-            'date': DateTime.now(),
-          },
         };
-        final result = await postDataSource.registerPacient(healthNumber, data);
+        final updateData = <String, dynamic>{
+          'message': message,
+          'date': DateTime.now(),
+        };
+        final result = await postDataSource.registerPacient(
+          healthNumber,
+          pacientData,
+          updateData,
+        );
         return Right(result);
       } on FirestorePacientAlreadyExistsException {
         return Left(FirestorePacientAlreadyExistsFailure());
