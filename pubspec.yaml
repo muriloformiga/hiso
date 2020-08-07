@@ -41,6 +41,7 @@ dependencies:
   cloud_firestore: ^0.13.7
   flutter_masked_text: ^0.8.0
   sailor: ^0.7.1
+  carousel_slider: ^1.4.1
 
 dev_dependencies:
   flutter_test:
