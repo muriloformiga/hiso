@@ -8,7 +8,12 @@ import 'package:hiso/features/auth/utils/auth_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class PresentationPage extends StatelessWidget {
+class PresentationPage extends StatefulWidget {
+  @override
+  _PresentationPageState createState() => _PresentationPageState();
+}
+
+class _PresentationPageState extends State<PresentationPage> {
   final List<Widget> cardList = [
     PageDoctor(),
     PageFamily(),
@@ -46,23 +51,28 @@ class PresentationPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 CarouselSlider(
-                  height: 200.0,
+                  height: 410.h,
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: Duration(seconds: 10),
+                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
                   autoPlayCurve: Curves.fastOutSlowIn,
-                  pauseAutoPlayOnTouch: Duration(seconds: 10),
-                  aspectRatio: 2.0,
+                  pauseAutoPlayOnTouch: Duration(seconds: 15),
+                  aspectRatio: 1.0,
                   onPageChanged: (index) {
-                    _currentIndex = index;
+                    setState(() {
+                      _currentIndex = index;
+                    });
                   },
                   items: cardList.map((card) {
                     return Builder(builder: (BuildContext context) {
                       return Container(
-                        height: MediaQuery.of(context).size.height * 0.30,
-                        width: MediaQuery.of(context).size.width,
+                        height: 410.h,
+                        width: 311.w,
                         child: Card(
-                          color: Colors.blueAccent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32),
+                          ),
+                          color: AppColors.orange,
                           child: card,
                         ),
                       );
@@ -80,15 +90,42 @@ class PresentationPage extends StatelessWidget {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: _currentIndex == index
-                            ? Colors.blueAccent
-                            : Colors.grey,
+                            ? AppColors.gray[600]
+                            : AppColors.gray[400],
                       ),
                     );
                   }),
                 ),
-                CupertinoButton.filled(
-                  child: Text(AuthStrings.nextStep),
-                  onPressed: () => AuthNavigator.goToRegister(),
+                SizedBox(
+                  height: 50.0.h,
+                ),
+                Container(
+                  height: 50.h,
+                  width: 217.w,
+                  child: CupertinoButton.filled(
+                    padding: EdgeInsets.all(0),
+                    child: Text('Cadastre-se como profissional'),
+                    onPressed: () => AuthNavigator.goToRegister(),
+                  ),
+                ),
+                SizedBox(
+                  height: 30.0.h,
+                ),
+                Container(
+                  height: 50.h,
+                  width: 217.w,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.red,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(8.0),
+                    ),
+                  ),
+                  child: CupertinoButton(
+                    child: Text('Cadastre-se como familiar'),
+                    onPressed: () => AuthNavigator.goToRegister(),
+                  ),
                 ),
               ],
             ),
@@ -115,11 +152,21 @@ class PageDoctor extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3,
-            child: CustomTextWidget(
-              text: AuthStrings.provideInfoMessage,
-              fontSize: 16.h,
-              paddingValue: 20.h,
+            flex: 2,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(32),
+                  bottomRight: Radius.circular(32),
+                ),
+              ),
+              child: CustomTextWidget(
+                text: AuthStrings.provideInfoMessage,
+                fontSize: 16.h,
+                paddingValue: 20.h,
+              ),
             ),
           ),
         ],
@@ -144,11 +191,21 @@ class PageFamily extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 3,
-            child: CustomTextWidget(
-              text: AuthStrings.getInfoMessage,
-              fontSize: 16.h,
-              paddingValue: 20.h,
+            flex: 2,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(32),
+                  bottomRight: Radius.circular(32),
+                ),
+              ),
+              child: CustomTextWidget(
+                text: AuthStrings.getInfoMessage,
+                fontSize: 16.h,
+                paddingValue: 20.h,
+              ),
             ),
           ),
         ],
