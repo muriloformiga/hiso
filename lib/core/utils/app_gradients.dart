@@ -22,4 +22,13 @@ abstract class AppGradients {
     ],
     stops: [0.1, 0.5, 1],
   );
+
+  static final whiteToGreen = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      AppColors.white,
+      AppColors.green[200],
+    ],
+  );
 }

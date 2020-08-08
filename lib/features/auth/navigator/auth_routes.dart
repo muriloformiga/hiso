@@ -6,6 +6,7 @@ import 'package:hiso/features/auth/presentation/pages/login_page.dart';
 import 'package:hiso/features/auth/presentation/pages/presentation_page.dart';
 import 'package:hiso/features/auth/presentation/pages/register_page.dart';
 import 'package:hiso/features/home/presentation/bloc/home/home_bloc.dart';
+import 'package:hiso/features/home/presentation/bloc/pacients/pacients_bloc.dart';
 import 'package:hiso/features/home/presentation/pages/home_page.dart';
 import 'package:hiso/injection_container.dart';
 import 'package:sailor/sailor.dart';
@@ -46,11 +47,15 @@ abstract class AuthRoutes {
         SailorRoute(
           name: homePage,
           builder: (context, args, params) {
-            return BlocProvider<HomeBloc>(
-              create: (_) => dep<HomeBloc>()
-                ..add(
-                  HomeGetUserData(),
+            return MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (_) => dep<HomeBloc>()..add(HomeGetUserData()),
                 ),
+                BlocProvider(
+                  create: (_) => dep<PacientsBloc>(),
+                ),
+              ],
               child: HomePage(),
             );
           },

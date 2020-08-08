@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/firebase_info.dart';
-import 'package:hiso/features/home/data/models/pacient_model.dart';
+import 'package:hiso/features/post/data/models/pacient_model.dart';
+import 'package:hiso/features/post/data/models/update_model.dart';
 import 'package:meta/meta.dart';
 
 abstract class PostDataSource {
@@ -13,7 +14,8 @@ abstract class PostDataSource {
   /// existe e [FirestoreException] em caso de outro erro.
   Future<void> registerPacient(
     String healthNumber,
-    Map<String, dynamic> data,
+    Map<String, dynamic> pacientData,
+    Map<String, dynamic> updateData,
   );
 
   /// Faz requisição dos dados de um paciente para
@@ -34,7 +36,8 @@ class PostDataSourceImpl implements PostDataSource {
   @override
   Future<void> registerPacient(
     String healthNumber,
-    Map<String, dynamic> data,
+    Map<String, dynamic> pacientData,
+    Map<String, dynamic> updateData,
   ) async {
     try {
       final documentSnapshot = await firestore
@@ -45,7 +48,13 @@ class PostDataSourceImpl implements PostDataSource {
         await firestore
             .collection(FirebaseInfo.pacientCollection)
             .document(healthNumber)
-            .setData(data);
+            .setData(pacientData);
+        await firestore
+            .collection(FirebaseInfo.pacientCollection)
+            .document(healthNumber)
+            .collection(FirebaseInfo.updateCollection)
+            .document()
+            .setData(updateData);
       } else {
         throw FirestorePacientAlreadyExistsException();
       }
@@ -63,9 +72,29 @@ class PostDataSourceImpl implements PostDataSource {
           .collection(FirebaseInfo.pacientCollection)
           .document(healthNumber)
           .get();
-      return PacientModel.fromJson(documentSnapshot.data, healthNumber);
+      final pacientUpdates = await _getPacientUpdates(healthNumber);
+      return PacientModel.fromDocument(
+        documentSnapshot.data,
+        pacientUpdates,
+        healthNumber,
+      );
     } catch (_) {
       throw FirestoreException();
     }
+  }
+
+  Future<List<UpdateModel>> _getPacientUpdates(String healthNumber) async {
+    final querySnapshot = await firestore
+        .collection(FirebaseInfo.pacientCollection)
+        .document(healthNumber)
+        .collection(FirebaseInfo.updateCollection)
+        .getDocuments();
+    List<UpdateModel> list = [];
+    for (DocumentSnapshot document in querySnapshot.documents) {
+      list.add(
+        UpdateModel.fromJson(document.data),
+      );
+    }
+    return list;
   }
 }

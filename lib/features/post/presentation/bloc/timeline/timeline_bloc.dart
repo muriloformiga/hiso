@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:hiso/features/home/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hiso/features/post/domain/usecases/get_pacient_data.dart';

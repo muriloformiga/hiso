@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:hiso/core/error/failures.dart';
 import 'package:hiso/features/home/domain/repositories/pacient_repository.dart';
 import 'package:hiso/core/usecases/usecase.dart';
-import 'package:hiso/features/home/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
 
 class GetMedicalPacients implements UseCase<List<Pacient>, NoParams> {
   GetMedicalPacients(this.pacientRepository);

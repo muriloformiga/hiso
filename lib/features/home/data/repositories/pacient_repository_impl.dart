@@ -4,7 +4,7 @@ import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/home/data/datasources/pacient_datasource.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/core/error/failures.dart';
-import 'package:hiso/features/home/domain/entities/pacient.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
 import 'package:hiso/features/home/domain/repositories/pacient_repository.dart';
 
 class PacientRepositoryImpl implements PacientRepository {

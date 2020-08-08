@@ -7,6 +7,7 @@ import 'package:hiso/features/home/domain/repositories/validation_repository.dar
 import 'package:hiso/features/home/domain/usecases/home/get_medical_pacients.dart';
 import 'package:hiso/features/home/domain/usecases/validation/get_user_data.dart';
 import 'package:hiso/features/home/presentation/bloc/home/home_bloc.dart';
+import 'package:hiso/features/home/presentation/bloc/pacients/pacients_bloc.dart';
 import 'package:hiso/features/home/presentation/bloc/validation/validation_bloc.dart';
 import 'package:hiso/injection_container.dart';
 
@@ -16,6 +17,10 @@ void initHome() {
     () => HomeBloc(
       logout: dep(),
       getUserData: dep(),
+    ),
+  );
+  dep.registerFactory(
+    () => PacientsBloc(
       getMedicalPacients: dep(),
     ),
   );

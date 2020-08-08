@@ -1,4 +1,4 @@
-import 'package:hiso/features/home/data/models/pacient_model.dart';
+import 'package:hiso/features/post/data/models/pacient_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/firebase_info.dart';
@@ -18,7 +18,7 @@ class PacientDataSourceImpl implements PacientDataSource {
 
   final Firestore firestore;
   final String creatorIdField = 'creatorId';
-  final int queryLimit = 2;
+  final int queryLimit = 10;
 
   static List<DocumentSnapshot> _lastDocument;
 
@@ -26,16 +26,15 @@ class PacientDataSourceImpl implements PacientDataSource {
   Future<List<PacientModel>> getMedicalPacients() async {
     try {
       QuerySnapshot querySnapshot;
+      List<PacientModel> list = [];
       if (_lastDocument == null) {
         querySnapshot = await _getInitialData();
       } else {
         querySnapshot = await _getMoreData();
       }
-
-      List<PacientModel> list = [];
       for (DocumentSnapshot document in querySnapshot.documents) {
         list.add(
-          PacientModel.fromJson(
+          PacientModel.fromBasicData(
             document.data,
             document.documentID,
           ),
