@@ -58,7 +58,9 @@ class _PresentationPageState extends State<PresentationPage> {
                     autoPlayAnimationDuration: Duration(milliseconds: 2000),
                     autoPlayCurve: Curves.fastOutSlowIn,
                     pauseAutoPlayOnTouch: Duration(seconds: 15),
-                    aspectRatio: 1.0,
+                    aspectRatio: 16 / 9,
+                    enlargeCenterPage: true,
+                    viewportFraction: 1.0,
                     onPageChanged: (index) {
                       setState(() {
                         _currentIndex = index;
@@ -102,7 +104,7 @@ class _PresentationPageState extends State<PresentationPage> {
                   ),
                   Container(
                     child: CupertinoButton.filled(
-                      padding: EdgeInsets.all(0),
+                      padding: EdgeInsets.all(15.w),
                       child: Text(
                         'Cadastre-se como profissional',
                         style: TextStyle(
@@ -158,11 +160,12 @@ class PageDoctor extends StatelessWidget {
             flex: 2,
             child: Image.asset(
               AppImages.doctor,
-              height: 80,
+              fit: BoxFit.fill,
+              height: 100.h,
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -174,7 +177,7 @@ class PageDoctor extends StatelessWidget {
               ),
               child: CustomTextWidget(
                 text: AuthStrings.provideInfoMessage,
-                fontSize: 16.h,
+                fontSize: 12.sp,
                 paddingValue: 20.h,
               ),
             ),
@@ -197,11 +200,12 @@ class PageFamily extends StatelessWidget {
             flex: 2,
             child: Image.asset(
               AppImages.man,
+              fit: BoxFit.fill,
               height: 80.h,
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Container(
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -213,7 +217,7 @@ class PageFamily extends StatelessWidget {
               ),
               child: CustomTextWidget(
                 text: AuthStrings.getInfoMessage,
-                fontSize: 16.h,
+                fontSize: 12.sp,
                 paddingValue: 20.h,
               ),
             ),

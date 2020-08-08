@@ -42,7 +42,17 @@ class LoginPage extends StatelessWidget {
                     image: AssetImage(AppImages.logo),
                   ),
                 ),
-                BlocBuilder<LoginBloc, LoginState>(
+                BlocConsumer<LoginBloc, LoginState>(
+                  listener: (context, state) {
+                    if (state is LoginFailure) {
+                      Scaffold.of(context).hideCurrentSnackBar();
+                      Scaffold.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(state.message),
+                        ),
+                      );
+                    }
+                  },
                   builder: (context, state) {
                     if (state is LoginSuccess) {
                       WidgetsBinding.instance.addPostFrameCallback(

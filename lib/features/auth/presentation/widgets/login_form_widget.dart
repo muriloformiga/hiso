@@ -61,6 +61,7 @@ class LoginFormWidget extends StatelessWidget {
               ),
             ),
             child: CupertinoButton(
+              padding: EdgeInsets.only(left: 42.w, right: 42.w),
               color: AppColors.transparent,
               child: Text(
                 AuthStrings.register,
