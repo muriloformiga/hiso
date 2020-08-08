@@ -7,13 +7,13 @@ class PacientModel extends Pacient {
     @required String name,
     @required String lastName,
     @required String hospital,
-    @required String phone,
-    @required String creatorName,
-    @required String creatorLastName,
-    @required String creatorCode,
     @required String healthNumber,
     @required String birthDate,
-    @required List<Update> updates,
+    String phone,
+    String creatorName,
+    String creatorLastName,
+    String creatorCode,
+    List<Update> updates,
   }) : super(
           name: name,
           lastName: lastName,
@@ -43,6 +43,19 @@ class PacientModel extends Pacient {
       healthNumber: documentId,
       birthDate: pacientData['birthDate'],
       updates: updateData,
+    );
+  }
+
+  factory PacientModel.fromBasicData(
+    Map<String, dynamic> data,
+    String documentId,
+  ) {
+    return PacientModel(
+      name: data['name'],
+      lastName: data['lastName'],
+      hospital: data['hospital'],
+      birthDate: data['birthDate'],
+      healthNumber: documentId,
     );
   }
 }

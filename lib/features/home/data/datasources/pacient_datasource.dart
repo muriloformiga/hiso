@@ -18,7 +18,7 @@ class PacientDataSourceImpl implements PacientDataSource {
 
   final Firestore firestore;
   final String creatorIdField = 'creatorId';
-  final int queryLimit = 2;
+  final int queryLimit = 10;
 
   static List<DocumentSnapshot> _lastDocument;
 
@@ -26,21 +26,20 @@ class PacientDataSourceImpl implements PacientDataSource {
   Future<List<PacientModel>> getMedicalPacients() async {
     try {
       QuerySnapshot querySnapshot;
+      List<PacientModel> list = [];
       if (_lastDocument == null) {
         querySnapshot = await _getInitialData();
       } else {
         querySnapshot = await _getMoreData();
       }
-
-      List<PacientModel> list = [];
-      //for (DocumentSnapshot document in querySnapshot.documents) {
-      /*list.add(
-          PacientModel.fromDocument(
+      for (DocumentSnapshot document in querySnapshot.documents) {
+        list.add(
+          PacientModel.fromBasicData(
             document.data,
             document.documentID,
           ),
-        );*/
-      //}
+        );
+      }
       return list;
     } catch (_) {
       throw FirestoreException();

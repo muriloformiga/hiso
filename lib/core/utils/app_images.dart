@@ -11,6 +11,8 @@ abstract class AppImages {
 
   static String get doctorMan => _geral(iconName: 'doctor_man');
 
+  static String get doctors => _geral(iconName: 'doctors');
+
   static String get doctor => _geral(iconName: 'medica');
 
   static String get family => _geral(iconName: 'family');
@@ -22,4 +24,6 @@ abstract class AppImages {
   static String get google => _geral(iconName: 'google');
 
   static String get apple => _geral(iconName: 'apple');
+
+  static String get loading => _geral(iconName: 'loading');
 }

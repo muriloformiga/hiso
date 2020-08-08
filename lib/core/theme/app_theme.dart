@@ -30,13 +30,14 @@ abstract class AppTheme {
         fontSize: 36.sp,
         fontStyle: FontStyle.italic,
       ),
+      bodyText1: TextStyle(
+        fontSize: 16.sp,
+        color: AppColors.gray[700],
+      ),
       bodyText2: TextStyle(
         fontSize: 14.sp,
+        color: AppColors.gray[600],
       ),
-    ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: AppColors.orange,
-      elevation: 1,
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,

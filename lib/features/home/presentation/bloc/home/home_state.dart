@@ -38,18 +38,3 @@ class HomeUserDataLoadError extends HomeState {
 class HomeUserDataLoadSucess extends HomeState {}
 
 class HomeUserDataLoading extends HomeState {}
-
-class HomeMedicalPacientsLoading extends HomeState {}
-
-class HomeMedicalPacientsLoadError extends HomeState {}
-
-class HomeMedicalPacientsLoadSucess extends HomeState {
-  HomeMedicalPacientsLoadSucess({
-    @required this.pacients,
-  });
-
-  final List<Pacient> pacients;
-
-  @override
-  List<Object> get props => [pacients];
-}
