@@ -46,88 +46,98 @@ class _PresentationPageState extends State<PresentationPage> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: <Widget>[
-                CarouselSlider(
-                  height: 410.h,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 10),
-                  autoPlayAnimationDuration: Duration(milliseconds: 2000),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  pauseAutoPlayOnTouch: Duration(seconds: 15),
-                  aspectRatio: 1.0,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                  items: cardList.map((card) {
-                    return Builder(builder: (BuildContext context) {
-                      return Container(
-                        height: 410.h,
-                        width: 311.w,
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  CarouselSlider(
+                    height: 410.h,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(seconds: 10),
+                    autoPlayAnimationDuration: Duration(milliseconds: 2000),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    pauseAutoPlayOnTouch: Duration(seconds: 15),
+                    aspectRatio: 1.0,
+                    onPageChanged: (index) {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    },
+                    items: cardList.map((card) {
+                      return Builder(builder: (BuildContext context) {
+                        return Container(
+                          height: 410.h,
+                          width: 311.w,
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(32),
+                            ),
+                            color: AppColors.orange,
+                            child: card,
                           ),
-                          color: AppColors.orange,
-                          child: card,
+                        );
+                      });
+                    }).toList(),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: map<Widget>(cardList, (index, url) {
+                      return Container(
+                        width: 10.0,
+                        height: 10.0,
+                        margin: EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 2.0),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: _currentIndex == index
+                              ? AppColors.gray[600]
+                              : AppColors.gray[400],
                         ),
                       );
-                    });
-                  }).toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: map<Widget>(cardList, (index, url) {
-                    return Container(
-                      width: 10.0,
-                      height: 10.0,
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: _currentIndex == index
-                            ? AppColors.gray[600]
-                            : AppColors.gray[400],
+                    }),
+                  ),
+                  SizedBox(
+                    height: 50.0.h,
+                  ),
+                  Container(
+                    child: CupertinoButton.filled(
+                      padding: EdgeInsets.all(0),
+                      child: Text(
+                        'Cadastre-se como profissional',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    );
-                  }),
-                ),
-                SizedBox(
-                  height: 50.0.h,
-                ),
-                Container(
-                  height: 50.h,
-                  width: 217.w,
-                  child: CupertinoButton.filled(
-                    padding: EdgeInsets.all(0),
-                    child: Text('Cadastre-se como profissional'),
-                    onPressed: () => AuthNavigator.goToRegister(),
-                  ),
-                ),
-                SizedBox(
-                  height: 30.0.h,
-                ),
-                Container(
-                  height: 50.h,
-                  width: 217.w,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.red,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(8.0),
+                      onPressed: () => AuthNavigator.goToRegister(),
                     ),
                   ),
-                  child: CupertinoButton(
-                    child: Text('Cadastre-se como familiar'),
-                    onPressed: () => AuthNavigator.goToRegister(),
+                  SizedBox(
+                    height: 30.0.h,
                   ),
-                ),
-              ],
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.red,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    child: CupertinoButton(
+                      child: Text(
+                        'Cadastre-se como familiar',
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: () => AuthNavigator.goToRegister(),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/widgets/input_text_widget.dart';
 import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/bloc/login/login_bloc.dart';
@@ -30,7 +31,13 @@ class LoginFormWidget extends StatelessWidget {
             height: 20.0.h,
           ),
           CupertinoButton.filled(
-            child: Text(AuthStrings.send),
+            child: Text(
+              AuthStrings.send,
+              style: TextStyle(
+                fontSize: 17.sp,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             onPressed: () {
               BlocProvider.of<LoginBloc>(context)
                 ..add(
@@ -45,8 +52,6 @@ class LoginFormWidget extends StatelessWidget {
             height: 30.0.h,
           ),
           Container(
-            height: 50.h,
-            width: 150.w,
             decoration: BoxDecoration(
               border: Border.all(
                 color: Colors.red,
@@ -56,7 +61,15 @@ class LoginFormWidget extends StatelessWidget {
               ),
             ),
             child: CupertinoButton(
-              child: Text(AuthStrings.register),
+              color: AppColors.transparent,
+              child: Text(
+                AuthStrings.register,
+                style: TextStyle(
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.orange[400],
+                ),
+              ),
               onPressed: () => AuthNavigator.goToPresentation(),
             ),
           ),
