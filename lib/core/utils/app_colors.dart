@@ -5,6 +5,7 @@ abstract class AppColors {
   static Color white = Colors.white;
   static Color red = Colors.red;
   static Color transparent = Colors.transparent;
+  static Color salmon = Color(0xFFf6af94);
 
   static const gray = MaterialColor(
     0xFFF5FFFB,

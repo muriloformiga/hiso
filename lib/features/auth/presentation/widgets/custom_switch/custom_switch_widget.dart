@@ -56,12 +56,11 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
           },
           child: AnimatedContainer(
             duration: _duration,
-            padding: EdgeInsets.symmetric(horizontal: 5.w),
-            height: 60.h,
-            width: 320.w,
+            height: 32.h,
+            width: 196.w,
             decoration: BoxDecoration(
-              color: _selected ? AppColors.blue : AppColors.green,
-              borderRadius: BorderRadius.circular(50),
+              color: _selected ? AppColors.gray[300] : AppColors.gray[300],
+              borderRadius: BorderRadius.circular(8),
             ),
             child: Stack(
               children: <Widget>[
@@ -70,11 +69,11 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                   alignment:
                       _selected ? Alignment.centerLeft : Alignment.centerRight,
                   child: Container(
-                    height: 50.h,
-                    width: 160.w,
+                    height: 28.h,
+                    width: 96.w,
                     decoration: BoxDecoration(
-                      color: AppColors.gray,
-                      borderRadius: BorderRadius.circular(50),
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(8),
                       boxShadow: <BoxShadow>[
                         BoxShadow(
                           color: AppColors.gray.withOpacity(0.3),
@@ -91,17 +90,17 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                     Expanded(
                       child: Center(
                         child: AnimatedDefaultTextStyle(
-                          child: Text(AuthStrings.relative),
+                          child: Text(AuthStrings.professional),
                           style: _selected
                               ? TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.gray,
+                                  color: AppColors.black,
                                 )
                               : TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.normal,
-                                  color: AppColors.blue,
+                                  color: AppColors.black,
                                 ),
                           duration: _duration,
                         ),
@@ -110,17 +109,17 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                     Expanded(
                       child: Center(
                         child: AnimatedDefaultTextStyle(
-                          child: Text(AuthStrings.professional),
+                          child: Text(AuthStrings.relative),
                           style: !_selected
                               ? TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.gray,
+                                  color: AppColors.black,
                                 )
                               : TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.normal,
-                                  color: AppColors.orange,
+                                  color: AppColors.black,
                                 ),
                           duration: _duration,
                         ),

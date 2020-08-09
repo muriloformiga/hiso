@@ -75,7 +75,7 @@ class _PresentationPageState extends State<PresentationPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32),
                             ),
-                            color: AppColors.orange,
+                            color: AppColors.salmon,
                             child: card,
                           ),
                         );
@@ -158,7 +158,7 @@ class PageDoctor extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Image.asset(
               AppImages.doctor,
               fit: BoxFit.fill,
@@ -176,10 +176,23 @@ class PageDoctor extends StatelessWidget {
                   bottomRight: Radius.circular(32),
                 ),
               ),
-              child: CustomTextWidget(
-                text: AuthStrings.provideInfoMessage,
-                fontSize: 12.sp,
-                paddingValue: 20.h,
+              child: Column(
+                children: [
+                  Text(
+                    'Profissional de Saúde',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  CustomTextWidget(
+                    text: AuthStrings.provideInfoMessage,
+                    fontSize: 12.sp,
+                    paddingValue: 20.h,
+                  ),
+                ],
               ),
             ),
           ),
@@ -198,7 +211,7 @@ class PageFamily extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Expanded(
-            flex: 2,
+            flex: 1,
             child: Image.asset(
               AppImages.man,
               fit: BoxFit.fill,
@@ -216,10 +229,23 @@ class PageFamily extends StatelessWidget {
                   bottomRight: Radius.circular(32),
                 ),
               ),
-              child: CustomTextWidget(
-                text: AuthStrings.getInfoMessage,
-                fontSize: 12.sp,
-                paddingValue: 20.h,
+              child: Column(
+                children: [
+                  Text(
+                    'Familiar',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.black,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                  CustomTextWidget(
+                    text: AuthStrings.getInfoMessage,
+                    fontSize: 12.sp,
+                    paddingValue: 20.h,
+                  ),
+                ],
               ),
             ),
           ),
