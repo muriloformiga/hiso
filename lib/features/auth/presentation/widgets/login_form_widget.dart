@@ -30,49 +30,61 @@ class LoginFormWidget extends StatelessWidget {
           SizedBox(
             height: 20.0.h,
           ),
-          CupertinoButton.filled(
-            child: Text(
-              AuthStrings.send,
-              style: TextStyle(
-                fontSize: 17.sp,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            onPressed: () {
-              BlocProvider.of<LoginBloc>(context)
-                ..add(
-                  LoginEmailStarted(
-                    email: emailController.text,
-                    password: passwordController.text,
+          BlocBuilder<LoginBloc, LoginState>(
+            builder: (context, state) {
+              if (state is LoginLoadInProgress) {
+                return CircularProgressIndicator();
+              }
+              return Column(
+                children: <Widget>[
+                  CupertinoButton.filled(
+                    child: Text(
+                      AuthStrings.send,
+                      style: TextStyle(
+                        fontSize: 17.sp,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    onPressed: () {
+                      FocusScope.of(context).requestFocus(FocusNode());
+                      BlocProvider.of<LoginBloc>(context)
+                        ..add(
+                          LoginEmailStarted(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          ),
+                        );
+                    },
                   ),
-                );
+                  SizedBox(
+                    height: 30.0.h,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.red,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    child: CupertinoButton(
+                      padding: EdgeInsets.only(left: 60.w, right: 60.w),
+                      color: AppColors.transparent,
+                      child: Text(
+                        AuthStrings.register,
+                        style: TextStyle(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.orange[400],
+                        ),
+                      ),
+                      onPressed: () => AuthNavigator.goToPresentation(),
+                    ),
+                  ),
+                ],
+              );
             },
-          ),
-          SizedBox(
-            height: 30.0.h,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.red,
-              ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(8.0),
-              ),
-            ),
-            child: CupertinoButton(
-              padding: EdgeInsets.only(left: 42.w, right: 42.w),
-              color: AppColors.transparent,
-              child: Text(
-                AuthStrings.register,
-                style: TextStyle(
-                  fontSize: 17.sp,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.orange[400],
-                ),
-              ),
-              onPressed: () => AuthNavigator.goToPresentation(),
-            ),
           ),
           SizedBox(
             height: 40.0.h,

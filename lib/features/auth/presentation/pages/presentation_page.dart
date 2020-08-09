@@ -128,6 +128,7 @@ class _PresentationPageState extends State<PresentationPage> {
                       ),
                     ),
                     child: CupertinoButton(
+                      padding: EdgeInsets.only(left: 25.w, right: 25.w),
                       child: Text(
                         'Cadastre-se como familiar',
                         style: TextStyle(
