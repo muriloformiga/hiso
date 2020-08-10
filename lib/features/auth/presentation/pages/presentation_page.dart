@@ -106,7 +106,7 @@ class _PresentationPageState extends State<PresentationPage> {
                     child: CupertinoButton.filled(
                       padding: EdgeInsets.all(15.w),
                       child: Text(
-                        'Cadastre-se como profissional',
+                        'Cadastre-se para começar',
                         style: TextStyle(
                           fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
@@ -117,27 +117,6 @@ class _PresentationPageState extends State<PresentationPage> {
                   ),
                   SizedBox(
                     height: 30.0.h,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.red,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                    ),
-                    child: CupertinoButton(
-                      padding: EdgeInsets.only(left: 25.w, right: 25.w),
-                      child: Text(
-                        'Cadastre-se como familiar',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      onPressed: () => AuthNavigator.goToRegister(),
-                    ),
                   ),
                 ],
               ),
@@ -181,7 +160,7 @@ class PageDoctor extends StatelessWidget {
                   Text(
                     'Profissional de Saúde',
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black,
                     ),
@@ -234,7 +213,7 @@ class PageFamily extends StatelessWidget {
                   Text(
                     'Familiar',
                     style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       color: AppColors.black,
                     ),

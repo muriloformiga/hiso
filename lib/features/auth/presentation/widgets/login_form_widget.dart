@@ -59,28 +59,18 @@ class LoginFormWidget extends StatelessWidget {
                   SizedBox(
                     height: 30.0.h,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.red,
-                      ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
+                  CupertinoButton(
+                    padding: EdgeInsets.only(left: 60.w, right: 60.w),
+                    color: AppColors.transparent,
+                    child: Text(
+                      AuthStrings.register,
+                      style: TextStyle(
+                        fontSize: 17.sp,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.orange[400],
                       ),
                     ),
-                    child: CupertinoButton(
-                      padding: EdgeInsets.only(left: 60.w, right: 60.w),
-                      color: AppColors.transparent,
-                      child: Text(
-                        AuthStrings.register,
-                        style: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.orange[400],
-                        ),
-                      ),
-                      onPressed: () => AuthNavigator.goToPresentation(),
-                    ),
+                    onPressed: () => AuthNavigator.goToPresentation(),
                   ),
                 ],
               );

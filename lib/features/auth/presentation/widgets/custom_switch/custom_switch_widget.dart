@@ -22,13 +22,10 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Image.asset(AppImages.doctors),
-            ),
-          ],
+        Container(
+          width: 200.w,
+          height: 186.h,
+          child: Image.asset(AppImages.doctors),
         ),
         SizedBox(
           height: 30.h,
