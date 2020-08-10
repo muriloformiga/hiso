@@ -25,19 +25,8 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
         Stack(
           children: <Widget>[
             Align(
-              alignment: Alignment.bottomRight,
-              child: Container(
-                height: 170.h,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.blue,
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
-            Align(
               alignment: Alignment.bottomLeft,
-              child: Image.asset(AppImages.doctor),
+              child: Image.asset(AppImages.doctors),
             ),
           ],
         ),

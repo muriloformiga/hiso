@@ -4,10 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/auth/presentation/bloc/register/register_bloc.dart';
-import 'package:hiso/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:hiso/features/auth/presentation/widgets/register_form_widget.dart';
-import 'package:hiso/features/auth/utils/auth_strings.dart';
-import 'package:hiso/core/utils/sizes.dart';
 
 class RegisterPage extends StatelessWidget {
   @override
@@ -15,13 +12,14 @@ class RegisterPage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [
             AppColors.green,
-            AppColors.blue,
-            AppColors.blue,
+            AppColors.gray,
+            AppColors.gray,
           ],
+          stops: [0, 0.5, 1],
         ),
       ),
       child: Scaffold(
@@ -33,16 +31,6 @@ class RegisterPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                CustomTextWidget(
-                  text: AuthStrings.createAccountMessage,
-                  fontSize: 20.h,
-                  paddingValue: 10.h,
-                ),
-                CustomTextWidget(
-                  text: AuthStrings.coolTextRecipe,
-                  fontSize: 16.h,
-                  paddingValue: 10.h,
-                ),
                 BlocBuilder<RegisterBloc, RegisterState>(
                   builder: (context, state) {
                     if (state is RegisterSuccess) {
