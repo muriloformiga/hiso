@@ -13,6 +13,7 @@ class RegisterFormWidget extends StatelessWidget {
   final passwordRepeatController = TextEditingController();
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
+  final crmController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,21 @@ class RegisterFormWidget extends StatelessWidget {
             0: AuthStrings.email,
             1: AuthStrings.password,
             2: AuthStrings.passwordRepeat,
+          },
+        ),
+        BlocBuilder<RegisterBloc, RegisterState>(
+          builder: (context, state) {
+            if (state is RegisterSuccess) {
+              return RegisterCardWidget(
+                controller: {
+                  0: crmController,
+                },
+                placeholder: {
+                  0: 'CRM',
+                },
+              );
+            }
+            return Container();
           },
         ),
         SizedBox(height: 10),

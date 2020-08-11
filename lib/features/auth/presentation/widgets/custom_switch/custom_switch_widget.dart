@@ -18,6 +18,7 @@ class CustomSwitchWidget extends StatefulWidget {
 class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
   bool _selected = true;
   final _duration = Duration(milliseconds: 150);
+  String image = AppImages.relatives;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,7 +26,10 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
         Container(
           width: 200.w,
           height: 186.h,
-          child: Image.asset(AppImages.doctors),
+          child: Image.asset(
+            image,
+            fit: BoxFit.fill,
+          ),
         ),
         SizedBox(
           height: 30.h,
@@ -35,6 +39,11 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
           onTap: () {
             setState(() {
               _selected = !_selected;
+              if (image == AppImages.doctors) {
+                image = AppImages.relatives;
+              } else {
+                image = AppImages.doctors;
+              }
             });
             final result =
                 _selected ? AuthStrings.relative : AuthStrings.professional;
@@ -76,7 +85,7 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                     Expanded(
                       child: Center(
                         child: AnimatedDefaultTextStyle(
-                          child: Text(AuthStrings.professional),
+                          child: Text(AuthStrings.relative),
                           style: _selected
                               ? TextStyle(
                                   fontSize: 16.sp,
@@ -95,7 +104,7 @@ class _CustomSwitchWidgetState extends State<CustomSwitchWidget> {
                     Expanded(
                       child: Center(
                         child: AnimatedDefaultTextStyle(
-                          child: Text(AuthStrings.relative),
+                          child: Text(AuthStrings.professional),
                           style: !_selected
                               ? TextStyle(
                                   fontSize: 16.sp,
