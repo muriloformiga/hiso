@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/singletons/user.dart';
-import 'package:hiso/core/utils/sizes.dart';
 import 'package:hiso/core/widgets/custom_background_widget.dart';
 import 'package:hiso/core/widgets/custom_error_widget.dart';
 import 'package:hiso/core/widgets/custom_progress_widget.dart';
@@ -28,17 +27,14 @@ class HomePage extends StatelessWidget {
           return CustomErrorWidget();
         }
         if (state is HomeUserDataLoadSucess) {
+          // TODO(muriloformiga): mudar para Professional
           if (User.instance.accountType == 'Profissional') {
             return ProfessionalPage();
           }
           return FamilyPage();
         }
         return CustomBackgroundWidget(
-          child: SizedBox(
-            height: 80.h,
-            width: 80.h,
-            child: CustomProgressWidget(),
-          ),
+          child: CustomProgressWidget(),
         );
       },
     );

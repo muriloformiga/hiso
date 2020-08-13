@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/info/firebase_info.dart';
-import 'package:hiso/features/post/data/models/pacient_model.dart';
+import 'package:hiso/core/utils/app_consts.dart';
 import 'package:hiso/features/post/data/models/update_model.dart';
 import 'package:meta/meta.dart';
 
@@ -23,7 +23,7 @@ abstract class PostDataSource {
   /// o número do SUS.
   ///
   /// Dispara uma [FirestoreException] com a mensagem de erro.
-  Future<PacientModel> getPacientData(
+  Future<List<UpdateModel>> getPacientUpdates(
     String healthNumber,
   );
 }
@@ -32,6 +32,8 @@ class PostDataSourceImpl implements PostDataSource {
   PostDataSourceImpl({@required this.firestore});
 
   final Firestore firestore;
+
+  static DocumentSnapshot _lastDocument;
 
   @override
   Future<void> registerPacient(
@@ -66,35 +68,49 @@ class PostDataSourceImpl implements PostDataSource {
   }
 
   @override
-  Future<PacientModel> getPacientData(String healthNumber) async {
+  Future<List<UpdateModel>> getPacientUpdates(String healthNumber) async {
     try {
-      final documentSnapshot = await firestore
-          .collection(FirebaseInfo.pacientCollection)
-          .document(healthNumber)
-          .get();
-      final pacientUpdates = await _getPacientUpdates(healthNumber);
-      return PacientModel.fromDocument(
-        documentSnapshot.data,
-        pacientUpdates,
-        healthNumber,
-      );
+      QuerySnapshot querySnapshot;
+      List<UpdateModel> list = [];
+      if (_lastDocument == null) {
+        querySnapshot = await _getInitialData(healthNumber);
+      } else {
+        querySnapshot = await _getMoreData(healthNumber);
+      }
+      for (DocumentSnapshot document in querySnapshot.documents) {
+        list.add(
+          UpdateModel.fromJson(
+            document.data,
+          ),
+        );
+      }
+      _lastDocument = querySnapshot.documents.last;
+      return list;
     } catch (_) {
       throw FirestoreException();
     }
   }
 
-  Future<List<UpdateModel>> _getPacientUpdates(String healthNumber) async {
+  Future<QuerySnapshot> _getInitialData(String healthNumber) async {
     final querySnapshot = await firestore
         .collection(FirebaseInfo.pacientCollection)
         .document(healthNumber)
         .collection(FirebaseInfo.updateCollection)
+        .orderBy('date')
+        .limit(AppConsts.paginationValue)
         .getDocuments();
-    List<UpdateModel> list = [];
-    for (DocumentSnapshot document in querySnapshot.documents) {
-      list.add(
-        UpdateModel.fromJson(document.data),
-      );
-    }
-    return list;
+    return querySnapshot;
+  }
+
+  Future<QuerySnapshot> _getMoreData(String healthNumber) async {
+    final querySnapshot = await firestore
+        .collection(FirebaseInfo.pacientCollection)
+        .document(healthNumber)
+        .collection(FirebaseInfo.updateCollection)
+        .orderBy('date')
+        .startAfterDocument(_lastDocument)
+        .limit(AppConsts.paginationValue)
+        .getDocuments();
+    return querySnapshot;
   }
 }

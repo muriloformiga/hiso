@@ -1,4 +1,3 @@
-import 'package:hiso/features/post/domain/entities/update.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
 
@@ -13,7 +12,6 @@ class Pacient extends Equatable {
     @required this.creatorLastName,
     @required this.creatorCode,
     @required this.birthDate,
-    @required this.updates,
   });
 
   final String name;
@@ -25,7 +23,6 @@ class Pacient extends Equatable {
   final String creatorLastName;
   final String creatorCode;
   final String birthDate;
-  final List<Update> updates;
 
   @override
   List<Object> get props => [
@@ -38,6 +35,5 @@ class Pacient extends Equatable {
         creatorLastName,
         creatorCode,
         birthDate,
-        updates,
       ];
 }

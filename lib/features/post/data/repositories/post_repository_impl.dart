@@ -3,8 +3,8 @@ import 'package:hiso/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/core/singletons/user.dart';
-import 'package:hiso/features/post/domain/entities/pacient.dart';
 import 'package:hiso/features/post/data/datasources/post_datasource.dart';
+import 'package:hiso/features/post/domain/entities/update.dart';
 import 'package:meta/meta.dart';
 import 'package:hiso/features/post/domain/repositories/post_repository.dart';
 
@@ -59,12 +59,12 @@ class PostRepositoryImpl implements PostRepository {
   }
 
   @override
-  Future<Either<Failure, Pacient>> getPacientData(
+  Future<Either<Failure, List<Update>>> getPacientUpdates(
     String healthNumber,
   ) async {
     if (await networkInfo.isConnected) {
       try {
-        final pacient = await postDataSource.getPacientData(healthNumber);
+        final pacient = await postDataSource.getPacientUpdates(healthNumber);
         return Right(pacient);
       } catch (_) {
         return Left(FirestoreFailure());

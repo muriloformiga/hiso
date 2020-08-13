@@ -9,10 +9,8 @@ abstract class PacientsState extends Equatable {
 
 class PacientsInitial extends PacientsState {}
 
-class PacientsMedicalPacientsLoading extends PacientsState {}
-
-class PacientsMedicalPacientsLoadError extends PacientsState {
-  PacientsMedicalPacientsLoadError({
+class PacientsLoadError extends PacientsState {
+  PacientsLoadError({
     @required this.message,
   });
 
@@ -22,13 +20,25 @@ class PacientsMedicalPacientsLoadError extends PacientsState {
   List<Object> get props => [message];
 }
 
-class PacientsMedicalPacientsLoadSucess extends PacientsState {
-  PacientsMedicalPacientsLoadSucess({
+class PacientsLoadSucess extends PacientsState {
+  final List<Pacient> pacients;
+  final bool hasReachedMax;
+
+  const PacientsLoadSucess({
     @required this.pacients,
+    @required this.hasReachedMax,
   });
 
-  final List<Pacient> pacients;
+  PacientsLoadSucess copyWith({
+    List<Pacient> pacients,
+    bool hasReachedMax,
+  }) {
+    return PacientsLoadSucess(
+      pacients: pacients ?? this.pacients,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+    );
+  }
 
   @override
-  List<Object> get props => [pacients];
+  List<Object> get props => [pacients, hasReachedMax];
 }

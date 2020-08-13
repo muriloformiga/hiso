@@ -1,3 +1,4 @@
+import 'package:hiso/core/utils/app_consts.dart';
 import 'package:hiso/features/post/data/models/pacient_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hiso/core/error/exceptions.dart';
@@ -17,10 +18,8 @@ class PacientDataSourceImpl implements PacientDataSource {
   PacientDataSourceImpl({@required this.firestore});
 
   final Firestore firestore;
-  final String creatorIdField = 'creatorId';
-  final int queryLimit = 10;
 
-  static List<DocumentSnapshot> _lastDocument;
+  static DocumentSnapshot _lastDocument;
 
   @override
   Future<List<PacientModel>> getMedicalPacients() async {
@@ -34,12 +33,13 @@ class PacientDataSourceImpl implements PacientDataSource {
       }
       for (DocumentSnapshot document in querySnapshot.documents) {
         list.add(
-          PacientModel.fromBasicData(
+          PacientModel.fromDocument(
             document.data,
             document.documentID,
           ),
         );
       }
+      _lastDocument = querySnapshot.documents.last;
       return list;
     } catch (_) {
       throw FirestoreException();
@@ -49,8 +49,9 @@ class PacientDataSourceImpl implements PacientDataSource {
   Future<QuerySnapshot> _getInitialData() async {
     final querySnapshot = await firestore
         .collection(FirebaseInfo.pacientCollection)
-        .where(creatorIdField, isEqualTo: User.instance.userId)
-        .limit(queryLimit)
+        .where(FirebaseInfo.creatorIdField, isEqualTo: User.instance.userId)
+        .orderBy('name')
+        .limit(AppConsts.paginationValue)
         .getDocuments();
     return querySnapshot;
   }
@@ -58,10 +59,10 @@ class PacientDataSourceImpl implements PacientDataSource {
   Future<QuerySnapshot> _getMoreData() async {
     final querySnapshot = await firestore
         .collection(FirebaseInfo.pacientCollection)
-        .where(creatorIdField, isEqualTo: User.instance.userId)
+        .where(FirebaseInfo.creatorIdField, isEqualTo: User.instance.userId)
         .orderBy('name')
-        .startAfterDocument(_lastDocument[_lastDocument.length - 1])
-        .limit(queryLimit)
+        .startAfterDocument(_lastDocument)
+        .limit(AppConsts.paginationValue)
         .getDocuments();
     return querySnapshot;
   }
