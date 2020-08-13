@@ -13,6 +13,15 @@ class RegisterSuccess extends RegisterState {}
 
 class RegisterLoadInProgress extends RegisterState {}
 
+class RegisterButtom extends RegisterState {
+  RegisterButtom({this.estado = false});
+
+  final bool estado;
+
+  @override
+  List<Object> get props => [estado];
+}
+
 class RegisterFailure extends RegisterState {
   RegisterFailure({@required this.message});
 

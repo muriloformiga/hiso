@@ -38,3 +38,14 @@ class RegisterEmailStarted extends RegisterEvent {
 class RegisterGoogleStarted extends RegisterEvent {}
 
 class RegisterFacebookStarted extends RegisterEvent {}
+
+class RegisterButtomPressed extends RegisterEvent {
+  RegisterButtomPressed({
+    this.estado = true,
+  });
+
+  final bool estado;
+
+  @override
+  List<Object> get props => [estado];
+}

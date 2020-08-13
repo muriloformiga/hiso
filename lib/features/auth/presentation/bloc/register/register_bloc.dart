@@ -29,6 +29,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     if (event is RegisterEmailStarted) {
       yield* _mapToEmailStarted(event);
     }
+    if (event is RegisterButtomPressed) {
+      yield RegisterButtom(estado: event.estado);
+    }
   }
 
   Stream<RegisterState> _mapToEmailStarted(RegisterEmailStarted event) async* {

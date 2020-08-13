@@ -18,11 +18,16 @@ class RegisterFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String accountTypeSelected = AuthStrings.relative;
+    bool tipo = true;
     return Column(
       children: <Widget>[
         CustomSwitchWidget(
           onTap: (value) {
             accountTypeSelected = value;
+            BlocProvider.of<RegisterBloc>(context).add(
+              RegisterButtomPressed(estado: tipo),
+            );
+            tipo = !tipo;
           },
         ),
         SizedBox(
@@ -52,15 +57,17 @@ class RegisterFormWidget extends StatelessWidget {
         ),
         BlocBuilder<RegisterBloc, RegisterState>(
           builder: (context, state) {
-            if (state is RegisterSuccess) {
-              return RegisterCardWidget(
-                controller: {
-                  0: crmController,
-                },
-                placeholder: {
-                  0: 'CRM',
-                },
-              );
+            if (state is RegisterButtom) {
+              if (state.estado) {
+                return RegisterCardWidget(
+                  controller: {
+                    0: crmController,
+                  },
+                  placeholder: {
+                    0: 'CRM',
+                  },
+                );
+              }
             }
             return Container();
           },
