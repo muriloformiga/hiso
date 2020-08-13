@@ -28,8 +28,9 @@ abstract class AppTheme {
         fontWeight: FontWeight.bold,
       ),
       headline6: TextStyle(
-        fontSize: 36.sp,
-        fontStyle: FontStyle.italic,
+        fontSize: 22.sp,
+        fontWeight: FontWeight.bold,
+        color: AppColors.gray[700],
       ),
       bodyText1: TextStyle(
         fontSize: 16.sp,
@@ -38,6 +39,11 @@ abstract class AppTheme {
       bodyText2: TextStyle(
         fontSize: 14.sp,
         color: AppColors.gray[600],
+      ),
+      subtitle2: TextStyle(
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w500,
+        color: AppColors.gray[500],
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(

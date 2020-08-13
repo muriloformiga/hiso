@@ -9,21 +9,31 @@ abstract class TimelineState extends Equatable {
 
 class TimelineInitial extends TimelineState {}
 
-class TimelineDataLoading extends TimelineState {}
+class TimelineGetUpdatesSucess extends TimelineState {
+  final List<Update> updates;
+  final bool hasReachedMax;
 
-class TimelineGetPacientDataSucess extends TimelineState {
-  TimelineGetPacientDataSucess({
-    @required this.pacient,
+  TimelineGetUpdatesSucess({
+    @required this.updates,
+    @required this.hasReachedMax,
   });
 
-  final Pacient pacient;
+  TimelineGetUpdatesSucess copyWith({
+    List<Update> updates,
+    bool hasReachedMax,
+  }) {
+    return TimelineGetUpdatesSucess(
+      updates: updates ?? this.updates,
+      hasReachedMax: hasReachedMax ?? this.hasReachedMax,
+    );
+  }
 
   @override
-  List<Object> get props => [pacient];
+  List<Object> get props => [updates, hasReachedMax];
 }
 
-class TimelineGetPacientDataFailure extends TimelineState {
-  TimelineGetPacientDataFailure({
+class TimelineGetUpdatesError extends TimelineState {
+  TimelineGetUpdatesError({
     @required this.message,
   });
 

@@ -1,19 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/sizes.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
+import 'package:hiso/features/post/navigator/post_navigator.dart';
 
 class PacientTileWidget extends StatelessWidget {
   PacientTileWidget({
-    @required this.name,
-    @required this.lastName,
-    @required this.hospital,
-    @required this.birthDate,
+    @required this.pacient,
   });
 
-  final String name;
-  final String lastName;
-  final String hospital;
-  final String birthDate;
+  final Pacient pacient;
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +20,27 @@ class PacientTileWidget extends StatelessWidget {
         vertical: 20.h,
       ),
       color: AppColors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            '$name $lastName',
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-          Text(
-            hospital,
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-          Text(
-            'Data Nasc. $birthDate',
-            textAlign: TextAlign.end,
-          ),
-        ],
+      child: CupertinoButton(
+        padding: EdgeInsets.zero,
+        onPressed: () => PostNavigator.goToTimeline(pacient),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              '${pacient.name} ${pacient.lastName}',
+              style: Theme.of(context).textTheme.bodyText1,
+            ),
+            Text(
+              pacient.hospital,
+              style: Theme.of(context).textTheme.bodyText2,
+            ),
+            Text(
+              'Data Nasc. ${pacient.birthDate}',
+              textAlign: TextAlign.end,
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
+          ],
+        ),
       ),
     );
   }

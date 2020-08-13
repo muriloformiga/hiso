@@ -1,26 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hiso/core/utils/sizes.dart';
+import 'package:hiso/features/post/domain/entities/pacient.dart';
 
 class PacientDataWidget extends StatelessWidget {
   PacientDataWidget({
-    @required this.name,
-    @required this.lastName,
-    @required this.birthDate,
-    @required this.healthNumber,
-    @required this.hospital,
-    @required this.creatorCode,
-    @required this.creatorName,
-    @required this.creatorLastName,
+    @required this.pacient,
   });
 
-  final String name;
-  final String lastName;
-  final String birthDate;
-  final String healthNumber;
-  final String hospital;
-  final String creatorCode;
-  final String creatorName;
-  final String creatorLastName;
+  final Pacient pacient;
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +16,19 @@ class PacientDataWidget extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            'Paciente: $name $lastName',
+            'Paciente: ${pacient.name} ${pacient.lastName}',
           ),
           Text(
-            'Data de nascimento: $birthDate',
+            'Data de nascimento: ${pacient.birthDate}',
           ),
           Text(
-            'Hospital: $hospital',
+            'Hospital: ${pacient.hospital}',
           ),
           Text(
-            'Número do SUS: $healthNumber',
+            'Número do SUS: ${pacient.healthNumber}',
           ),
           Text(
-            'Registrado por: $creatorName $creatorLastName ($creatorCode)',
+            'Registrado por: ${pacient.creatorName} ${pacient.creatorLastName} (${pacient.creatorCode})',
           ),
         ],
       ),

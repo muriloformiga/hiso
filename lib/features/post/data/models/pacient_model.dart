@@ -1,5 +1,4 @@
 import 'package:hiso/features/post/domain/entities/pacient.dart';
-import 'package:hiso/features/post/domain/entities/update.dart';
 import 'package:meta/meta.dart';
 
 class PacientModel extends Pacient {
@@ -13,7 +12,6 @@ class PacientModel extends Pacient {
     String creatorName,
     String creatorLastName,
     String creatorCode,
-    List<Update> updates,
   }) : super(
           name: name,
           lastName: lastName,
@@ -24,12 +22,10 @@ class PacientModel extends Pacient {
           creatorCode: creatorCode,
           healthNumber: healthNumber,
           birthDate: birthDate,
-          updates: updates,
         );
 
   factory PacientModel.fromDocument(
     Map<String, dynamic> pacientData,
-    List<Update> updateData,
     String documentId,
   ) {
     return PacientModel(
@@ -42,20 +38,6 @@ class PacientModel extends Pacient {
       creatorCode: pacientData['creatorCode'],
       healthNumber: documentId,
       birthDate: pacientData['birthDate'],
-      updates: updateData,
-    );
-  }
-
-  factory PacientModel.fromBasicData(
-    Map<String, dynamic> data,
-    String documentId,
-  ) {
-    return PacientModel(
-      name: data['name'],
-      lastName: data['lastName'],
-      hospital: data['hospital'],
-      birthDate: data['birthDate'],
-      healthNumber: documentId,
     );
   }
 }

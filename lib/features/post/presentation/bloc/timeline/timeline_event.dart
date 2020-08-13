@@ -4,8 +4,8 @@ abstract class TimelineEvent extends Equatable {
   const TimelineEvent();
 }
 
-class TimelineGetPacientData extends TimelineEvent {
-  TimelineGetPacientData({
+class TimelineGetPacientUpdates extends TimelineEvent {
+  TimelineGetPacientUpdates({
     @required this.healthNumber,
   });
 
