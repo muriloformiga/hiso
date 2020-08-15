@@ -7,6 +7,7 @@ class BottomSheet {
   });
   final dynamic context;
   final Widget child;
+
   void showBottonSheet() {
     showModalBottomSheet(
         context: context,
