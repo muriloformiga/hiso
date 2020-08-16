@@ -86,6 +86,11 @@ class LoginDataSourceImpl implements LoginDataSource {
         final GoogleSignInAuthentication googleAuth =
             await googleUser.authentication;
 
+        print(googleUser.id);
+        print(googleUser.email);
+        print(googleUser.displayName);
+        print(googleUser.photoUrl);
+
         final AuthCredential credential = GoogleAuthProvider.getCredential(
           accessToken: googleAuth.accessToken,
           idToken: googleAuth.idToken,
