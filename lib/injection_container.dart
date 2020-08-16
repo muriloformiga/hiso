@@ -9,6 +9,7 @@ import 'package:hiso/core/info/network_info.dart';
 import 'package:hiso/features/auth/utils/auth_injection.dart';
 import 'package:hiso/features/home/utils/home_injection.dart';
 import 'package:hiso/features/post/utils/post_injection.dart';
+import 'package:hiso/features/settings/utils/settings_injection.dart';
 
 // Service Locator (Dependency)
 final dep = GetIt.instance;
@@ -21,6 +22,8 @@ void init() {
   initHome();
   //! Post
   initPost();
+  //! Settings
+  initSettings();
 
   //! Core
   dep.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(dep()));

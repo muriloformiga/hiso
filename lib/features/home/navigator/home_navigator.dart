@@ -14,5 +14,9 @@ abstract class HomeNavigator {
     );
   }
 
-  static goToSettings() {}
+  static goToSettings() {
+    Routes.sailor.navigate(
+      HomeRoutes.settingsPage,
+    );
+  }
 }

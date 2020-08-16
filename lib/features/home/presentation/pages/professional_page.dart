@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/utils/app_gradients.dart';
 import 'package:hiso/core/utils/app_images.dart';
 import 'package:hiso/core/utils/sizes.dart';
-import 'package:hiso/features/home/presentation/bloc/home/home_bloc.dart';
+import 'package:hiso/features/home/navigator/home_navigator.dart';
 import 'package:hiso/features/home/presentation/widgets/home/bottom_navigation_widget.dart';
 import 'package:hiso/features/home/presentation/widgets/home/pacients_list_widget.dart';
 
@@ -27,10 +26,8 @@ class ProfessionalPage extends StatelessWidget {
               ),
               actions: [
                 IconButton(
-                  icon: Icon(Icons.exit_to_app),
-                  onPressed: () => BlocProvider.of<HomeBloc>(context).add(
-                    HomeLogoutStarted(),
-                  ),
+                  icon: Icon(Icons.settings),
+                  onPressed: HomeNavigator.goToSettings,
                 ),
               ],
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hiso/core/navigator/routes.dart';
+import 'package:hiso/core/utils/app_consts.dart';
 import 'package:hiso/core/utils/app_gradients.dart';
 import 'package:hiso/features/post/domain/entities/pacient.dart';
 import 'package:hiso/features/post/presentation/widgets/timeline/pacient_data_widget.dart';
@@ -21,6 +22,7 @@ class TimelinePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppConsts.lastUpdateDocument = null;
     final pacient = args.pacient;
     return Container(
       decoration: BoxDecoration(

@@ -25,5 +25,5 @@ abstract class AppImages {
 
   static String get apple => _geral(iconName: 'apple');
 
-  static String get loading => _geral(iconName: 'loading');
+  static String get error => _geral(iconName: 'error');
 }

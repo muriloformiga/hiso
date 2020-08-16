@@ -2,8 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hiso/core/error/exceptions.dart';
 import 'package:hiso/core/error/failures.dart';
-import 'package:hiso/features/auth/data/datasources/logout_datasource.dart';
-import 'package:hiso/features/auth/data/repositories/logout_repository_impl.dart';
+import 'package:hiso/features/settings/data/datasources/logout_datasource.dart';
+import 'package:hiso/features/settings/data/repositories/logout_repository_impl.dart';
 import 'package:mockito/mockito.dart';
 
 class MockLogoutDataSource extends Mock implements LogoutDataSource {}

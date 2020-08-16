@@ -15,7 +15,6 @@ void initHome() {
   // Bloc
   dep.registerFactory(
     () => HomeBloc(
-      logout: dep(),
       getUserData: dep(),
     ),
   );

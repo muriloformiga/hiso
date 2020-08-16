@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:hiso/features/auth/navigator/auth_routes.dart';
 import 'package:hiso/features/home/navigator/home_routes.dart';
 import 'package:hiso/features/post/navigator/post_routes.dart';
+import 'package:hiso/features/settings/navigator/settings_routes.dart';
 import 'package:sailor/sailor.dart';
 
 abstract class Routes {
@@ -18,5 +19,6 @@ abstract class Routes {
     AuthRoutes.createRoutes();
     HomeRoutes.createRoutes();
     PostRoutes.createRoutes();
+    SettingsRoutes.createRoutes();
   }
 }

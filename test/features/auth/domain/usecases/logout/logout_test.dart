@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:hiso/features/auth/domain/repositories/logout_repository.dart';
+import 'package:hiso/features/settings/domain/repositories/logout_repository.dart';
 import 'package:hiso/core/usecases/usecase.dart';
-import 'package:hiso/features/auth/domain/usecases/logout/logout.dart';
+import 'package:hiso/features/settings/domain/usecases/logout/logout.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 

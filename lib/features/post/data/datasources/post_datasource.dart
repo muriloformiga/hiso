@@ -33,8 +33,6 @@ class PostDataSourceImpl implements PostDataSource {
 
   final Firestore firestore;
 
-  static DocumentSnapshot _lastDocument;
-
   @override
   Future<void> registerPacient(
     String healthNumber,
@@ -72,7 +70,7 @@ class PostDataSourceImpl implements PostDataSource {
     try {
       QuerySnapshot querySnapshot;
       List<UpdateModel> list = [];
-      if (_lastDocument == null) {
+      if (AppConsts.lastUpdateDocument == null) {
         querySnapshot = await _getInitialData(healthNumber);
       } else {
         querySnapshot = await _getMoreData(healthNumber);
@@ -84,7 +82,7 @@ class PostDataSourceImpl implements PostDataSource {
           ),
         );
       }
-      _lastDocument = querySnapshot.documents.last;
+      AppConsts.lastUpdateDocument = querySnapshot.documents.last;
       return list;
     } catch (_) {
       throw FirestoreException();
@@ -108,7 +106,7 @@ class PostDataSourceImpl implements PostDataSource {
         .document(healthNumber)
         .collection(FirebaseInfo.updateCollection)
         .orderBy('date')
-        .startAfterDocument(_lastDocument)
+        .startAfterDocument(AppConsts.lastUpdateDocument)
         .limit(AppConsts.paginationValue)
         .getDocuments();
     return querySnapshot;

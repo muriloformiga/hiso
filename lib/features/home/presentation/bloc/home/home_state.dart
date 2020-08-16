@@ -9,14 +9,6 @@ abstract class HomeState extends Equatable {
 
 class HomeInitial extends HomeState {}
 
-class HomeFailure extends HomeState {
-  HomeFailure({@required this.message});
-
-  final String message;
-}
-
-class HomeLogout extends HomeState {}
-
 class HomeUserDataInexist extends HomeState {
   HomeUserDataInexist({@required this.message});
 

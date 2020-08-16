@@ -5,6 +5,7 @@ import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:hiso/core/utils/app_colors.dart';
 import 'package:hiso/core/utils/app_strings.dart';
 import 'package:hiso/core/utils/sizes.dart';
+import 'package:hiso/core/widgets/custom_progress_widget.dart';
 import 'package:hiso/core/widgets/input_text_widget.dart';
 import 'package:hiso/features/post/presentation/bloc/post/post_bloc.dart';
 import 'package:hiso/features/post/utils/post_strings.dart';
@@ -72,7 +73,7 @@ class PostRegisterFormWidget extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is PostPacientRegisterLoading) {
-                  return CircularProgressIndicator();
+                  return CustomProgressWidget();
                 }
                 return CupertinoButton.filled(
                   child: Text(AppStrings.register),

@@ -4,7 +4,6 @@ import 'package:hiso/core/singletons/user.dart';
 import 'package:hiso/core/widgets/custom_background_widget.dart';
 import 'package:hiso/core/widgets/custom_error_widget.dart';
 import 'package:hiso/core/widgets/custom_progress_widget.dart';
-import 'package:hiso/features/auth/navigator/auth_navigator.dart';
 import 'package:hiso/features/home/navigator/home_navigator.dart';
 import 'package:hiso/features/home/presentation/bloc/home/home_bloc.dart';
 import 'package:hiso/features/home/presentation/pages/professional_page.dart';
@@ -17,9 +16,6 @@ class HomePage extends StatelessWidget {
       listener: (context, state) {
         if (state is HomeUserDataInexist) {
           HomeNavigator.goToValidation();
-        }
-        if (state is HomeLogout) {
-          AuthNavigator.goToLogin();
         }
       },
       builder: (context, state) {

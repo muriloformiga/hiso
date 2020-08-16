@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hiso/core/widgets/custom_progress_widget.dart';
+import 'package:hiso/core/widgets/list_divider_widget.dart';
 import 'package:hiso/features/home/presentation/bloc/pacients/pacients_bloc.dart';
 import 'package:hiso/features/home/presentation/widgets/home/pacient_tile_widget.dart';
 
@@ -15,7 +16,7 @@ class PacientsListWidget extends StatelessWidget {
           if (pacients.isEmpty) {
             return Text('Nenhum paciente cadastrado.');
           }
-          return ListView.builder(
+          return ListView.separated(
             itemBuilder: (context, index) {
               if (index < pacients.length) {
                 return PacientTileWidget(
@@ -27,6 +28,7 @@ class PacientsListWidget extends StatelessWidget {
                 return CustomProgressWidget();
               }
             },
+            separatorBuilder: (_, __) => ListDividerWidget(),
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount:

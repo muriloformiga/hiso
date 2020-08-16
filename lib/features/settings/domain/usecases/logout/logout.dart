@@ -1,7 +1,7 @@
 import 'package:hiso/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:hiso/core/usecases/usecase.dart';
-import 'package:hiso/features/auth/domain/repositories/logout_repository.dart';
+import 'package:hiso/features/settings/domain/repositories/logout_repository.dart';
 
 class Logout implements UseCase<void, NoParams> {
   Logout(this.logoutRepository);

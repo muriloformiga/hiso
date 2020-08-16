@@ -33,13 +33,13 @@ class FirebaseLogoutFailure extends Failure {
 
 class FirestoreFailure extends Failure {
   FirestoreFailure({
-    String message = 'Não foi possível acessar o servidor. Tente novamente.',
+    String message = 'Não foi possível acessar o servidor.',
   }) : super(message: message);
 }
 
 class FirestoreNotFoundFailure extends Failure {
   FirestoreNotFoundFailure({
-    String message = 'Dados não encontrados no servidor. Tente novamente.',
+    String message = 'Dados não encontrados no servidor.',
   }) : super(message: message);
 }
 
